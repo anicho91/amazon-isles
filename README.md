@@ -32,10 +32,10 @@ was soon bombarded with requests. Gustav only signs up for the requests he can f
 
 
 ## LONG TERM PLANS : 
-100,000 active monthly users.
-Reducing search time for custom services.
-Creating a secure space for clients and providers to connect. 
-Reaching $1 million in monthly transactions via the app.
+*100,000 active monthly users.
+*Reducing search time for custom services.
+*Creating a secure space for clients and providers to connect. 
+*Reaching $1 million in monthly transactions via the app.
 
 
 ## TECHNOLOGIES USED: 
