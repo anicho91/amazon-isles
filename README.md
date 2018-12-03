@@ -1,22 +1,23 @@
  # AMAZONISLES
  
 ## WEB DEVELOPERS : 
-Makiko Vaughan https://github.com/makikovaughan 
-Rachida Kone   https://github.com/RachidaSK
-Ann Tuck       https://github.com/AnnTuck	
-Anna Nichols   https://github.com/anicho91
-Cynthia Knox   https://github.com/cindy046
+**Makiko Vaughan https://github.com/makikovaughan 
+**Rachida Kone   https://github.com/RachidaSK
+**Ann Tuck       https://github.com/AnnTuck	
+**Anna Nichols   https://github.com/anicho91
+**Cynthia Knox   https://github.com/cindy046
 
 
 ## SUMMARY 
 Upon secure login: 
-
+**
 This react app allows customers to: 
 * Request a unique or one-of-a kind custom service
 * Have their request sent to vendors 
 * Have their request fulfilled in a timely manner 
 * Pay vendors digitally   
 
+![user](readme-user.jpg "User Actions")
 
 This App also allows vendors to: 
 * Promote a unique or one-of-a kind custom service
