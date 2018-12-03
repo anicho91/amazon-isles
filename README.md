@@ -1,6 +1,7 @@
  # AMAZONISLES
  
 ## WEB DEVELOPERS : 
+
 ![Makiko](Readme/makiko.jpg "Makiko Vaughan") 
 *Makiko Vaughan 
 https://github.com/makikovaughan 
