@@ -1,11 +1,16 @@
  # AMAZONISLES
  
 ## WEB DEVELOPERS : 
-![Makiko](Readme/makiko.jpg "Makiko Vaughan") *Makiko Vaughan https://github.com/makikovaughan 
-![Rachida](Readme/rachida.jpg "Rachida Kone") *Rachida Kone   https://github.com/RachidaSK
-![Ann](Readme/ann.jpg "Ann Tuck") *Ann Tuck       https://github.com/AnnTuck	
-![Anna](Readme/anna.jpg "Anna Nichols") *Anna Nichols   https://github.com/anicho91
-![Cynthia](Readme/readme-vendor.jpg "Cynthia Knox") *Cynthia Knox   https://github.com/cindy046
+![Makiko](Readme/makiko.jpg "Makiko Vaughan") 
+*Makiko Vaughan https://github.com/makikovaughan 
+![Rachida](Readme/rachida.jpg "Rachida Kone") 
+*Rachida Kone   https://github.com/RachidaSK
+![Ann](Readme/ann.jpg "Ann Tuck") 
+*Ann Tuck       https://github.com/AnnTuck	
+![Anna](Readme/anna.jpg "Anna Nichols") 
+*Anna Nichols   https://github.com/anicho91
+![Cynthia](Readme/cynthia.jpg "Cynthia Knox") 
+*Cynthia Knox   https://github.com/cindy046
 
 
 ## SUMMARY 
