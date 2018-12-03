@@ -17,7 +17,7 @@ This react app allows customers to:
 * Have their request fulfilled in a timely manner 
 * Pay vendors digitally   
 
-![user](readme-user.jpg "User Actions")
+![user](readme-customer.jpg "User Actions")
 
 This App also allows vendors to: 
 * Promote a unique or one-of-a kind custom service
@@ -25,6 +25,7 @@ This App also allows vendors to:
 * Fulfill customer requests 
 * Secure payments digitally
 
+![vendor](readme-vendor.jpg "Vendor Actions")
 
 ## USER EXPERIENCE: 
 
