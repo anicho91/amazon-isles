@@ -1,31 +1,8 @@
- # AMAZONISLES
+ # AMAZON-ISLES
  
-## WEB DEVELOPERS : 
-
-![Makiko](Readme/makiko.jpg "Makiko Vaughan") 
-*Makiko Vaughan     
-https://github.com/makikovaughan 
-
-![Rachida](Readme/rachida.jpg "Rachida Kone") 
-*Rachida Kone   
-https://github.com/RachidaSK
-
-![Ann](Readme/ann.jpg "Ann Tuck") 
-*Ann Tuck       
-https://github.com/AnnTuck	
-
-![Anna](Readme/anna.jpg "Anna Nichols") 
-*Anna Nichols   
-https://github.com/anicho91
-
-![Cynthia](Readme/cynthia.jpg "Cynthia Knox") 
-*Cynthia Knox   
-https://github.com/cindy046
-
-
 ## SUMMARY 
 Upon secure login: 
-**
+
 This react app allows customers to: 
 * Request a unique or one-of-a kind custom service
 * Have their request sent to vendors 
@@ -63,6 +40,30 @@ Reaching $1 million in monthly transactions via the app.
 
 ## TECHNOLOGIES USED: 
 HTML, CSS, BOOTSTRAP, REACT, MONGO, HEROKU, REST API'S, JAVASCRIPT, NODE.JS, EXPRESS 
+
+## WEB DEVELOPERS : 
+
+![Makiko](Readme/makiko.jpg "Makiko Vaughan") 
+*Makiko Vaughan     
+https://github.com/makikovaughan 
+
+![Rachida](Readme/rachida.jpg "Rachida Kone") 
+*Rachida Kone   
+https://github.com/RachidaSK
+
+![Ann](Readme/ann.jpg "Ann Tuck") 
+*Ann Tuck       
+https://github.com/AnnTuck	
+
+![Anna](Readme/anna.jpg "Anna Nichols") 
+*Anna Nichols   
+https://github.com/anicho91
+
+![Cynthia](Readme/cynthia.jpg "Cynthia Knox") 
+*Cynthia Knox   
+https://github.com/cindy046
+
+
 
 
 
