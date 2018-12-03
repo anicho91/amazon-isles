@@ -1,11 +1,11 @@
  # AMAZONISLES
  
 ## WEB DEVELOPERS : 
-**Makiko Vaughan https://github.com/makikovaughan 
-**Rachida Kone   https://github.com/RachidaSK
-**Ann Tuck       https://github.com/AnnTuck	
-**Anna Nichols   https://github.com/anicho91
-**Cynthia Knox   https://github.com/cindy046
+![Makiko](Readme/makiko.jpg "Makiko Vaughan") *Makiko Vaughan https://github.com/makikovaughan 
+![Rachida](Readme/rachida.jpg "Rachida Kone") *Rachida Kone   https://github.com/RachidaSK
+![Ann](Readme/ann.jpg "Ann Tuck") *Ann Tuck       https://github.com/AnnTuck	
+![Anna](Readme/anna.jpg "Anna Nichols") *Anna Nichols   https://github.com/anicho91
+![Cynthia](Readme/readme-vendor.jpg "Cynthia Knox") *Cynthia Knox   https://github.com/cindy046
 
 
 ## SUMMARY 
@@ -16,17 +16,13 @@ This react app allows customers to:
 * Have their request sent to vendors 
 * Have their request fulfilled in a timely manner 
 * Pay vendors digitally   
-
-![user](readme-customer.jpg "User Actions")
-
+![user](Readme/readme-customer.jpg "Customer Actions")
 This App also allows vendors to: 
 * Promote a unique or one-of-a kind custom service
 * Find new customers in need of their unique services
 * Fulfill customer requests 
 * Secure payments digitally
-
-![vendor](readme-vendor.jpg "Vendor Actions")
-
+![vendor](Readme/readme-vendor.jpg "Vendor Actions")
 ## USER EXPERIENCE: 
 
 ###### CUSTOMER:  
