@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import * as $ from 'axios';
-
+import './App.css';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import './modal'; 
+import ModalExample from './modal';
 
 class App extends Component {
 
@@ -21,7 +27,6 @@ class App extends Component {
       console.log(result.data);
     }) */
   }
-
   componentDidMount(){
     /* $.get('/api/notes')
     .then((result) => {
@@ -29,14 +34,23 @@ class App extends Component {
     }) */
   }
 
+
   render() {
     return (
       <div className="App">
-        <form>
-          <input val={this.state.newNote} onChange={this.handleChange} />
-          <button onClick={this.handleClick}>Submit</button>
-        </form>
+       
+      <Nav className="navbar"><h1><b>SITE TITLE</b></h1>
+      <h3><i>WELCOME</i></h3>
+            <div > <ModalExample/>        
       </div>
+       
+        </Nav>
+        <div >
+              
+      </div>
+      </div>
+  
+
     );
   }
 }
