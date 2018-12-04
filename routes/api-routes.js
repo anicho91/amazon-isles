@@ -2,28 +2,90 @@ const Client = require('../models/Client');
 const Provider = require('../models/Provider');
 const Garment = require('../models/Garment');
 const Fabric = require('../models/Fabric');
-const Measurement = require('../models/Measurement');
-const Clothes = require('../models/Clothes');
+const User = require('../models/User');
+const Order = require('../models/Order');
 
 module.exports = function (app) {
 
-    //For creating a new client
-    app.post("/api/clients", function (req, res) {
-        Client.create(req.body)
-            .then(function (dbClient) {
-                res.json({ Created: dbClient });
-            })
-            .catch(function (error) {
-                res.json({ Error: error });
-            });
+    //For creating a new user
+    app.post("/api/users", function (req, res) {
+
+        const user = req.body;
+
+        //Check the customer if they are client or provider
+        const category = req.body.category;
+ 
+
+        const newUser = {
+            userId: req.body.userId,
+            password: req.body.password,
+            phone: req.body.phone,
+            street: req.body.street,
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country,
+            category: req.body.category
+        };
+
+
+        if (category === "client") {
+
+            User.create(newUser)
+                .then(function (userData) {
+                    const newClient = {
+                        measurement: user.measurement,
+                        user: userData._id
+                    };
+
+                    Client.create(newClient)
+                        .then(function (clientData) {
+                            res.json({ Created: clientData, userData });
+                        })
+                        .catch(function (error) {
+                            res.json({ Error: error });
+                        });
+
+                })
+                .catch(function (error) {
+                    res.json({ Error: error });
+                });
+        }
+        else if(category === "provider") {
+
+            User.create(newUser)
+                .then(function (userData) {
+                    const newProvider = {
+                        demo: user.demo,
+                        picture: user.picture,
+                        availability: user.availability,
+                        budget: user.budget,
+                        job_category: user.job_category,
+                        user: userData._id
+                    };
+
+                    Provider.create(newProvider)
+                        .then(function (providerData) {
+                            res.json({ Created: providerData, userData });
+                        })
+                        .catch(function (error) {
+                            res.json({ Error: error });
+                        });
+
+                })
+                .catch(function (error) {
+                    res.json({ Error: error });
+                });
+        }
+
 
     });
 
     //Sending all clients information
     app.get('/api/clients', function (req, res) {
         Client.find({})
+            .populate('user')
             .populate('measurements')
-            .populate('clothes')
+            .populate('order')
             .then(function (data) {
                 res.json(data);
             })
@@ -32,22 +94,12 @@ module.exports = function (app) {
             });
     });
 
-    //For creating a new provider
-    app.post("/api/providers", function (req, res) {
-        Provider.create(req.body)
-            .then(function (dbProvider) {
-                res.json({ Created: dbProvider });
-            })
-            .catch(function (error) {
-                res.json({ Error: error });
-            });
 
-    });
-
-    //Sending all clients information
+    //Return all prociders information
     app.get('/api/providers', function (req, res) {
         Provider.find({})
-            .populate('clothes')
+            .populate('user')
+            .populate('order')
             .then(function (data) {
                 res.json(data);
             })
@@ -100,56 +152,26 @@ module.exports = function (app) {
             });
     });
 
-    //For Measurement
-    app.post("/api/measurements", function (req, res) {
+    
 
-        const clientId = req.body.clientId;
-        const newEntry = {
-            weist: req.body.weist,
-            bust: req.body.bust,
-            arm_length: req.body.arm_length,
-            leg_length: req.body.leg_length
-        }
-
-        Measurement.create(newEntry)
-            .then(function (dbMeasurement) {
-                return Client.findOneAndUpdate({ _id: clientId }, { $set: { measurements: dbMeasurement._id } }, { new: true });
-            })
-            .then(function (clientData) {
-                res.json(clientData);
-            })
-            .catch(function (error) {
-                res.json({ Error: error });
-            });
-
-    });
-
-    app.get('/api/measurements', function (req, res) {
-        Measurement.find({})
-            .then(function (data) {
-                res.json(data);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
-    });
-
-    //For Measurement
-    app.post("/api/clothes", function (req, res) {
+    //For Order
+    app.post("/api/orders", function (req, res) {
 
         const clientId = req.body.clientId;
         const providerId = req.body.providerId;
         const newEntry = {
             budget: req.body.budget,
-            fabricId: req.body.fabricId,
-            garmentId: req.body.garmentId,
+            fabric: req.body.fabricId,
+            garment: req.body.garmentId,
+            client: req.body.clientId,
+            measurement: req.body.measurement
         }
 
-        Clothes.create(newEntry)
-            .then((dbClothes) => {
-                Provider.findOneAndUpdate({ _id: providerId }, { $push: { clothes: dbClothes._id } }, { new: true })
+        Order.create(newEntry)
+            .then((dbOrder) => {
+                Provider.findOneAndUpdate({ _id: providerId }, { $push: { orders: dbOrder._id } }, { new: true })
                     .then(function (providerData) {
-                        Client.findOneAndUpdate({ _id: clientId }, { $push: { clothes: dbClothes._id } }, { new: true })
+                        Client.findOneAndUpdate({ _id: clientId }, { $push: { orders: dbOrder._id } }, { new: true })
                             .then((clientData) => {
                                 res.json(clientData);
                             })
@@ -161,8 +183,12 @@ module.exports = function (app) {
 
     });
 
-    app.get('/api/clothes', function (req, res) {
-        Clothes.find({})
+    app.get('/api/orders', function (req, res) {
+        Order.find({})
+        .populate("client")
+        .populate("provider")
+        .populate("garment")
+        .populate("fablic")
             .then(function (data) {
                 res.json(data);
             })
