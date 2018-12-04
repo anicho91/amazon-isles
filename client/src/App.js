@@ -15,17 +15,18 @@ class App extends Component {
 
   handleClick = (event) => {
     event.preventDefault();
+    /*
     $.post('/api/note', {content: this.state.newNote})
     .then((result) => {
       console.log(result.data);
-    })
+    }) */
   }
 
   componentDidMount(){
-    $.get('/api/notes')
+    /* $.get('/api/notes')
     .then((result) => {
       this.setState({notesList: result.data})
-    })
+    }) */
   }
 
   render() {
