@@ -42,10 +42,8 @@ module.exports = function (app) {
     });
 
     //Sending all clients information
-    app.get('/api/clients', function (req, res) {
-        Client.find({})
-            .populate('measurements')
-            .populate('order')
+    app.get('/api/users', function (req, res) {
+        User.find({})
             .then(function (data) {
                 res.json(data);
             })
@@ -55,11 +53,8 @@ module.exports = function (app) {
     });
 
     //Sending one client information by client ID.
-    app.get('/api/clients/:id', function (req, res) {
-        Client.find({ _id: req.params.id })
-            .populate('user')
-            .populate('measurements')
-            .populate('order')
+    app.get('/api/users/:id', function (req, res) {
+        User.find({ _id: req.params.id })
             .then(function (data) {
                 res.json(data);
             })
@@ -79,42 +74,6 @@ module.exports = function (app) {
             });
     });
 
-    //Update client
-    app.put('/api/clients/:id', function (req, res) {
-        Client.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-            .then(function (data) {
-                res.json(data);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
-    });
-
-    //Return all providers information
-    app.get('/api/providers', function (req, res) {
-        Provider.find({})
-            .populate('user')
-            .populate('order')
-            .then(function (data) {
-                res.json(data);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
-    });
-
-    //Return one provider information by ID
-    app.get('/api/providers/:id', function (req, res) {
-        Provider.find({ _id: req.params.id })
-            .populate('user')
-            .populate('order')
-            .then(function (data) {
-                res.json(data);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
-    });
 
     //For garment
     app.post("/api/garments", function (req, res) {
