@@ -54,7 +54,7 @@ module.exports = function (app) {
 
     //Sending one client information by client ID.
     app.get('/api/users/:id', function (req, res) {
-        Client.find({ _id: req.params.id })
+        User.find({ _id: req.params.id })
             .then(function (data) {
                 res.json(data);
             })
