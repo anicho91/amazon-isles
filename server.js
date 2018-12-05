@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const MONGODB_URI = require("./keys"); 
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -17,8 +17,10 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 require('./routes/api-routes')(app);
 
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:/amazonisles"
+
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sew_db");
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
 
 // Start the API server
 app.listen(PORT, function() {
