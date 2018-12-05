@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const User = require("./User");
 var validator = require('validator');
 
 var ProviderSchema = new Schema({
@@ -30,16 +31,14 @@ var ProviderSchema = new Schema({
         trim: true,
         required: "Please choose category"
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-    },
     orders: [{
         type: Schema.Types.ObjectId,
         ref: "Order",
     }]
   });
   
-  const Provider = mongoose.model("Provider", ProviderSchema);
+  const Provider = User.discriminator("Provider", ProviderSchema, {
+    discriminatorKey: "type"
+});
   
   module.exports = Provider;
