@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const User = require("./User");
 var validator = require('validator');
 
 var ClientSchema = new Schema({
@@ -25,10 +26,6 @@ var ClientSchema = new Schema({
             required: "Please enter your leg length."
         }
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
     orders: [
         {
         type: Schema.Types.ObjectId,
@@ -37,6 +34,8 @@ var ClientSchema = new Schema({
     ]   
   });
   
-  const Client = mongoose.model("Client", ClientSchema);
+  const Client = User.discriminator("Client", ClientSchema, {
+      discriminatorKey: "type"
+  });
   
   module.exports = Client;
