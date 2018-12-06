@@ -34,4 +34,6 @@ export function setSession (authResult) {
     history.replace('/client');
 }
 
+// let Redirect = http://localhost:3000/client
+
 
