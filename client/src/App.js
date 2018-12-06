@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import Homepage from './Pages/HomePage/homepage';
+import Clientpage from './Pages/ClientPage/clientpage';
 import * as $ from 'axios';
 import './App.css';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
@@ -8,51 +11,15 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './modal'; 
 import ModalExample from './modal';
 
-class App extends Component {
+const App = () => (
+  <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Homepage} />
+        <Route exact path='/client' component={Clientpage} />
+      </Switch>
+  </BrowserRouter>
 
-  state = {
-    notesList: [],
-    newNote: ''
-  }
-
-  handleChange = (event) => {
-    this.setState({newNote: event.target.value})
-  }
-
-  handleClick = (event) => {
-    event.preventDefault();
-    /*
-    $.post('/api/note', {content: this.state.newNote})
-    .then((result) => {
-      console.log(result.data);
-    }) */
-  }
-  componentDidMount(){
-    /* $.get('/api/notes')
-    .then((result) => {
-      this.setState({notesList: result.data})
-    }) */
-  }
-
-
-  render() {
-    return (
-      <div className="App">
-       
-      <Nav className="navbar"><h1><b>SITE TITLE</b></h1>
-      <h3><i>WELCOME</i></h3>
-            <div > <ModalExample/>        
-      </div>
-       
-        </Nav>
-        <div >
-              
-      </div>
-      </div>
-  
-
-    );
-  }
-}
+)
 
 export default App;
+ 
