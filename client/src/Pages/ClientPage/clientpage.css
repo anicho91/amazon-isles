@@ -1,0 +1,34 @@
+.userDiv {
+    margin-top: 55px;
+    
+}
+
+.userImage {
+    float: left;
+    margin-right: 30%;
+    margin-left: 10%;
+    
+}
+
+.infoTitle {
+    font-weight: 600;
+    font-size: 20px
+}
+
+.userDBinfo{
+    line-height: 2;
+}
+
+.userInfo{
+    margin-right: 10%;
+}
+
+.measurements {
+    line-height: 2;
+}
+
+.measTitle {
+    
+    font-weight: 600;
+    font-size: 20px
+}
