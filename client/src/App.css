@@ -59,7 +59,6 @@ font-size: 60px;  }
 .navbar {
     height: 210px;
     margin-bottom: 02%;
-    z-index: -10;
    color: whitesmoke;  
   text-align: center; 
   font-size: 30px;  

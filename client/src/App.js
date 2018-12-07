@@ -9,6 +9,7 @@ import Providerpage from './Pages/ProviderPage/providerpage'
 
 
 const App = () => (
+ 
   <BrowserRouter>
       <Switch>
         <Route exact path='/' component={Homepage} />
@@ -19,6 +20,7 @@ const App = () => (
   </BrowserRouter>
 
 )
+
 
 export default App;
  
