@@ -30,26 +30,6 @@ class Canvas extends Component {
         ]
     }
 
-    componentDidMount(){
-        // this.getGarments();
-        // this.getFabrics();
-     
-        const canvas = this.refs.canvas
-        const ctx = canvas.getContext("2d")
-        const img = this.refs.image
-     
-        img.onload = () => {
-          ctx.drawImage (img, 0, 0)
-          ctx.scale(.1,.1);
-          ctx.fillStyle = CanvasPattern;
-          ctx.fill();
-          ctx.scale(.1,.1);
-     
-          ctx.font = "40px Courier"
-          ctx.fillText(this.props.text, 210, 75)
-        }
-     
-      }
 
 modelItem = (id) => {
     console.log('model ' + id)
@@ -81,19 +61,6 @@ render() {
                     <Target2 />
                     
                 </div>
-                
-        <button onClick={this.state.fabricsList}>fabric</button>
-        <div >
-
-        </div>
-
-        <div>
-        <img ref="mask" src={"./assets/images/shirtButtondown.gif"} className="garment" width={400} height={600} alt="shirt"/>
-
-        <canvas ref="canvas" className="fabric" width={400} height={600} />
-
-        <img ref="image" src={"https://s3.amazonaws.com/roostery-composites/compost/4398006/fabric-preview-fq_0_m.jpg"} className="hidden" alt="fabric"/>
-        </div>
             </div>
         </div>
 
