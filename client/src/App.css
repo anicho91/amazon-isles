@@ -1,8 +1,42 @@
+/* Our Colors ================================================
 
-.Modal {
-width: 890px;
+HEX AAC6FF RGB 170 198 255  LINKS lightest color blue
+HEX 99B2E5 RGB 153 178 229        2nd lightest color blue
+HEX 55637F RGB 85 99 127          Medium blue
+HEX 2A3240 RGB 42 50 64     HEADER/FOOTER
+HEX OCOE12 RGB 12 14 18     Darkest blue /looks black */
+
+.card {
+margin: 0; 
+height: 100%; 
+width: 100%; 
+float: left; 
 
 }
+
+.background {
+position: fixed;
+right: 0; 
+bottom: 0;
+min-width: 100%; 
+min-height: 100%;
+width: auto; 
+height: auto;
+z-index: -100;
+opacity: 0.9
+}
+.footer {
+  position: fixed; 
+ margin: 0; 
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(12, 14, 18);
+  color: white;
+  text-align: center;
+  padding: 30px; 
+ 
+}
+
 .login { float: right; 
 margin: 0px;
 height: 80%; 
@@ -13,22 +47,22 @@ div {
 }
 
 h1 { color: white;
-  text-align: center; 
+ 
 font-size: 60px;  }
   
   
   
-  .navbar {
+.navbar {
     height: 210px;
   
     margin-bottom: 02%;
     z-index: -10;
 
-    color: black; 
+    color: whitesmoke;  
   text-align: center; 
   font-size: 30px;  
 
-  background: linear-gradient(268deg, #938fb3, #8e518f);
+  background: linear-gradient(#2A3240, #0C0E12, #55637F);
   background-size: 400% 400%;
   
   -webkit-animation: AnimationName 18s ease infinite;
@@ -53,3 +87,17 @@ font-size: 60px;  }
       100%{background-position:0% 47%}
   }
  
+  .navbutton { float: left; 
+ 
+  } 
+.logo {
+    position: relative;
+    display: block;
+    max-width: 30%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    z-index: 1;
+    mask: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/234228/alpha-star.png) 50% 10% / 80% no-repeat;
+  }
+  
