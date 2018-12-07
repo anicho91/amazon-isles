@@ -11,7 +11,7 @@ import Providerpage from './Pages/ProviderPage/providerpage'
 const App = () => (
   <BrowserRouter>
       <Switch>
-        <Route exact path='/login' component={Homepage} />
+        <Route exact path='/' component={Homepage} />
         <Route exact path='/client' component={Clientpage} />
         <Route exact path='/client' component={Providerpage} />
         <Route exact path='/canvas' component={Canvas} />
