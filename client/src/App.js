@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Homepage from './Pages/HomePage/homepage';
 import Clientpage from './Pages/ClientPage/clientpage';
-import Providerpage from './Pages/ProviderPage/providerpage';
 import * as $ from 'axios';
 import './App.css';
 import Canvas from './components/Canvas'
