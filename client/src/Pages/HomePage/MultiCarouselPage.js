@@ -1,41 +1,56 @@
 import React, { Component } from "react";
-import {
-  Carousel, CarouselInner, CarouselItem, Container, Row, Col, Card, CardImage, CardBody, CardTitle, CardText,
-  Button
-} from "mdbreact";
+import {Container, Carousel, CarouselCaption, CarouselInner, CarouselItem, View, Mask } from "mdbreact";
 
-class MultiCarouselPage extends Component {
+class CarouselPage extends Component {
   render() {
     return (
-
-      <Carousel activeItem={1} length={3} slide={true} showControls={true} showIndicators={true} multiItem>
-
-
-        <CarouselItem itemId="1">
-          <Col md="4">
-            <Card className="mb-2">
-              <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" />
-              <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" />
-              <CardImage class="animate fadeInRight four" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" />
-              <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(60).jpg" />
-              <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(47).jpg" />
-              <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(48).jpg" />
-              <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(53).jpg" />
-              <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(45).jpg" />
-
-              <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(41).jpg" />
-              
-           
-  </Card>
-          </Col>
-        </CarouselItem>
-
-
+    
+           <Carousel className='Carousel' activeItem={1} length={4} showControls={true} showIndicators={true} className="z-index: -10;">
+        <CarouselInner>
+          <CarouselItem itemId="1">
+            <View>
+              <img className="slide d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide" />
+              <Mask overlay="black-light" />
+            </View>
+            <CarouselCaption>
+              <h3 className="h3-responsive">Light mask</h3>
+              <p>First text</p>
+            </CarouselCaption>
+          </CarouselItem>
+          <CarouselItem itemId="2">
+            <View>
+              <img className="slide d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(99).jpg" alt="Second slide" />
+              <Mask overlay="black-strong" />
+            </View>
+            <CarouselCaption>
+              <h3 className="h3-responsive">Strong mask</h3>
+              <p>Second text</p>
+            </CarouselCaption>
+          </CarouselItem>
+          <CarouselItem itemId="3">
+            <View>
+              <img className="slide d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg" alt="Third slide" />
+              <Mask overlay="black-slight" />
+            </View>
+            <CarouselCaption>
+              <h3 className="h3-responsive">Slight mask</h3>
+              <p>Third text</p>
+            </CarouselCaption>
+          </CarouselItem>
+          <CarouselItem itemId="4">
+            <View>
+              <img className="slide d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20%28143%29.jpg" alt="Mattonit's item" />
+              <Mask overlay="black-light" />
+            </View>
+            <CarouselCaption>
+              <h3 className="h3-responsive">Sopot Beach</h3>
+              <p>Taken june 21th by @mattonit</p>
+            </CarouselCaption>
+          </CarouselItem>
+        </CarouselInner>
       </Carousel>
-
-
     );
   }
 }
 
-export default MultiCarouselPage;
+export default CarouselPage;
