@@ -5,19 +5,15 @@ import { Container, Jumbotron, Row, Col, Fa, NavLink, Footer } from "mdbreact"
 import { Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
 import MultiCarouselPage from './MultiCarouselPage';
 import TestimonialsPage from './TestimonialsPage'
+import StyleHeader from '../../components/Style/styleheader'
+import StyleFooter from '../../components/Style/stylefooter'
 
 class Homepage extends Component {
     render() {
         return (
             <div>
 
-                <Jumbotron className='navbar'>
-                    <h1 className="header">
-                        <img className="logo" src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"></img>
-                        AMAZONISLES
-              </h1>
-                    <div><Button classname="navbutton" color="primary" onClick={login}>Log in</Button><Button classname="navbutton" color="secondary">Join Us</Button></div>
-                </Jumbotron>
+                <StyleHeader />
                 <Container></Container>
                 <img className="background" src="https://princefan046.com/wp-content/uploads/2018/12/mirroredbackground.jpg"></img>
 
@@ -80,7 +76,7 @@ class Homepage extends Component {
                 <div className="homeplaceholder"></div>
                 <div className="homeplaceholder"></div>
                 <div className="homeplaceholder"></div>
-                <Footer className='footer'>2018 AMAZONISLES</Footer>
+                <StyleFooter />
             </div >
 
         )
