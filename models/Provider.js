@@ -20,12 +20,6 @@ var ProviderSchema = new Schema({
         validate:[validator.isURL, "invalid URL"],
         required: "Please enter your demo URL."
     },
-    picture: {
-        type: String,
-        trim: true,
-        validate:[validator.isURL, "invalid URL"],
-        required: "Please enter your picture URL."
-    },
     job_category: {
         type: String,
         trim: true,

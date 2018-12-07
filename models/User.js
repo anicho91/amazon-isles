@@ -39,6 +39,10 @@ var UserSchema = new Schema({
         trim: true,
         required: "Please enter country."
     },
+    profile_picture: {
+        type: String,
+        trim: true,
+    },
     category: {
         type: String,
         enum: ['client', 'provider'],
