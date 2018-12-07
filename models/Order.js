@@ -2,24 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var OrderSchema = new Schema({
-    measurement: {
-        weist: {
-            type: Number,
-            trim: true
-        },
-        bust: {
-            type: Number,
-            trim: true,
-        },
-        arm_length: {
-            type: Number,
-            trim: true
-        },
-        leg_length: {
-            type: Number,
-            trim: true
-        }
-    },
     budget: {
         type: Number,
         trim: true,
