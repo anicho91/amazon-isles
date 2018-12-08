@@ -21,13 +21,7 @@ var ClientSchema = new Schema({
             type: Number,
             trim: true
         }
-    },
-    orders: [
-        {
-        type: Schema.Types.ObjectId,
-        ref: "Order"
-        }
-    ]   
+    }
   });
   
   const Client = User.discriminator("Client", ClientSchema, {
