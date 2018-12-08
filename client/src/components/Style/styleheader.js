@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron } from "mdbreact"
-import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Button, Col, Row, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { login } from '../Auth/Auth';
 
 class StyleHeader extends React.Component {
@@ -13,19 +13,15 @@ class StyleHeader extends React.Component {
     render(){
       return (
         <div>
-            <Jumbotron className='navbar'>
-                      <h1 className="header">
-                          <img className="logo" src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"></img>
-                          AMAZONISLES
-                </h1>
-                      <div>
-                        
-                      <Button className="navbutton" color="primary" onClick={this.handleClick}>Log in</Button>
-                      
-                      <Button className="navbutton" color="secondary">Join Us</Button></div>
+             <Jumbotron className='navbar'>
+                    <Col>
+                        <h1 className="header">
+                            <img className="logo" src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"></img>
+                            AMAZONISLES
+                    </h1><div><p className="subtitle animate fadeInDown four ">reclaiming my time</p></div></Col>
+                    <div><Button classname="navbutton" color="primary" onClick={login}>Log in</Button><Button classname="navbutton" color="secondary">Join Us</Button></div>
 
-                      
-                  </Jumbotron>
+                </Jumbotron>
         </div>
       )
     }
