@@ -5,7 +5,7 @@ import Clientpage from './Pages/ClientPage/clientpage';
 import * as $ from 'axios';
 import './App.css';
 import Canvas from './components/Canvas'
-
+import Providerpage from './Pages/ProviderPage/providerpage'
 
 
 const App = () => (

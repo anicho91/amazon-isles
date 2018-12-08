@@ -13,21 +13,8 @@ class Homepage extends Component {
         return (
             <div>
 
-<<<<<<< HEAD
-                <Jumbotron className='navbar'>
-                    <Col>
-                        <h1 className="header">
-                            <img className="logo" src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"></img>
-                            AMAZONISLES
-                    </h1><div><p className="subtitle animate fadeInDown four ">reclaiming my time</p></div></Col>
-                    <div><Button classname="navbutton" color="primary" onClick={login}>Log in</Button><Button classname="navbutton" color="secondary">Join Us</Button></div>
+                <StyleHeader/>
 
-                </Jumbotron>
-
-=======
-                <StyleHeader />
-                <Container></Container>
->>>>>>> 5f2245641ed488cc9f8a06d670d0da5fcfa483cb
                 <img className="background" src="https://princefan046.com/wp-content/uploads/2018/12/mirroredbackground.jpg"></img>
 
 
@@ -88,17 +75,10 @@ class Homepage extends Component {
 
                 <div className="homeplaceholder"></div>
                 <div className="homeplaceholder"></div>
-<<<<<<< HEAD
-
-                <Footer className='footer'>2018 AMAZONISLES
-                    <div className='footerlink shadow-box-example z-depth-5'><a href='#'>Join as a Provider</a></div>
-                </Footer>
-=======
                 <div className="homeplaceholder"></div>
                 <div className="homeplaceholder"></div>
                 <div className="homeplaceholder"></div>
                 <StyleFooter />
->>>>>>> 5f2245641ed488cc9f8a06d670d0da5fcfa483cb
             </div >
 
         )
