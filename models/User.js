@@ -39,6 +39,10 @@ var UserSchema = new Schema({
         trim: true,
         validate:[validator.isURL, "invalid URL"]
     },
+    orders: [{
+        type: Schema.Types.ObjectId,
+        ref: "Order",
+    }],
     category: {
         type: String,
         enum: ['client', 'provider'],

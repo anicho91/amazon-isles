@@ -33,7 +33,7 @@ class Providerpage extends Component {
 
     state = {
 
-        providerID: "5c0afc68bd68f203e2594056",
+        providerID: "5c0b5bda96f5c0094f843efe",
         providerInfo: {},
         demoList:[]
 
@@ -42,9 +42,10 @@ class Providerpage extends Component {
     getProvider = () => {
         $.get(`/api/users/${this.state.providerID}`)
             .then((result) => {
+                console.log(result.data);
                 this.setState({providerInfo: result.data});
                 this.setState({demoList: result.data.demo});
-            
+                
             });
     }
 
