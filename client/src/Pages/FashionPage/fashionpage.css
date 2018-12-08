@@ -1,0 +1,75 @@
+
+/* For Testing*/
+/* * {
+
+  border-style: solid;
+  border-color: red;
+  border-width: 1px;
+} */
+   
+.fabric {
+    position: absolute;
+    left: 600px;
+    top: 300px;
+    z-index: -1;
+}
+
+.garment {
+    position: absolute;
+    left: 600px;
+    top: 300px;
+    border-style: solid;
+    border-color: #55637F;
+    border-width: 5px;
+    /* display: none;       */
+}
+
+/* .designBox { 
+  border-style: solid;
+  border-color: yellow;
+  border-width: 5px;
+  background-color: lightgray;  
+} */
+
+.fabBox {  
+  position: absolute;
+  left: 370px;
+  top: 300px;
+  background-color: White;
+  width: 115px;
+  height: 600px;
+  border-style: solid;
+  border-color: #55637F;
+  border-width: 5px; 
+  overflow: scroll;
+}
+
+.garBox {
+  position: absolute;
+  left: 485px;
+  top: 300px;
+  background-color: #55637F;
+  width: 122px;
+  height: 600px;  
+  border-style: solid;
+  border-color: #55637F;
+  border-width: 5px; 
+  overflow: scroll;
+}
+
+.choose {
+  position: absolute;
+  background-color: #aac6ff;
+  left: 950px;
+  top: 880px;
+}
+
+/* .selBox {
+  border-style: solid;
+  border-color: orange;
+  border-width: 50px;
+} */
+
+.hideCanvasSource {
+  display: none;
+}
