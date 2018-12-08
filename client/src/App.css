@@ -68,6 +68,7 @@ font-size: 60px;  color: whitesmoke; margin:0;   }
 }
   
 .navbar {
+<<<<<<< HEAD
     height: 340px;
     margin-bottom: 10%;
     font-family: 'Viga', sans-serif;
@@ -75,6 +76,14 @@ font-size: 60px;  color: whitesmoke;
   text-align: left; 
    background: linear-gradient(#2A3240, #0C0E12, #55637F);
  
+=======
+    height: 210px;
+    margin-bottom: 02%;
+   color: whitesmoke;  
+  text-align: center; 
+  font-size: 30px;  
+  background: linear-gradient(#2A3240, #0C0E12, #55637F)
+>>>>>>> 5f2245641ed488cc9f8a06d670d0da5fcfa483cb
     }
   
   

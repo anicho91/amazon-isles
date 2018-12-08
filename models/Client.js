@@ -7,23 +7,19 @@ var ClientSchema = new Schema({
     measurement: {
         weist: {
             type: Number,
-            trim: true,
-            required: "Please enter your weist."
+            trim: true
         },
         bust: {
             type: Number,
-            trim: true,
-            required: "Please enter your bust."
+            trim: true
         },
         arm_length: {
             type: Number,
-            trim: true,
-            required: "Please enter your arm length."
+            trim: true
         },
         leg_length: {
             type: Number,
-            trim: true,
-            required: "Please enter your leg length."
+            trim: true
         }
     },
     orders: [
