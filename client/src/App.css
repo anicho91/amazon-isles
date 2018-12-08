@@ -11,24 +11,25 @@ HEX OCOE12 RGB 12 14 18     Darkest blue /looks black */
 
 
 .card {
-margin: 0; 
-height: 100%; 
-width: 100%; 
-float: left; 
-margin-bottom: 40px; 
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  float: left;
+  margin-bottom: 40px;
 }
 
 .background {
-position: fixed;
-right: 0; 
-bottom: 0;
-min-width: 100%; 
-min-height: 100%;
-width: auto; 
-height: auto;
-z-index: -100;
-opacity: 0.9
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  opacity: 0.9
 }
+
 .footer {
   margin-top: 40px; 
   position: relative; 
@@ -43,13 +44,20 @@ opacity: 0.9
  
 }
 
-.login { float: right; 
-margin: 0px;
-height: 80%; 
-  }
+.login {
+  float: right;
+  margin: 0px;
+  height: 80%;
+}
 
 div {
-    display: block;
+  display: block;
+}
+
+h1 {
+  color: white;
+
+  font-size: 60px;
 }
 
 h1 { color: white;
@@ -158,27 +166,27 @@ margin-top: 30%;
 
 /*=== Optional Delays, change values here  ===*/
 .one {
--webkit-animation-delay: 1.0s;
--moz-animation-delay: 1.0s;
-animation-delay: 1.0s;
+  -webkit-animation-delay: 1.0s;
+  -moz-animation-delay: 1.0s;
+  animation-delay: 1.0s;
 }
 
 .two {
--webkit-animation-delay: 1.7s;
--moz-animation-delay: 1.7s;
-animation-delay: 1.7s;
+  -webkit-animation-delay: 1.7s;
+  -moz-animation-delay: 1.7s;
+  animation-delay: 1.7s;
 }
 
 .three {
--webkit-animation-delay: 2.3s;
--moz-animation-delay: 2.3s;
-animation-delay: 2.3s;
+  -webkit-animation-delay: 2.3s;
+  -moz-animation-delay: 2.3s;
+  animation-delay: 2.3s;
 }
 
 .four {
--webkit-animation-delay: 3.3s;
--moz-animation-delay: 3.3s;
-animation-delay: 3.3s;
+  -webkit-animation-delay: 3.3s;
+  -moz-animation-delay: 3.3s;
+  animation-delay: 3.3s;
 }
 
 /*=== Animations start here  ===*/
@@ -192,6 +200,7 @@ animation-delay: 3.3s;
     opacity: 1;
   }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -222,6 +231,7 @@ animation-delay: 3.3s;
     transform: none;
   }
 }
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -255,6 +265,7 @@ animation-delay: 3.3s;
     transform: none;
   }
 }
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -288,6 +299,7 @@ animation-delay: 3.3s;
     transform: none;
   }
 }
+
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -322,6 +334,7 @@ animation-delay: 3.3s;
     transform: none;
   }
 }
+
 @keyframes fadeInRight {
   from {
     opacity: 0;
@@ -340,29 +353,33 @@ animation-delay: 3.3s;
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight;
 }
+
 .backgroundslider {
- padding: 30px; 
- margin-top: 40%; 
- margin-bottom: 40%; 
- float: left; 
+  padding: 30px;
+  margin-top: 40%;
+  margin-bottom: 40%;
+  float: left;
 }
-.Carousel { margin-left: 0; 
-  margin-top: 40%; 
-  margin-bottom: 40%; 
-  padding: 20px; 
-  width: 148px; 
-  height: 265px; 
-  float: left; 
-background-color: red; 
+
+.Carousel {
+  margin-left: 0;
+  margin-top: 40%;
+  margin-bottom: 40%;
+  padding: 20px;
+  width: 148px;
+  height: 265px;
+  float: left;
+  background-color: red;
 }
+
 .slide {
-  margin: 20px; 
-  margin-bottom: 260px; 
+  margin: 20px;
+  margin-bottom: 260px;
   z-index: -80;
- 
+
   display: block;
-  max-width:148em;
-  max-height:865em;
+  max-width: 148em;
+  max-height: 865em;
   width: auto;
   height: auto;
   opacity: 0.3;
