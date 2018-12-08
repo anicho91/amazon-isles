@@ -55,7 +55,6 @@ module.exports = function (app) {
     //Sending one client information by client ID.
     app.get('/api/users/:id', function (req, res) {
         User.findOne({ _id: req.params.id })
-            .populate("orders")
             .then(function (data) {
                 res.json(data);
             })
@@ -214,7 +213,7 @@ module.exports = function (app) {
 
         Order.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
             .then(function (orderData) {
-                return Provider.findOneAndUpdate({ _id: providerId }, { $push: { orders: orderData._id } }, { new: true });
+                return User.findOneAndUpdate({ _id: providerId }, { $push: { orders: orderData._id } }, { new: true });
             })
             .then(function (providerData) {
                 res.json(providerData);
