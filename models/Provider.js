@@ -12,10 +12,11 @@ var ProviderSchema = new Schema({
         type: Boolean,
         trim: true,
     },
-    demo: {
+    demo: [{
         type: String,
         trim: true,
-    },
+        validate:[validator.isURL, "invalid URL"]
+    }],
     job_category: {
         type: String,
         trim: true,
