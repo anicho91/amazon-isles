@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { login0 } from '../../components/Auth/Auth';
-import { Container, Jumbotron, Row, Col, Fa, NavLink, Footer } from "mdbreact"
-import { Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
+import React, { Component, Fragment } from 'react';
+// import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { login0, login1 } from '../../components/Auth/Auth';
+import { Container, Jumbotron, Row, Col, MDBBtn, Fa, NavLink, Footer } from "mdbreact"
+import { Card, CardBody, CardImage,Button, CardTitle, CardText } from 'mdbreact';
 import MultiCarouselPage from './MultiCarouselPage';
 import TestimonialsPage from './TestimonialsPage'
 
 class Homepage extends Component {
+    click= () => {
+        console.log("clicked")
+    }
     render() {
         return (
             <div>
@@ -15,8 +18,11 @@ class Homepage extends Component {
                     <h1 className="header">
                         <img className="logo" src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"></img>
                         AMAZONISLES
-              </h1>
-                    <div><Button classname="navbutton" color="primary" onClick={login0}>Log in</Button><Button classname="navbutton" color="secondary">Join Us</Button></div>
+                    </h1>
+                    <div>
+                        <Button className="navbutton" color="primary" onClick={login0}>Log in</Button>
+                        <Button className="navbutton" color="secondary" onClick={login1}>Join Us</Button>
+                    </div>
                 </Jumbotron>
                 <Container></Container>
                 <img className="background" src="https://princefan046.com/wp-content/uploads/2018/12/mirroredbackground.jpg"></img>
@@ -35,8 +41,6 @@ class Homepage extends Component {
                     </Col>
                     <Col>
                         <Card className="card animate fadeInDown two">
-
-
                             < CardImage className="card-img-top" src="https://www.fabricfocus.co.uk/wp-content/uploads/2018/10/masina-de-cusut.jpg" alt="Card image cap"></ CardImage>
                             <CardBody>
                                 <h4 className="card-title"><a>Custom Tailors</a></h4>
