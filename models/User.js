@@ -37,6 +37,7 @@ var UserSchema = new Schema({
     profile_picture: {
         type: String,
         trim: true,
+        validate:[validator.isURL, "invalid URL"]
     },
     category: {
         type: String,

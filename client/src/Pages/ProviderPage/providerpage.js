@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import * as $ from 'axios';
+import Demo from './demo.js';
+import StyleHeader from '../../components/Style/styleheader';
+import StyleFooter from '../../components/Style/stylefooter';
 import {
     Button,
     Modal,
@@ -18,8 +21,11 @@ import {
     CardTitle,
     CardSubtitle,
     CardBody,
-    CardText
+    CardText,
+    Table
 } from 'reactstrap';
+
+  
 
 
 class Providerpage extends Component {
@@ -27,17 +33,19 @@ class Providerpage extends Component {
 
     state = {
 
-        providerID: "5c0ab21847722a09b155914c",
-        providerInfo: {}
+        providerID: "5c0afc68bd68f203e2594056",
+        providerInfo: {},
+        demoList:[]
 
     }
 
     getProvider = () => {
         $.get(`/api/users/${this.state.providerID}`)
             .then((result) => {
-                this.setState({ providerInfo: result.data[0] });
-                console.log(this.state.providerInfo);
-            })
+                this.setState({providerInfo: result.data});
+                this.setState({demoList: result.data.demo});
+            
+            });
     }
 
     componentDidMount() {
@@ -47,26 +55,60 @@ class Providerpage extends Component {
     render() {
         return (
             <div>
+                <StyleHeader />
                 <Container>
                     <Row>
                         <Col xs="12" md="6">
                             <Row>
                                 <Col xs="12">
                                     <Card>
-                                        <CardImg top width="100%" src={this.state.providerInfo.profile_picture} alt="Card image cap" />
+                                        <CardImg top width="100%"  src={this.state.providerInfo.profile_picture} alt="Card image-fluid cap" />
                                         <CardBody>
                                             <CardTitle>Provider: {this.state.providerInfo.userId}</CardTitle>
-                                            <CardSubtitle>Category: {this.state.providerInfo.job_category}</CardSubtitle>
-                                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                                            <CardSubtitle>Category: {this.state.providerInfo.job_category}</CardSubtitle> <br />
+                                            <CardText>
+                                                <p>Password: {this.state.providerInfo.password}</p>
+                                                <p>Phone: {this.state.providerInfo.phone}</p>
+                                                <p>Street Address: {this.state.providerInfo.street}</p>
+                                                <p>City: {this.state.providerInfo.city}</p>
+                                                <p>State: {this.state.providerInfo.state}</p>
+                                                <p>Country: {this.state.providerInfo.country}</p>
+                                                <Button>Update</Button>
+                                            </CardText>
                                         </CardBody>
                                     </Card>
 
                                 </Col>
                             </Row>
                         </Col>
+                        <Col xs="12" md="6">
+                            <Row>
+                                <Col xs="12">
+                                    <Card>
+                                        <CardBody>
+                                            <CardText>
+                                                <p>Availability: {this.state.providerInfo.availability ? "Yes" : "No"}</p>
+                                                <p>Will Work for: {this.state.providerInfo.budget}</p>
+                                                <Button>Update</Button>
+                                            </CardText>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs="12">
+                                <Demo demoList={this.state.demoList}/>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs="12">
+
+                        </Col>
                     </Row>
                 </Container>
-
+                <StyleFooter />
             </div>
 
         )
