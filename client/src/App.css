@@ -7,6 +7,8 @@ HEX 2A3240 RGB 42 50 64     HEADER/FOOTER
 HEX OCOE12 RGB 12 14 18     Darkest blue /looks black */
 
 
+@import url('https://fonts.googleapis.com/css?family=Viga');
+
 
 .card {
 margin: 0; 
@@ -29,14 +31,14 @@ opacity: 0.9
 }
 .footer {
   margin-top: 40px; 
-  position: fixed; 
+  position: relative; 
  margin: 0; 
   bottom: 0;
   width: 100%;
   background: linear-gradient(#2A3240, #0C0E12, #55637F);
   color: white;
   text-align: center;
-  padding: 30px; 
+  padding: 50px; 
   z-index: 25; 
  
 }
@@ -51,45 +53,87 @@ div {
 }
 
 h1 { color: white;
- 
-font-size: 60px;  }
+  font-family: 'Viga', sans-serif;
+font-size: 60px;  color: whitesmoke; margin:0;   }
   
-  
+.subtitle {
+  float: left; 
+  font-size: 20px; 
+  font-family: Arial, Helvetica, sans-serif; 
+  font-style: italic; 
+  font-weight: -20; 
+  color: #55637F;
+  margin-left: 30px; 
+  margin-bottom: 0;  
+}
   
 .navbar {
-    height: 210px;
-    margin-bottom: 02%;
-    z-index: -10;
-   color: whitesmoke;  
-  text-align: center; 
-  font-size: 30px;  
-  background: linear-gradient(#2A3240, #0C0E12, #55637F)
+    height: 340px;
+    margin-bottom: 10%;
+    font-family: 'Viga', sans-serif;
+font-size: 60px;  color: whitesmoke; 
+  text-align: left; 
+   background: linear-gradient(#2A3240, #0C0E12, #55637F);
+ 
     }
   
   
  
   .navbutton { float: left; 
+    margin-top: 0px; 
+    margin-bottom: 20px; 
  
   } 
 
   .homeplaceholder {
     height: 80px; 
     max-width: 100%; 
-    margin: 20px; 
+    margin: 0px; 
     padding: 20px; 
   }
 
+  .midpagebanner {
+   
+    text-align: center;
+    height: 380px; 
+    max-width: 100%; 
+    margin-top: 20px; 
+    padding: 0; 
+    background-color: #55637F; 
+    color: whitesmoke; 
+    font-family: Arial, Helvetica, sans-serif; 
+  }
+  .midpagebanner2{ background-color: #2A3240; }
+
+
+  .centerpagequotes {
+text-align: center; 
+
+
+margin: 10px;  
+margin-bottom: 30px; 
+margin-left: 20px; 
+margin-right: 20px;
+font-family: Arial, Helvetica, sans-serif;
+
+  }
 .logo {
     position: relative;
     display: block;
     max-width: 60%;
+    margin-top: -65px;
+    margin-left: 0px; 
+    margin-bottom: -60px; 
     height: auto;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     padding: 0;
     z-index: 1;
     mask: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/234228/alpha-star.png) 50% 10% / 80% no-repeat;
   }
-  
+  .Carousel {
+margin-top: 30%; 
+
+  }
   /*=== Basic box styling  ===*/
 .box {
   background: #23a3d3;
@@ -326,14 +370,37 @@ background-color: red;
   height: auto;
   opacity: 0.3;
 }
-
-/* img1 {
+/* 
+.card-img-top {
   display: block;
-  max-width:148em;
-  max-height:865em;
-  width: auto;
-  height: auto;
-} */
+  max-width:100%;
+  max-height:100%;
+  object-fit: cover;
+overflow: hidden;
+ 
+}  */
+
+.footerlink {
+  float: right; 
+  size: 70px; 
+ margin-top: 5px;  
+  font-variant-caps: all-small-caps; 
+  outline-color: #23a3d3; 
+}
+.card-img-top 
+{
+  max-width: 568px;
+  max-height: 412px;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: 25% 50%;
+  transition: 1s all;
+ 
+  }
+  .card-img-top :hover, img:focus {
+   height: 400px;
+  width: 400px;
+  }
 /* 
 .lady {
   position: relative;
