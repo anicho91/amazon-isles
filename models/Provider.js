@@ -7,29 +7,19 @@ var ProviderSchema = new Schema({
     budget: {
         type: Number,
         trim: true,
-        required: "Please enter your budget."
     },
     availability: {
         type: Boolean,
         trim: true,
-        required: "Please enter your availability."
     },
-    demo: {
+    demo: [{
         type: String,
         trim: true,
-        validate:[validator.isURL, "invalid URL"],
-        required: "Please enter your demo URL."
-    },
-    picture: {
-        type: String,
-        trim: true,
-        validate:[validator.isURL, "invalid URL"],
-        required: "Please enter your picture URL."
-    },
+        validate:[validator.isURL, "invalid URL"]
+    }],
     job_category: {
         type: String,
         trim: true,
-        required: "Please choose category"
     },
     orders: [{
         type: Schema.Types.ObjectId,

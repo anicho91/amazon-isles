@@ -21,7 +21,7 @@ module.exports = function (app) {
             Client.create(userData)
                 .then(function (clientData) {
                     console.log(clientData);
-                    res.json({ Created: clientData});
+                    res.json({ Created: clientData });
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -32,7 +32,7 @@ module.exports = function (app) {
 
             Provider.create(userData)
                 .then(function (providerData) {
-                    res.json({ Created: providerData});
+                    res.json({ Created: providerData });
                 })
                 .catch(function (error) {
                     res.json({ Error: error });
@@ -54,7 +54,7 @@ module.exports = function (app) {
 
     //Sending one client information by client ID.
     app.get('/api/users/:id', function (req, res) {
-        User.find({ _id: req.params.id })
+        User.findOne({ _id: req.params.id })
             .then(function (data) {
                 res.json(data);
             })
@@ -66,6 +66,7 @@ module.exports = function (app) {
     //Update user
     app.put('/api/users/:id', function (req, res) {
         User.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+            .populate("orders")
             .then(function (data) {
                 res.json(data);
             })
@@ -74,6 +75,16 @@ module.exports = function (app) {
             });
     });
 
+    //Delete user
+    app.delete('/api/users/:id', function (req, res) {
+        User.findOneAndDelete({ _id: req.params.id })
+            .then(function (userData) {
+                res.json(userData);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
 
     //For garment
     app.post("/api/garments", function (req, res) {
@@ -109,6 +120,17 @@ module.exports = function (app) {
             });
     });
 
+    //Delete Garments
+    app.delete('/api/garments/:id', function (req, res) {
+        Garment.findOneAndDelete({ _id: req.params.id })
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
     //For Fabric
     app.post("/api/fabrics", function (req, res) {
         Fabric.create(req.body)
@@ -137,6 +159,17 @@ module.exports = function (app) {
         Fabric.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
             .then(function (fabricData) {
                 res.json(fabricData);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
+    //Delete Fabric
+    app.delete('/api/fabrics/:id', function (req, res) {
+        Fabric.findOneAndDelete({ _id: req.params.id })
+            .then(function (data) {
+                res.json(data);
             })
             .catch(function (err) {
                 res.json(err);
@@ -180,7 +213,7 @@ module.exports = function (app) {
 
         Order.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
             .then(function (orderData) {
-                return Provider.findOneAndUpdate({ _id: providerId }, { $push: { orders: orderData._id } }, { new: true });
+                return User.findOneAndUpdate({ _id: providerId }, { $push: { orders: orderData._id } }, { new: true });
             })
             .then(function (providerData) {
                 res.json(providerData);
@@ -214,6 +247,17 @@ module.exports = function (app) {
             .populate("provider")
             .populate("garment")
             .populate("fabric")
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
+    //Delete order
+    app.delete('/api/orders/:id', function (req, res) {
+        Order.findOneAndDelete({ _id: req.params.id })
             .then(function (data) {
                 res.json(data);
             })

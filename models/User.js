@@ -17,32 +17,35 @@ var UserSchema = new Schema({
     phone: {
         type: String,
         trim: true,
-        required: "Please enter your phone number."
     },
     street: {
         type: String,
         trim: true,
-        required: "Please enter street address."
     },
     city: {
         type: String,
         trim: true,
-        required: "Please enter city."
     },
     state: {
         type: String,
         trim: true,
-        required: "Please enter state."
     },
     country: {
         type: String,
         trim: true,
-        required: "Please enter country."
     },
+    profile_picture: {
+        type: String,
+        trim: true,
+        validate:[validator.isURL, "invalid URL"]
+    },
+    orders: [{
+        type: Schema.Types.ObjectId,
+        ref: "Order",
+    }],
     category: {
         type: String,
         enum: ['client', 'provider'],
-        required: "Please choose category"
       }
   });
   
