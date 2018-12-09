@@ -5,19 +5,36 @@ var validator = require('validator');
 
 var ClientSchema = new Schema({
     measurement: {
-        weist: {
-            type: Number,
-            trim: true
-        },
+
         bust: {
             type: Number,
             trim: true
         },
-        arm_length: {
+        waist: {
             type: Number,
             trim: true
         },
+        hips: {
+            type: Number,
+            trim: true
+        },
+        knee_length: {
+            type: Number,
+            trim: true
+        },        
         leg_length: {
+            type: Number,
+            trim: true
+        },
+        bp_length: {
+            type: Number,
+            trim: true
+        },
+        back_length: {
+            type: Number,
+            trim: true
+        },
+        arm_length: {
             type: Number,
             trim: true
         }
