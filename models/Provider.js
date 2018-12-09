@@ -20,11 +20,7 @@ var ProviderSchema = new Schema({
     job_category: {
         type: String,
         trim: true,
-    },
-    orders: [{
-        type: Schema.Types.ObjectId,
-        ref: "Order",
-    }]
+    }
   });
   
   const Provider = User.discriminator("Provider", ProviderSchema, {
