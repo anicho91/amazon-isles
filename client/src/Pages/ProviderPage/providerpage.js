@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as $ from 'axios';
 import Demo from './demo.js';
 import Order from './order.js';
+import UserModal from './userModal.js';
 import StyleHeader from '../../components/Style/styleheader';
 import StyleFooter from '../../components/Style/stylefooter';
 import {
@@ -38,7 +39,7 @@ class Providerpage extends Component {
         providerInfo: {},
         demoList: [],
         orderArray: [],
-        orderList: []
+        orderList: [],
 
     }
 
@@ -70,6 +71,7 @@ class Providerpage extends Component {
                 this.setState({ providerInfo: result.data });
                 this.setState({ demoList: result.data.demo });
                 this.getOrder(this.state.orderArray);
+                this.setState({isUserUpdate: false});
 
             })
             .catch(function (error) {
@@ -102,8 +104,8 @@ class Providerpage extends Component {
                                                 Street Address: {this.state.providerInfo.street} <br />
                                                 City: {this.state.providerInfo.city} <br />
                                                 State: {this.state.providerInfo.state} <br />
-                                                Country: {this.state.providerInfo.country} <br />
-                                                <Button>Update</Button>
+                                                Country: {this.state.providerInfo.country} <br /><br />
+                                                <UserModal getProvider={this.getProvider} />
                                             </CardText>
                                         </CardBody>
                                     </Card>
@@ -120,21 +122,22 @@ class Providerpage extends Component {
                                                 Availability: {this.state.providerInfo.availability ? "Yes" : "No"} <br />
                                                 Will Work for: ${this.state.providerInfo.budget} <br />
                                                 <Button>Update</Button>
-                                            </CardText>
+                                            </CardText>                                   
                                         </CardBody>
                                     </Card>
+                                    
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs="12">
-                                    <Demo demoList={this.state.demoList} />
+                                <Demo demoList={this.state.demoList} />
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs="12">
-                            <Order orderList={this.state.orderList} />
+                        <Order orderList={this.state.orderList} /> 
                         </Col>
                     </Row>
                 </Container>
