@@ -20,8 +20,8 @@ class StyleHeader extends React.Component {
                             AMAZONISLES
                     </h1><div><p className="subtitle animate fadeInDown four ">reclaiming my time</p></div></Col>
                     <div>
-                      <Button classname="navbutton" color="primary" onClick={login0}>Log in</Button>
-                      <Button classname="navbutton" color="secondary" onClick={login1}>Join Us</Button>
+                      <Button className="navbutton" color="primary" onClick={login0}>Log in</Button>
+                      <Button className="navbutton" color="secondary" onClick={login1}>Join Us</Button>
                     </div>
 
                 </Jumbotron>
