@@ -113,7 +113,7 @@ export function setSession() {
     setIdToken();
     setAccessToken();
     setExpiration();
-    browserHistory.push('/')
+    
 
 }
 
