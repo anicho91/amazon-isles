@@ -1,85 +1,138 @@
-import decode from 'jwt-decode';
+import React from 'react';
+import jwt_decode from 'jwt-decode';
 import Auth0Lock from 'auth0-lock';
 import Auth0 from 'auth0-js';
 import AUTH_CONFIG from './Auth0-variables';
-import history from '../history'
+import history from '../history';
+import {BrowserRouter, withRouter} from 'react-router-dom';
 
 
-var auth0 = new Auth0.WebAuth({
+var auth = new Auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
-    clientID: AUTH_CONFIG.clientId,
-    redirectUri: AUTH_CONFIG.callbackUrl,
-    responseType: 'token id_token',
-    scope: 'openid'
+    clientID: AUTH_CONFIG.clientId
 });
 
 var auth1 = new Auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
-    clientID: AUTH_CONFIG.clientId,
-    redirectUri: 'http://localhost:3000/provider',
-    responseType: 'token id_token',
-    scope: 'openid profile'
+    clientID: AUTH_CONFIG.clientId
+    
 });
 
-let userProfile;
+let clientUrl ;
+let providerUrl;
 
-// "https://afternoon-harbor-43363.herokuapp.com/"
+if(process.env.NODE_ENV === "production") {
+    clientUrl = "https://afternoon-harbor-43363.herokuapp.com/client"
+} else {
+    clientUrl = "http://localhost:3000/client";
+}
+
+if(process.env.NODE_ENV === "production") {
+    providerUrl = "https://afternoon-harbor-43363.herokuapp.com/provider"
+} else {
+    providerUrl = "http://localhost:3000/provider";
+}
+
 
 export function login0() {
-    auth0.authorize();
+    auth.authorize({
+        redirectUri: AUTH_CONFIG.callbackUrl,
+        responseType: 'token id_token',
+        scope: 'openid profile'
+    });
 }
 
 export function login1() {
-    auth1.authorize();
+    auth1.authorize({
+        redirectUri: 'http://localhost:3000/provider',
+        responseType: 'token id_token',
+        scope: 'openid profile'
+    });
 }
 
-export function handleAuthentication () {
-    auth0.parseHash((err, authResult) => {
-        if (authResult && authResult.accessToken && authResult.idToken) {
-            setSession(authResult);
-            history.replace('/');
-        } 
-    })
+function getParameterByName(name) {
+    let match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
+    console.log(name, match);
+    console.log("Match array1:", decodeURIComponent(match[1].replace(/\+/g, ' ')))
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
 
-export function setSession (authResult) {
-    let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-    history.replace('/');
-}
 
-export function getAccessToken() {
-    const accessToken = localStorage.getItem('access_token');
-    if(!accessToken) {
-        throw new Error('No access token found');
-    }
-    return accessToken;
-}
-
-export function getProfile(cb) {
-    let accessToken = getAccessToken();
-    auth0.client.userInfo(accessToken, (err, profile) => {
-        if(profile) {
-            userProfile = profile;
+export function handleAuthentication() {
+    auth.parseHash({hash: window.location.hash}, function(err, authResult) {
+     authResult = getParameterByName('access_token');
+       if(err) {
+            console.log(err)
         }
-        cb(err, profile);
-    })
+        setSession();
+        auth.client.userInfo(authResult, function(err,user){
+            console.log(user)
+        });
+    });
+    let uId = getParameterByName('id_token');
+    console.log('decoded', jwt_decode(uId))
+    console.log(window.location.hash)
+    console.log('getID', getIdToken())
+   
+    
+}
+
+function setAccessToken() {
+    let accessToken = getParameterByName('access_token');
+    localStorage.setItem('access-token', accessToken);
+}
+
+function setIdToken() {
+    let idToken = getParameterByName('id_token');
+    localStorage.setItem('access-token', idToken);
+}
+
+function setExpiration() {
+    let expiresIn = getParameterByName('expires_in');
+    localStorage.setItem('expires_in', expiresIn);
 }
 
 export function logout() {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('access-token');
     localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-    userProfile = null;
+    localStorage.removeItem('expires_in');
     history.replace('/');
+
 }
 
-export function isAuthenticated() {
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+export function getAccessToken() {
+    return localStorage.getItem('access_token')
 }
+
+export function getIdToken() {
+    return localStorage.getItem('id_token')
+}
+
+export function setSession() {
+    localStorage.setItem('isLoggedin', 'true')
+    setIdToken();
+    setAccessToken();
+    setExpiration();
+    browserHistory.push('/')
+
+}
+
+
+export function isAuthenticated() {
+    const expirationTime = localStorage.getItem('expires_in');
+    let expiresAt = (expirationTime * 1000) + new Date().getTime();
+
+    return new Date < expiresAt
+}
+
+
+
+
+
+
+
+
+
 
 
 
