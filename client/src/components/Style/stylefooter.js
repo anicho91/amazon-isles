@@ -6,7 +6,7 @@ class StyleFooter extends React.Component {
     render(){
       return (
         <div>
-            <Footer className='footer'>2018 AMAZONISLES</Footer>
+            <Footer className='footer'>Copyright ©2018 AMAZONISLES</Footer>
         </div>
       )
     }
