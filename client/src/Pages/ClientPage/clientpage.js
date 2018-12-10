@@ -6,6 +6,7 @@ import Measurements from "../../components/ClientUser/clientM";
 import Pic from "../../components/ClientUser/clientP";
 import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
+import {setSession, getAccessToken, handleAuthentication, isAuthenticated} from '../../components/Auth/Auth';
 
 class Clientpage extends Component {
   state = {
@@ -17,6 +18,7 @@ class Clientpage extends Component {
     name: 'Lily'
   };
 
+
   getUser = event => {
     $.get(`api/users/5c0e89c9f571a32c2022fddb`).then(results => {
       console.log(results);
@@ -26,6 +28,8 @@ class Clientpage extends Component {
 
   componentDidMount() {
     this.getUser();
+    handleAuthentication();
+    
   }
 
   update = event => {

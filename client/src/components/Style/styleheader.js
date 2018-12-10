@@ -55,4 +55,4 @@ render() {
   }
 }
 
-export default StyleHeader
+export default StyleHeader;
