@@ -1,21 +1,11 @@
 
 
-
-   
-/* input {
-  padding: 12px 20px;
-  margin: 8px 0px;
-  display: block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-} */
-
 .details {
   border-style: solid;
   border-color: #55637F;
   border-width: 5px; 
   height: 600px;
+  background-color: white;
 }
 
 
@@ -28,15 +18,11 @@
 }
 
 
-.measImg {
-  /* position: absolute;
-    left: 1020px;
-    top: 100px; */
+.measImg {  
   margin: auto;
   border-style: solid;
   border-color: #55637F;
   border-width: 5px;
-  /* width: 200px; */
   height: 600px;
 }
 
@@ -58,15 +44,10 @@
 }
 
 .measTitle{
-  /* margin: auto;   */
-  /* margin-top: 15px;
-  margin-bottom: 20px; */
+ 
 }
 
-.meas {
-  /* position: absolute;
-    left: 1220px;
-    top: 100px; */
+.meas {  
   border-style: solid;
   border-color: #55637F;
   border-width: 5px;  
@@ -82,9 +63,6 @@
 }
 
 .garment {
-    /* position: absolute;
-    left: 0px;
-    top: 0px; */
     margin-left:auto;
     margin-right:auto;
     border-style: solid;
@@ -94,24 +72,11 @@
 }
 
 .garmThumb {
-  /* margin: auto;
-   */
-  /* width: 100%; */
+ 
 }
 
-/* .designBox { 
-  border-style: solid;
-  border-color: yellow;
-  border-width: 5px;
-  background-color: lightgray;  
-} */
-
 .fabBox {  
-  /* position: absolute;
-  left: 370px;
-  top: 100px; */
-  background-color: White;
-  /* width: 115px; */
+  background-color: White;  
   height: 600px;
   border-style: solid;
   border-color: #55637F;
@@ -120,11 +85,7 @@
 }
 
 .garBox {
-  /* position: absolute;
-  left: 485px;
-  top: 100px; */
-  background-color: #55637F;
-  /* width: 122px; */
+  background-color: #55637F;  
   height: 600px;  
   border-style: solid;
   border-color: #55637F;
@@ -133,26 +94,14 @@
 }
 
 .choose {
-  /* position: absolute;
-  left: 950px;
-  top: 880px; */
   margin-top: 10px; 
   margin-bottom: 30px; 
 }
-
-/* .selBox {
-  border-style: solid;
-  border-color: orange;
-  border-width: 50px;
-} */
 
 .hideCanvasSource {
   display: none;
 }
 
-/* .eachHeight {
-  height: 50%;
-} */
 
 /* RESPONSIVE GRID */
 
@@ -185,11 +134,6 @@
 
 [class*="col"] {
   float: left;
-  /* padding: 15px; */
-  /* border: 1px solid green; */
-  /* margin-left:auto;
-  margin-right:auto; */
-  /* background-color: orange; */
 }
 
 .col1{width:8.33333%;}
@@ -206,15 +150,14 @@
 .col12{width:99.99999%}
 
 /* For Smaller Sized Screens.
-Left background color change in for future testing if needed. */
-/* Screen width between 768px and 800px */
+/* Screen width between 768px and 800px left colors in for future testing*/
 @media screen and (max-width:980px) {
   /* body {
       background-color: green;
   } */  
 }
 
-/* Screen width between 641px and 768px */
+/* Screen width between 641px and 768px left colors in for future testing*/
 @media screen and (max-width: 768px) {
   /* body {
       background-color: orange;
@@ -224,9 +167,9 @@ Left background color change in for future testing if needed. */
 
 /* Screen width 640px and smaller left colors in for future testing*/
 @media screen and (max-width:640px){
-  body{
+  /* body{
       background-color: palevioletred;
-  }
+  } */
 
   [class*="col"] {
     margin-left:auto;
