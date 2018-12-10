@@ -21,6 +21,15 @@ class Searchpage extends Component {
         this.setState({ results: providersFiltered });
       }
 
+      render() {
+          return(
+              <div>
+
+                 Search Providers 
+
+              </div>
+          )
+      }
 }
 
 export default Searchpage

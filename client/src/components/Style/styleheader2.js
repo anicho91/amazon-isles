@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Container, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Fa } from "mdbreact";
 
-import { login0, login1 } from "../Auth/Auth";
+import { logout } from "../Auth/Auth";
 
 class StyleHeader2 extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class StyleHeader2 extends React.Component {
                   <NavLink to={`/search`}>Search</NavLink>
               </NavItem>
 
-              <Button className="navbutton" onClick={login0}>
+              <Button className="navbutton" onClick={logout}>
                 LogOut
               </Button>
             </NavbarNav>

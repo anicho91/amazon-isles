@@ -4,6 +4,7 @@ import User from "../../components/ClientUser/clientA";
 import "./clientpage.css";
 import Measurements from "../../components/ClientUser/clientM";
 import Pic from "../../components/ClientUser/clientP";
+import Orders from '../../components/ClientUser/clientO';
 import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
 import {setSession, getAccessToken, handleAuthentication, isAuthenticated} from '../../components/Auth/Auth';
@@ -91,6 +92,13 @@ class Clientpage extends Component {
                   />
                 )}
               </div>
+            </div>
+            <div className='orders'>
+                  {this.state.user && (
+                    <Orders 
+
+                    />
+                  )}
             </div>
           </div>
         </div>
