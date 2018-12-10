@@ -73,7 +73,13 @@ class Clientpage extends Component {
                   <Measurements
                     key={this.state.user._id}
                     id={this.state.user._id}
-                    waist={this.state.user.measurement.weist}
+                    waist={this.state.user.measurement.waist}
+                    hips={this.state.user.measurement.hips}
+                    klength={this.state.user.measurement.knee_length}
+                    llength={this.state.user.measurement.leg_length}
+                    bplength={this.state.user.measurement.bp_length}
+                    blength={this.state.user.measurement.back_length}
+                    alength={this.state.user.measurement.arm_length}
                   />
                 )}
               </div>
