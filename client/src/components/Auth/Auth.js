@@ -113,7 +113,6 @@ export function setSession() {
     setIdToken();
     setAccessToken();
     setExpiration();
-    
 
 }
 
