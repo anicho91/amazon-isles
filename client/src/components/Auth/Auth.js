@@ -96,7 +96,6 @@ export function logout() {
     localStorage.removeItem('access-token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_in');
-    history.replace('/');
 
 }
 

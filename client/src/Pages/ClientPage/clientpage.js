@@ -7,6 +7,7 @@ import Pic from "../../components/ClientUser/clientP";
 import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
 import {setSession, getAccessToken, handleAuthentication, isAuthenticated} from '../../components/Auth/Auth';
+import history from '../../components/history';
 
 class Clientpage extends Component {
   state = {
@@ -76,7 +77,7 @@ class Clientpage extends Component {
             <div className="measurements">
               <span className="measTitle">Measurements</span>
               <br />
-              <div className="measInfo">
+              {/* <div className="measInfo">
                 {this.state.user && (
                   <Measurements
                     key={this.state.user._id}
@@ -90,7 +91,7 @@ class Clientpage extends Component {
                     alength={this.state.user.measurement.arm_length}
                   />
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
