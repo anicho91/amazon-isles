@@ -1,27 +1,102 @@
 
-/* For Testing*/
-/* * {
 
-  border-style: solid;
-  border-color: red;
-  border-width: 1px;
-} */
+
    
+/* input {
+  padding: 12px 20px;
+  margin: 8px 0px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} */
+
+.details {
+  border-style: solid;
+  border-color: #55637F;
+  border-width: 5px; 
+  height: 600px;
+}
+
+
+.measTitle{
+  margin: auto;
+  width: 80%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+.measImg {
+  /* position: absolute;
+    left: 1020px;
+    top: 100px; */
+  margin: auto;
+  border-style: solid;
+  border-color: #55637F;
+  border-width: 5px;
+  /* width: 200px; */
+  height: 600px;
+}
+
+.measInput {
+  margin: auto;  
+  padding: 6px 10px;  
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.measInput .measTitle{
+  width: 20px;
+}
+
+.measInput {
+  margin-bottom: 8px;
+}
+
+.measTitle{
+  /* margin: auto;   */
+  /* margin-top: 15px;
+  margin-bottom: 20px; */
+}
+
+.meas {
+  /* position: absolute;
+    left: 1220px;
+    top: 100px; */
+  border-style: solid;
+  border-color: #55637F;
+  border-width: 5px;  
+  height: 600px;
+}
+
+
 .fabric {
-    position: absolute;
-    left: 600px;
-    top: 300px;
+    position: relative;
+    left: 0px;
+    top: -600px;
     z-index: -1;
 }
 
 .garment {
-    position: absolute;
-    left: 600px;
-    top: 300px;
+    /* position: absolute;
+    left: 0px;
+    top: 0px; */
+    margin-left:auto;
+    margin-right:auto;
     border-style: solid;
     border-color: #55637F;
     border-width: 5px;
     /* display: none;       */
+}
+
+.garmThumb {
+  /* margin: auto;
+   */
+  /* width: 100%; */
 }
 
 /* .designBox { 
@@ -32,11 +107,11 @@
 } */
 
 .fabBox {  
-  position: absolute;
+  /* position: absolute;
   left: 370px;
-  top: 300px;
+  top: 100px; */
   background-color: White;
-  width: 115px;
+  /* width: 115px; */
   height: 600px;
   border-style: solid;
   border-color: #55637F;
@@ -45,11 +120,11 @@
 }
 
 .garBox {
-  position: absolute;
+  /* position: absolute;
   left: 485px;
-  top: 300px;
+  top: 100px; */
   background-color: #55637F;
-  width: 122px;
+  /* width: 122px; */
   height: 600px;  
   border-style: solid;
   border-color: #55637F;
@@ -58,10 +133,11 @@
 }
 
 .choose {
-  position: absolute;
-  background-color: #aac6ff;
+  /* position: absolute;
   left: 950px;
-  top: 880px;
+  top: 880px; */
+  margin-top: 10px; 
+  margin-bottom: 30px; 
 }
 
 /* .selBox {
@@ -72,4 +148,90 @@
 
 .hideCanvasSource {
   display: none;
+}
+
+/* .eachHeight {
+  height: 50%;
+} */
+
+/* RESPONSIVE GRID */
+
+* {  
+  box-sizing: border-box;
+
+  /* For Testing*/
+  /* border-style: solid;
+  border-color: red;
+  border-width: 1px; */
+
+}
+
+.content{
+  margin-left:auto;
+  margin-right:auto;
+  max-width:1200px;
+}
+
+.center{
+  text-align:center!important
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+[class*="col"] {
+  float: left;
+  /* padding: 15px; */
+  /* border: 1px solid green; */
+  /* margin-left:auto;
+  margin-right:auto; */
+  /* background-color: orange; */
+}
+
+.col1{width:8.33333%;}
+.col2{width:16.66666%}
+.col3{width:24.99999%}
+.col4{width:33.33333%}
+.col5{width:41.66666%}
+.col6{width:49.99999%}
+.col7{width:58.33333%}
+.col8{width:66.66666%}
+.col9{width:74.99999%}
+.col10{width:83.33333%}
+.col11{width:91.66666%}
+.col12{width:99.99999%}
+
+/* For Smaller Sized Screens.
+Left background color change in for future testing if needed. */
+/* Screen width between 768px and 800px */
+@media screen and (max-width:980px) {
+  /* body {
+      background-color: green;
+  } */  
+}
+
+/* Screen width between 641px and 768px */
+@media screen and (max-width: 768px) {
+  /* body {
+      background-color: orange;
+  } */
+    
+}
+
+/* Screen width 640px and smaller left colors in for future testing*/
+@media screen and (max-width:640px){
+  body{
+      background-color: palevioletred;
+  }
+
+  [class*="col"] {
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+  }
+
 }
