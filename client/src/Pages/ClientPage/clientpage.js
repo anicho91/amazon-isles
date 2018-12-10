@@ -4,20 +4,21 @@ import User from "../../components/ClientUser/clientA";
 import "./clientpage.css";
 import Measurements from "../../components/ClientUser/clientM";
 import Pic from "../../components/ClientUser/clientP";
-import StyleHeader from "../../components/Style/styleheader";
+import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
 
 class Clientpage extends Component {
   state = {
     image: {
       type: "Profile",
-      imagesrc: require("../../components/ClientUser/lily.jpg")
+      imagesrc: ''
     },
-    user: null
+    user: null,
+    name: 'Lily'
   };
 
   getUser = event => {
-    $.get(`api/users/5c09ac8f2567d6637c665d23`).then(results => {
+    $.get(`api/users/5c0e89c9f571a32c2022fddb`).then(results => {
       console.log(results);
       this.setState({ user: results.data });
     });
@@ -44,11 +45,14 @@ class Clientpage extends Component {
   render() {
     return (
       <div>
-        <StyleHeader />
-
+        <StyleHeader2 />
+        <div className='welcome'>Welcome {this.state.name}!</div>
         <div className="userDiv">
+        
           <div className="userImage">
-            <Pic image={this.state.image.imagesrc} />
+          {this.state.user && (
+            <Pic image={this.state.user.profile_picture} />
+            )}
           </div>
           <div className="userInfo">
             <div className="infoTitle">Address</div>
