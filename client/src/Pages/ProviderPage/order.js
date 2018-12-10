@@ -6,6 +6,7 @@ import { Row, Col, Container } from 'reactstrap';
 const Order = (props) => (
         <Container>
             <h1>My Accepted Order</h1>
+            <h3>Please contact us for cancelling the order to complete</h3>
             {props.orderList.map(order => (
 
                 <Row key={order._id} className="mb-5">

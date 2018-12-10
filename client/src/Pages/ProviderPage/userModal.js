@@ -27,7 +27,7 @@ class UserModal extends React.Component {
         state: "",
         country: "",
         job_category: "",
-        availability: false,
+        availability: true,
         budget: "",
         category: "",
         demoList: [],
@@ -46,10 +46,23 @@ class UserModal extends React.Component {
     //Get the input value
     changeHandler = (event) => {
 
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-        console.log(event.target.name, event.target.value);
+        if (event.target.name === "availability" && event.target.value === "true") {
+
+            this.setState({
+                [event.target.name]: true
+            }); 
+        }
+        else if (event.target.name === "availability" && event.target.value === "false") {
+            this.setState({
+                [event.target.name]: false
+            });
+        }
+        else {
+            this.setState({
+                [event.target.name]: event.target.value
+            });
+        }
+       
 
     }
 
@@ -163,8 +176,9 @@ class UserModal extends React.Component {
                                         <br />
                                         <Label for="availability">Availability</Label><br />
                                         <Input type="select" onChange={this.changeHandler} name="availability" id="availability" placeholder="Please change your availability">
-                                            <option value={Boolean.true}>Yes</option>
-                                            <option value={Boolean.false}>No</option>
+                                            <option value={this.state.availability}>Please select the availability</option>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
                                         </Input>
                                         <br />
                                     </Form>

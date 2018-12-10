@@ -34,16 +34,16 @@ class Providerpage extends Component {
     }
 
     getOrder = (orderArray) => {
-        
+
         const orderItems = [];
-        
+
         orderArray.map((order) => {
             $.get(`/api/orders/${order}`)
                 .then((orderData) => {
                     orderItems.push(orderData.data[0]);
                     this.setState({ orderList: orderItems });
                 })
-                .catch((error)=>{
+                .catch((error) => {
                     console.log(error);
                 });
 
@@ -59,7 +59,7 @@ class Providerpage extends Component {
                 this.setState({ providerInfo: result.data });
                 this.setState({ demoList: result.data.demo });
                 this.getOrder(this.state.orderArray);
-                this.setState({isUserUpdate: false});
+                this.setState({ isUserUpdate: false });
 
             })
             .catch(function (error) {
@@ -87,7 +87,7 @@ class Providerpage extends Component {
                                             <CardTitle>Provider: {this.state.providerInfo.userId}</CardTitle>
                                             <CardSubtitle>Category: {this.state.providerInfo.job_category}</CardSubtitle> <br />
                                             <CardText>
-                                                Password: {this.state.providerInfo.password} <br />
+                                                Password: XXXXXXXXXX <br />
                                                 Phone: {this.state.providerInfo.phone} <br />
                                                 Street Address: {this.state.providerInfo.street} <br />
                                                 City: {this.state.providerInfo.city} <br />
@@ -110,22 +110,26 @@ class Providerpage extends Component {
                                                 Availability: {this.state.providerInfo.availability ? "Yes" : "No"} <br />
                                                 Will Work for: $ {this.state.providerInfo.budget} <br />
                                             </CardText>
-                                            <UserModal getProvider={this.getProvider} />                               
+                                            <UserModal getProvider={this.getProvider} />
                                         </CardBody>
                                     </Card>
-                                    
+
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs="12">
-                                <Demo demoList={this.state.demoList} />
+                                    <Demo demoList={this.state.demoList} />
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs="12">
-                        <Order orderList={this.state.orderList} /> 
+                            <Card>
+                                <CardBody>
+                                    <Order orderList={this.state.orderList} />
+                                </CardBody>
+                            </Card>
                         </Col>
                     </Row>
                 </Container>

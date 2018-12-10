@@ -45,7 +45,6 @@ class Demo extends Component {
 
   render() {
     const { activeIndex } = this.state;
-
     const slides = this.props.demoList.map((item, i) => {
       return (
         <CarouselItem
