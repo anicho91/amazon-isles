@@ -75,6 +75,32 @@ module.exports = function (app) {
             });
     });
 
+    //Update provider field.
+    app.put('/api/providers/:id', function(req, res){
+        Provider.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+            .populate("orders")
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+    });
+
+    //Update client field.
+    app.put('/api/clients/:id', function(req, res){
+        Client.findOneAndUpdate({ _id: req.params.id }, { $set: {measurement: req.body.measurement}})
+            .populate("orders")
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
+    });
+
     //Delete user
     app.delete('/api/users/:id', function (req, res) {
         User.findOneAndDelete({ _id: req.params.id })

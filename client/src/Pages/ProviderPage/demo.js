@@ -3,7 +3,6 @@ import {
   Carousel,
   CarouselItem,
   CarouselControl,
-  CarouselIndicators,
   CarouselCaption
 } from 'reactstrap';
 
@@ -46,7 +45,6 @@ class Demo extends Component {
 
   render() {
     const { activeIndex } = this.state;
-
     const slides = this.props.demoList.map((item, i) => {
       return (
         <CarouselItem
@@ -66,7 +64,7 @@ class Demo extends Component {
         next={this.next}
         previous={this.previous}
       >
-        <CarouselIndicators items={this.props.demoList} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+       
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />

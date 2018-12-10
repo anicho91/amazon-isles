@@ -1,13 +1,23 @@
+.welcome {
+    margin-top: 90px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600
+}
+
 .userDiv {
-    margin-top: 55px;
-    
+    margin-top: 30px;
 }
 
 .userImage {
     float: left;
     margin-right: 20%;
     margin-left: 5%;
-    
+    margin-bottom: 150px;
+}
+
+.image {
+    max-width: 350px;
 }
 
 .infoTitle {
@@ -27,6 +37,7 @@
 
 .measurements {
     line-height: 2;
+    
 }
 
 .measTitle {
