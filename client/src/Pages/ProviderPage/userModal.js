@@ -27,6 +27,9 @@ class UserModal extends React.Component {
         state: "",
         country: "",
         job_category: "",
+        availability: false,
+        budget: "",
+        category: "",
         demoList: [],
         orderArray: [],
         orderList: []
@@ -46,7 +49,7 @@ class UserModal extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(event.target.value);
+        console.log(event.target.name, event.target.value);
 
     }
 
@@ -54,7 +57,7 @@ class UserModal extends React.Component {
 
         event.preventDefault();
 
-        const newProvider = {
+        const newUser = {
             userId: this.state.userId,
             password: this.state.password,
             phone: this.state.phone,
@@ -62,13 +65,27 @@ class UserModal extends React.Component {
             city: this.state.city,
             state: this.state.state,
             country: this.state.country,
-            job_category: this.state.job_category
-        }
+            category: this.state.category,
+        };
 
-        $.put(`/api/users/${this.state.providerID}`, newProvider)
+        const newProvider = {
+
+            budget: this.state.budget,
+            job_category: this.state.job_category,
+            availability: this.state.availability
+        };
+
+        $.put(`/api/users/${this.state.providerID}`, newUser)
             .then((updatedData) => {
-                this.toggle();
-                this.props.getProvider();
+                $.put(`/api/providers/${this.state.providerID}`, newProvider)
+                    .then((updatedProvider) => {
+                        this.toggle();
+                        this.props.getProvider();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+
             })
             .catch((error) => {
                 console.log(error);
@@ -88,7 +105,10 @@ class UserModal extends React.Component {
                 this.setState({ city: result.data.city });
                 this.setState({ state: result.data.state });
                 this.setState({ country: result.data.country });
-                this.setState({job_category: result.data.job_category});
+                this.setState({ job_category: result.data.job_category });
+                this.setState({ budget: result.data.budget });
+                this.setState({ availability: result.data.availability });
+                this.setState({ category: result.data.category });
                 this.setState({ demoList: result.data.demo });
                 this.setState({ isUserUpdate: false });
 
@@ -137,6 +157,15 @@ class UserModal extends React.Component {
                                         <br />
                                         <Label for="job_category">Job Category</Label><br />
                                         <Input type="text" onChange={this.changeHandler} name="job_category" id="job_category" value={this.state.job_category} placeholder="Please type your new category" />
+                                        <br />
+                                        <Label for="budget">Will Work For($)</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="budget" id="budget" value={this.state.budget} placeholder="Please type your new will work money." />
+                                        <br />
+                                        <Label for="availability">Availability</Label><br />
+                                        <Input type="select" onChange={this.changeHandler} name="availability" id="availability" placeholder="Please change your availability">
+                                            <option value={Boolean.true}>Yes</option>
+                                            <option value={Boolean.false}>No</option>
+                                        </Input>
                                         <br />
                                     </Form>
                                 </Col>

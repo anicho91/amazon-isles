@@ -6,25 +6,15 @@ import UserModal from './userModal.js';
 import StyleHeader from '../../components/Style/styleheader';
 import StyleFooter from '../../components/Style/stylefooter';
 import {
-    Button,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
     Container,
     Row,
     Col,
-    Form,
-    Label,
-    Input,
-    Jumbotron,
     Card,
     CardImg,
     CardTitle,
     CardSubtitle,
     CardBody,
-    CardText,
-    Table
+    CardText
 } from 'reactstrap';
 
 
@@ -45,7 +35,6 @@ class Providerpage extends Component {
 
     getOrder = (orderArray) => {
         
-        console.log(orderArray);
         const orderItems = [];
         
         orderArray.map((order) => {
@@ -53,7 +42,6 @@ class Providerpage extends Component {
                 .then((orderData) => {
                     orderItems.push(orderData.data[0]);
                     this.setState({ orderList: orderItems });
-                    console.log(this.state.orderList);
                 })
                 .catch((error)=>{
                     console.log(error);
@@ -105,8 +93,8 @@ class Providerpage extends Component {
                                                 City: {this.state.providerInfo.city} <br />
                                                 State: {this.state.providerInfo.state} <br />
                                                 Country: {this.state.providerInfo.country} <br /><br />
-                                                <UserModal getProvider={this.getProvider} />
                                             </CardText>
+                                            <UserModal getProvider={this.getProvider} />
                                         </CardBody>
                                     </Card>
 
@@ -120,9 +108,9 @@ class Providerpage extends Component {
                                         <CardBody>
                                             <CardText>
                                                 Availability: {this.state.providerInfo.availability ? "Yes" : "No"} <br />
-                                                Will Work for: ${this.state.providerInfo.budget} <br />
-                                                <Button>Update</Button>
-                                            </CardText>                                   
+                                                Will Work for: $ {this.state.providerInfo.budget} <br />
+                                            </CardText>
+                                            <UserModal getProvider={this.getProvider} />                               
                                         </CardBody>
                                     </Card>
                                     
