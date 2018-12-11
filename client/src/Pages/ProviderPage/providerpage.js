@@ -25,7 +25,7 @@ class Providerpage extends Component {
 
     state = {
 
-        providerID: "5c0ef16445826b00298914d4",
+        providerID: "5c0c7b49a5a9a90d139293ee",
         providerInfo: {},
         demoList: [],
         orderArray: [],
@@ -77,9 +77,9 @@ class Providerpage extends Component {
             <div>
                 <StyleHeader />
                 <Container>
-                    <Row>
+                    <Row className="mt-5">
                         <Col xs="12" md="6">
-                            <Row>
+                            <Row className="mt-5">
                                 <Col xs="12">
                                     <Card>
                                         <CardImg top width="100%" src={this.state.providerInfo.profile_picture} alt="Card image-fluid cap" />
@@ -102,7 +102,7 @@ class Providerpage extends Component {
                             </Row>
                         </Col>
                         <Col xs="12" md="6">
-                            <Row>
+                            <Row className="mt-5">
                                 <Col xs="12">
                                     <Card>
                                         <CardBody>
