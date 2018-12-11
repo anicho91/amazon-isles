@@ -171,7 +171,7 @@ console.log("getGarments")
 
   render() {
     return (
-       <div className= "col8" >
+       <div className= "fashionwidge" >
 
             <div className="col2 details">
               <Composite
