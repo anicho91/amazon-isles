@@ -17,7 +17,7 @@ import {
 class UserModal extends React.Component {
 
     state = {
-        providerID: "5c0c7b49a5a9a90d139293ee",
+        providerID: "5c0ace5fcada870b794956e6",
         modal: false,
         userId: "",
         password: "",
@@ -30,6 +30,8 @@ class UserModal extends React.Component {
         availability: true,
         budget: "",
         category: "",
+        demoInput: "",
+        profile_picture:"",
         demoList: [],
         orderArray: [],
         orderList: []
@@ -42,6 +44,26 @@ class UserModal extends React.Component {
         });
     }
 
+    //Update demo list
+    changeDemoList = (event) => {
+        const demoList = this.state.demoList;
+        const demoIdx = event.target.id;
+        demoList[demoIdx] = event.target.value;
+
+        this.setState({ demoList: demoList });
+    }
+
+    //Add deno input
+    addDemo = (event) => {
+
+        event.preventDefault();
+
+        const demoList = this.state.demoList;
+        demoList.push("");
+
+        this.setState({demoList: demoList});
+    }
+
 
     //Get the input value
     changeHandler = (event) => {
@@ -50,7 +72,7 @@ class UserModal extends React.Component {
 
             this.setState({
                 [event.target.name]: true
-            }); 
+            });
         }
         else if (event.target.name === "availability" && event.target.value === "false") {
             this.setState({
@@ -62,7 +84,7 @@ class UserModal extends React.Component {
                 [event.target.name]: event.target.value
             });
         }
-       
+
 
     }
 
@@ -79,13 +101,14 @@ class UserModal extends React.Component {
             state: this.state.state,
             country: this.state.country,
             category: this.state.category,
+            profile_picture: this.state.profile_picture
         };
 
         const newProvider = {
-
             budget: this.state.budget,
             job_category: this.state.job_category,
-            availability: this.state.availability
+            availability: this.state.availability,
+            demo: this.state.demoList
         };
 
         $.put(`/api/users/${this.state.providerID}`, newUser)
@@ -110,21 +133,23 @@ class UserModal extends React.Component {
     getProvider = () => {
         $.get(`/api/users/${this.state.providerID}`)
             .then((result) => {
-                this.setState({ orderArray: result.data.orders });
-                this.setState({ userId: result.data.userId });
-                this.setState({ password: result.data.password });
-                this.setState({ phone: result.data.phone });
-                this.setState({ street: result.data.street });
-                this.setState({ city: result.data.city });
-                this.setState({ state: result.data.state });
-                this.setState({ country: result.data.country });
-                this.setState({ job_category: result.data.job_category });
-                this.setState({ budget: result.data.budget });
-                this.setState({ availability: result.data.availability });
-                this.setState({ category: result.data.category });
-                this.setState({ demoList: result.data.demo });
-                this.setState({ isUserUpdate: false });
-
+                this.setState({
+                    orderArray: result.data.orders,
+                    userId: result.data.userId,
+                    password: result.data.password,
+                    phone: result.data.phone,
+                    street: result.data.street,
+                    city: result.data.city,
+                    state: result.data.state,
+                    country: result.data.country,
+                    job_category: result.data.job_category,
+                    budget: result.data.budget,
+                    availability: result.data.availability,
+                    category: result.data.category,
+                    profile_picture: result.data.profile_picture,
+                    demoList: result.data.demo,
+                    isUserUpdate: false
+                });
             })
             .catch(function (error) {
                 console.log(error);
@@ -147,6 +172,9 @@ class UserModal extends React.Component {
                             <Row>
                                 <Col cs="12">
                                     <Form>
+                                        <Label for="profile_picture">Profile Picture</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="profile_picture" id="profile_picture" value={this.state.profile_picture} placeholder="Please enter your profile URL" />
+                                        <br />
                                         <Label for="userId">User Name</Label><br />
                                         <Input type="text" onChange={this.changeHandler} name="userId" id="userId" value={this.state.userId} placeholder="Please type your new user ID." />
                                         <br />
@@ -180,6 +208,15 @@ class UserModal extends React.Component {
                                             <option value="true">Yes</option>
                                             <option value="false">No</option>
                                         </Input>
+                                        <br />
+                                        <Label for="demoList">Demo List</Label><br />
+                                        {!this.state.demoList
+                                            ?<Input type="text" onChange={this.changeDemoList} name="demoInput0" id={0} value="" placeholder="Please enter the URL for demo" />
+                                            : this.state.demoList.map((demo, i) => {
+                                                const inputName = `demoInput${i}`
+                                                return <Input type="text" onChange={this.changeDemoList} name={inputName} id={i} key={i} value={demo} />
+                                            })}
+                                            <Button onClick={this.addDemo}>Add</Button>
                                         <br />
                                     </Form>
                                 </Col>

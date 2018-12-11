@@ -5,6 +5,7 @@ import {
   CarouselControl,
   CarouselCaption
 } from 'reactstrap';
+import "./demoList.css";
 
 
 class Demo extends Component {
@@ -63,6 +64,7 @@ class Demo extends Component {
         activeIndex={activeIndex}
         next={this.next}
         previous={this.previous}
+        className="demoList-slides"
       >
        
         {slides}
