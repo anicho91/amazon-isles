@@ -1,5 +1,4 @@
 import React from 'react';
-import jwt_decode from 'jwt-decode';
 import Auth0Lock from 'auth0-lock';
 import Auth0 from 'auth0-js';
 import AUTH_CONFIG from './Auth0-variables';
@@ -32,7 +31,7 @@ if(process.env.NODE_ENV === "production") {
 } else {
     providerUrl = "http://localhost:3000/provider";
 }
-
+//https://afternoon-harbor-43363.herokuapp.com/google621798b7609ae146.html 
 
 export function login0() {
     auth.authorize({
@@ -67,24 +66,19 @@ export function handleAuthentication() {
         setSession();
         auth.client.userInfo(authResult, function(err,user){
             console.log(user)
+            localStorage.setItem('token', user.sub)
         });
     });
-    let uId = getParameterByName('id_token');
-    console.log('decoded', jwt_decode(uId))
-    console.log(window.location.hash)
-    console.log('getID', getIdToken())
-   
-    
 }
 
 function setAccessToken() {
     let accessToken = getParameterByName('access_token');
-    localStorage.setItem('access-token', accessToken);
+    localStorage.setItem('access_token', accessToken);
 }
 
 function setIdToken() {
     let idToken = getParameterByName('id_token');
-    localStorage.setItem('access-token', idToken);
+    localStorage.setItem('id_token', idToken);
 }
 
 function setExpiration() {
@@ -93,9 +87,12 @@ function setExpiration() {
 }
 
 export function logout() {
-    localStorage.removeItem('access-token');
+    localStorage.removeItem('Loggedin')
+    localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_in');
+    localStorage.setItem('expires_at', 0);
+    window.location.href = "https:/mypass.auth0.com/v2/logout";
 
 }
 
@@ -107,21 +104,29 @@ export function getIdToken() {
     return localStorage.getItem('id_token')
 }
 
+const expirationTime = localStorage.getItem('expires_in');
+let expiresAt = (expirationTime * 1000) + new Date().getTime();
+
 export function setSession() {
-    localStorage.setItem('isLoggedin', 'true')
+    
     setIdToken();
     setAccessToken();
     setExpiration();
+    localStorage.setItem('Loggedin', 'true');
+    localStorage.setItem('expires_at', expiresAt);
 
 }
 
+// export function isLoggedin() {
+//     const status = localStorage.getItem('Loggedin')
+//     return status;
+// }
 
 export function isAuthenticated() {
-    const expirationTime = localStorage.getItem('expires_in');
-    let expiresAt = (expirationTime * 1000) + new Date().getTime();
-
-    return new Date < expiresAt
+    return new Date < expiresAt;
 }
+
+
 
 
 
