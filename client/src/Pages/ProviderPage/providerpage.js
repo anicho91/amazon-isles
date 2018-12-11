@@ -116,7 +116,7 @@ class Providerpage extends Component {
 
                                 </Col>
                             </Row>
-                            <Row>
+                            <Row className="mt-5 mb-5">
                                 <Col xs="12">
                                     <Demo demoList={this.state.demoList} />
                                 </Col>
