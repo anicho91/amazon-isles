@@ -5,10 +5,7 @@ import { Card, CardBody, CardImage, CardTitle, CardText, MDBCol, MDBRow } from '
 class OtherServices extends Component {
   render() {
     return (
-<Container>
-        <img className="background" src="https://princefan046.com/wp-content/uploads/2018/12/mirroredbackground.jpg"></img>
-
-
+        
         <Row>
             <Col className="shadow-box-example z-depth-5">
                 <Card className="card animate fadeInDown one ">
@@ -53,8 +50,7 @@ class OtherServices extends Component {
                 </Card>
             </Col>
         </Row>
-        <div className="homeplaceholder"></div>
-</Container>
+
         );
           }
         }

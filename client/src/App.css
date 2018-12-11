@@ -10,7 +10,12 @@ HEX 0C0E12 RGB 12 14 18     Darkest blue /looks black */
 
 .mainBody{
   margin-top: 75px;
-  overflow-x: hidden
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.cardboxs {
+  margin-bottom: 50px;
 }
 
 .card {
@@ -19,7 +24,7 @@ HEX 0C0E12 RGB 12 14 18     Darkest blue /looks black */
 
   height: 100%;
   width: 95%;
-  float: left;
+  
   margin-bottom: 40px;
 }
 
@@ -103,10 +108,14 @@ color: #ffffff
 }
 
 .homeplaceholder {
-  height: 80px;
+  /* display: flex; */
+  height: 650px;
   max-width: 100%;
-  margin: 0px;
+  margin-left: 25%;
+  margin-right: 15%;
   padding: 20px;
+  margin-top: -240px;
+  
 }
 
 .midpagebanner {
@@ -150,6 +159,7 @@ color: #ffffff
 }
 .Carousel {
   margin-top: 30%;
+  
 }
 /*=== Basic box styling  ===*/
 .box {

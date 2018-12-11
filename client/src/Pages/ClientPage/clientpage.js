@@ -17,11 +17,71 @@ class Clientpage extends Component {
       imagesrc: ''
     },
     user: null,
-    name: '',
+
     flag: true,
     token: ''
+    name: 'Lily',
+    modal: false,
+    phone: "",
+    street: "",
+    city: "",
+    state: "",
+    country: "",
+    profile_picture:"",
+    bust: '',
+    waist: '',
+    hips: '',
+    knee_length: '',
+    leg_length: '',
+    bp_length: '',
+    back_length: '',
+    arm_length: '',
+    orderArray: []
   };
 
+  toggle = () => {
+    this.setState({
+        modal: !this.state.modal
+    });
+}
+//   clickHandler = (event) => {
+
+//     event.preventDefault();
+
+//     const newUser = {
+//         phone: this.state.phone,
+//         street: this.state.street,
+//         city: this.state.city,
+//         state: this.state.state,
+//         country: this.state.country,
+//         profile_picture: this.state.profile_picture
+//     };
+
+//     const newClient = {
+//         budget: this.state.budget,
+//         job_category: this.state.job_category,
+//         availability: this.state.availability,
+//         demo: this.state.demoList
+//     };
+
+//     $.put(`/api/users/${this.state.providerID}`, newUser)
+//         .then((updatedData) => {
+//             $.put(`/api/providers/${this.state.providerID}`, newProvider)
+//                 .then((updatedProvider) => {
+//                     this.toggle();
+//                     this.props.getProvider();
+//                 })
+//                 .catch((error) => {
+//                     console.log(error);
+//                 })
+
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//         });
+
+
+// }
 
   getUser = event => {
     $.get(`api/users/5c0e89c9f571a32c2022fddb`).then(results => {
@@ -87,19 +147,6 @@ class Clientpage extends Component {
 
   }
 
-  update = event => {
-    event.preventDefault();
-    this.setState({ isUpdating: false });
-    $.put(`/api/user/${this.state.updateId}`, {
-      content: this.state.noteUpdate
-    }).then(() => {
-      this.getUser();
-    });
-  };
-
-  showUpdate = event => {
-    this.setState({ isUpdating: true, updateId: event.target.value });
-  };
 
   render() {
     return (
