@@ -41,7 +41,6 @@ class Clientpage extends Component {
         modal: !this.state.modal
     });
 }
-
 //   clickHandler = (event) => {
 
 //     event.preventDefault();
