@@ -35,7 +35,7 @@ if(process.env.NODE_ENV === "production") {
 
 export function login0() {
     auth.authorize({
-        redirectUri: AUTH_CONFIG.callbackUrl,
+        redirectUri: clientUrl,
         responseType: 'token id_token',
         scope: 'openid profile'
     });
@@ -43,7 +43,7 @@ export function login0() {
 
 export function login1() {
     auth1.authorize({
-        redirectUri: 'http://localhost:3000/provider',
+        redirectUri: providerUrl,
         responseType: 'token id_token',
         scope: 'openid profile'
     });
