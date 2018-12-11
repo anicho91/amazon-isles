@@ -19,11 +19,8 @@ class FabWidget extends Component {
     newGarment: '5c086f1cc9a15c404465d830',
     addFabric: '',
     fabNum: '',
-    fabricName: 'Nasturtiums Fresh',
-    fabricDesigner: '',    
-    fabricLink: 'https://www.spoonflower.com/fabric/922441-nasturtiums-fresh-by-anntuck',
-    garName: 'Shirt Buttondown',
-    garLength: '2.5',
+    fabName: '',
+    fabDesigner: '',    
     isUpdating: false,    
     clientID: "5c0dd73242d9c31a00e69e31"
   }
@@ -36,8 +33,7 @@ class FabWidget extends Component {
   
   handleGarmentClick = (e) => {
     const fieldName = e.target.dataset.fieldName;
-    const newGarmentId = e.target.dataset.garmentId;   const garmentLengthClick = e.target.dataset.garmentLen; 
-    const garmentNameClick = e.target.dataset.garmentName;
+    const newGarmentId = e.target.dataset.garmentId;    
 console.log("newGarmentId", newGarmentId)    
 
     this.setState({
@@ -46,40 +42,19 @@ console.log("newGarmentId", newGarmentId)
     this.setState({
       newGarment: newGarmentId
     });
-    this.setState({
-      garName: garmentNameClick
-    });
-    this.setState({
-      garLength: garmentLengthClick
-    });
   };
 
-//dataset automatically takes names like fabric_id and converts to fabricId since _ name not allowed in objects//
+
   handleFabricClick = (e) => {
     const fieldName = e.target.dataset.fieldName;
     const newFabricId = e.target.dataset.fabricId;
-    const fabricLinkclick = e.target.dataset.fabricUrl;
-    const fabricNameclick = e.target.dataset.fabricName;
-    const fabricDesignerclick = e.target.dataset.fabricDesigner;
-
-// console.log("fieldName", fieldName);
-console.log("newFabricId", newFabricId);
-console.log("fabricLinkclick", fabricLinkclick);
+console.log("newFabricId", newFabricId)
 
     this.setState({
       [fieldName]: e.target.src
     });
     this.setState({
       newFabric: newFabricId
-    });
-    this.setState({
-      fabricLink: fabricLinkclick
-    });
-    this.setState({
-      fabricName: fabricNameclick
-    });
-    this.setState({
-      fabricDesigner: fabricDesignerclick
     });
   };
 
@@ -104,28 +79,22 @@ console.log("this.state.addFabric", this.state.addFabric)
 // const fabFabric = "https://www.spoonflower.com/fabric/4525-maidenhair-yellow-by-anntuck"
 const fabNumOb = /([0-9])\w+/.exec(this.state.addFabric);
 const fabDesignerOb = /(?<=\-by-)(.*)(?=iref)/g.exec(this.state.addFabric);
-// const fabNameOb = /(?<=\-)(.*)/g.exec(this.state.addFabric);
 const fabNameOb = /(?<=\-)(.*)(?=-by)/g.exec(this.state.addFabric);
-console.log("fabNumOb[0]", fabNumOb[0]);
-console.log("fabDesignerOb", fabDesignerOb);
-console.log("fabNameOb[0]", fabNameOb[0]);
+console.log("fabNum[0]", fabNum[0]);
+console.log("fabDesigner[0]", fabDesigner[0]);
+console.log("fabName[0]", fabName[0]);
 const fabNum = fabNumOb[0];
-// const fabDesigner = fabDesignerOb[0];
-const fabName = fabNameOb[0];
+const fabDesigner = fabDesignerOb[0];
+const fabName = fabName[0];
 
     $.post('/api/fabrics', { fabric_url: this.state.addFabric, fabric_pic: (`https://s3.amazonaws.com/roostery-composites/compost/${fabNum}/fabric-preview-fq_0_m.jpg`), 
-    fabric_name: fabName
+    fabric_name: fabName, fabric_design: fabDesigner
      })
       .then((result) => {
 console.log(result.data);
         this.getFabrics();
       });
   };
-
-  // (`https://s3.amazonaws.com/roostery-composites/compost/${fabNum}/fabric-preview-fq_0_m.jpg`), 
-  // fabric_name: fabName, fabric_designer: fabDesigner
-  //  })
-
 
 
   getFabrics = () => {
@@ -160,10 +129,10 @@ console.log("getGarments")
 
     img.onload = () => {
       const pat = ctx.createPattern(img, "repeat");      
-      ctx.scale(.33333, .3333333);
+      ctx.scale(.5, .5);
       ctx.fillStyle = pat;
       ctx.fillRect(0, 0, 1600, 2400);
-      ctx.scale(3, 3);
+      ctx.scale(2, 2);
     };
   };
 
@@ -185,22 +154,6 @@ console.log("getGarments")
                 changeHandler={this.handleChange}
                 clickHandler={this.moreFabric}
               />
-                    
-              <ul className="detList">
-              <li> <a href={this.state.fabricLink}>Fabric Details:</a></li>
-                <li>Name: {this.state.fabricName}</li>
-                {/* <li>Designer: {this.state.fabricDesigner}</li> */}
-              </ul>
-              <br></br>              
-              <ul className="detList">
-                <li>Garment Details:</li>
-                <li>{this.state.garName}</li>
-                <li>Yardage: {this.state.garLength} </li>
-              </ul>
-              
-
-
-
             </div>
 
 
@@ -213,10 +166,10 @@ console.log("getGarments")
                     <Fabric
                       key={fabric._id}
                       id={fabric._id}
-                      fabName={fabric.fabric_name}
+                      fabricName={fabric.fabric_name}
                       fabricPic={fabric.fabric_pic}
-                      fabUrl={fabric.fabric_url}
-                      fabDesigner={fabric.fabric_designer}
+                      fabricUrl={fabric.fabric_url}
+                      fabricDesigner={fabric.fabric_designer}
 
                       clickHandler={this.handleFabricClick}
                     />
@@ -230,7 +183,6 @@ console.log("getGarments")
                       id={garment._id}
                       garmentName={garment.garment_name}
                       garmentPic={garment.garment_pic}
-                      garmentLength={garment.garment_length}
                       clickHandler={this.handleGarmentClick}
                     />
                   ))}
