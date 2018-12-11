@@ -9,7 +9,7 @@ import FabWidget from '../../components/Fashion/FashionWidget';
 import StyleHeader from '../../components/Style/styleheader'
 import StyleFooter from '../../components/Style/stylefooter'
 import OtherServices from './OtherServices'
-import cardsreveal from '..x'
+
 
 
 class Homepage extends Component {

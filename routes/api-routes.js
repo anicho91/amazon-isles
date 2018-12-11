@@ -26,6 +26,7 @@ module.exports = function (app) {
                 res.json({ Created: dbTest });
             })
             .catch(function (error) {
+                console.log(error);
                 res.json({ Error: error });
             });
 
