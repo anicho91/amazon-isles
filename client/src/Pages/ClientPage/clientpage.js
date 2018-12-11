@@ -7,7 +7,8 @@ import Pic from "../../components/ClientUser/clientP";
 import Orders from '../../components/ClientUser/clientO';
 import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
-import {setSession, getAccessToken, handleAuthentication, isAuthenticated} from '../../components/Auth/Auth';
+import {setSession, getIdToken, handleAuthentication, isAuthenticated} from '../../components/Auth/Auth';
+import jwt_decode from 'jwt-decode';
 
 class Clientpage extends Component {
   state = {
@@ -16,20 +17,59 @@ class Clientpage extends Component {
       imagesrc: ''
     },
     user: null,
-    name: 'Lily'
+    name: ''
   };
 
 
   getUser = event => {
     $.get(`api/users/5c0e89c9f571a32c2022fddb`).then(results => {
-      console.log(results);
+     // console.log(results);
       this.setState({ user: results.data });
     });
   };
 
   componentDidMount() {
     this.getUser();
-    handleAuthentication();
+    let token = "";
+    if(getIdToken()){
+      let idToken = getIdToken();
+      let info = jwt_decode(idToken);
+      token = info.sub;
+      console.log('I am token', info);
+      this.setState({name: info.given_name})
+    } else {
+      handleAuthentication();
+    }
+    $.post('/api/session', {
+      token : localStorage.getItem('token'),
+    }).then((response) => {
+      console.log('sucess');
+      console.log('session data', response);
+      const flag=false;
+      const sessionData = response.data;  
+      sessionData.map((sData) => {
+        if (sData===token){
+          flag=true;
+        } 
+      })
+      console.log('verify', localStorage.getItem('token'))
+      if(!flag) {
+        $.post('/api/test', {
+          token: token,
+          category: "client"
+        }).then(() => {
+          console.log('user posted')
+        })
+      }
+    })
+
+    // $.post('/api/test', {
+    //   token: token,
+    //   category:'client'
+    //   }).then((data) => {
+    //   console.log('user posted',data)
+    
+    //   } )
     
   }
 
