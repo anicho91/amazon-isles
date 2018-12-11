@@ -10,7 +10,7 @@ module.exports = function (app) {
     
     //For test
     app.post("/api/session", function(req, res) {
-        Test.find(req.body)
+        Test.findOne({token: req.body.token})
         .then(function(data) {
             res.json(data);
         })

@@ -11,7 +11,6 @@ import StyleFooter from '../../components/Style/stylefooter'
 import OtherServices from './OtherServices'
 
 
-
 class Homepage extends Component {
     click = () => {
         console.log("clicked")

@@ -9,6 +9,7 @@ import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
 import { setSession, getIdToken, handleAuthentication, isAuthenticated } from '../../components/Auth/Auth';
 import jwt_decode from 'jwt-decode';
+import { isNull } from "util";
 
 class Clientpage extends Component {
   state = {
@@ -17,17 +18,16 @@ class Clientpage extends Component {
       imagesrc: ''
     },
     user: null,
-
     flag: true,
-    token: ''
-    name: 'Lily',
+    token: '',
+    name: '',
     modal: false,
     phone: "",
     street: "",
     city: "",
     state: "",
     country: "",
-    profile_picture:"",
+    profile_picture: "",
     bust: '',
     waist: '',
     hips: '',
@@ -41,47 +41,47 @@ class Clientpage extends Component {
 
   toggle = () => {
     this.setState({
-        modal: !this.state.modal
+      modal: !this.state.modal
     });
-}
-//   clickHandler = (event) => {
+  }
+  //   clickHandler = (event) => {
 
-//     event.preventDefault();
+  //     event.preventDefault();
 
-//     const newUser = {
-//         phone: this.state.phone,
-//         street: this.state.street,
-//         city: this.state.city,
-//         state: this.state.state,
-//         country: this.state.country,
-//         profile_picture: this.state.profile_picture
-//     };
+  //     const newUser = {
+  //         phone: this.state.phone,
+  //         street: this.state.street,
+  //         city: this.state.city,
+  //         state: this.state.state,
+  //         country: this.state.country,
+  //         profile_picture: this.state.profile_picture
+  //     };
 
-//     const newClient = {
-//         budget: this.state.budget,
-//         job_category: this.state.job_category,
-//         availability: this.state.availability,
-//         demo: this.state.demoList
-//     };
+  //     const newClient = {
+  //         budget: this.state.budget,
+  //         job_category: this.state.job_category,
+  //         availability: this.state.availability,
+  //         demo: this.state.demoList
+  //     };
 
-//     $.put(`/api/users/${this.state.providerID}`, newUser)
-//         .then((updatedData) => {
-//             $.put(`/api/providers/${this.state.providerID}`, newProvider)
-//                 .then((updatedProvider) => {
-//                     this.toggle();
-//                     this.props.getProvider();
-//                 })
-//                 .catch((error) => {
-//                     console.log(error);
-//                 })
+  //     $.put(`/api/users/${this.state.providerID}`, newUser)
+  //         .then((updatedData) => {
+  //             $.put(`/api/providers/${this.state.providerID}`, newProvider)
+  //                 .then((updatedProvider) => {
+  //                     this.toggle();
+  //                     this.props.getProvider();
+  //                 })
+  //                 .catch((error) => {
+  //                     console.log(error);
+  //                 })
 
-//         })
-//         .catch((error) => {
-//             console.log(error);
-//         });
+  //         })
+  //         .catch((error) => {
+  //             console.log(error);
+  //         });
 
 
-// }
+  // }
 
   getUser = event => {
     $.get(`api/users/5c0e89c9f571a32c2022fddb`).then(results => {
@@ -100,42 +100,58 @@ class Clientpage extends Component {
       })
   }
 
-  async componentDidMount() {
+  initiateSession = () => {
+    let idToken = getIdToken();
+    let info = jwt_decode(idToken);
+    console.log('I am info', info)
+    localStorage.setItem("token", info.sub);
+    localStorage.setItem("name", info.given_name);
+    this.setState({
+      token: info.sub,
+      name: info.given_name
+    })
+  }
+
+  componentDidMount() {
     // this.getUser();
     //let token = "";
+
     if (getIdToken()) {
-      let idToken = await getIdToken();
-      let info = await jwt_decode(idToken);
-      this.setState({
-        token: info.sub,
-        name: info.given_name
-      })
+      this.initiateSession();
     } else {
-      handleAuthentication();
+      setSession();
+      this.initiateSession();
     }
+
+    this.setState({
+      token: localStorage.getItem('token'),
+      name: localStorage.getItem('name')
+    });
+
+
+    console.log("auth_stuff", localStorage.getItem("token"));
     $.post('/api/session', {
-      token: this.state.token
+      token: localStorage.getItem('token')
     }).then((response) => {
       console.log('sucess');
       console.log('session data', response);
+      console.log("local storage", localStorage.getItem('token'));
+
       const flag = false;
       const sessionData = response.data;
-      sessionData.map((sData) => {
-        if (sData.token == this.state.token) {
-          this.setState({ flag: false });
-        }
-      })
-      console.log('verify', localStorage.getItem('token'))
-      if (this.state.flag) {
+      console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
+      if (sessionData === null) {
         $.post('/api/test', {
-          token: this.state.token,
+          token: localStorage.getItem('token'),
           category: "client"
         }).then((response) => {
           console.log(response);
-          this.getTest();
+          // this.getTest();
         })
       }
-    })
+    });
+
+
 
     // $.post('/api/test', {
     //   token: token,
