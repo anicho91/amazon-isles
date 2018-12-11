@@ -36,7 +36,11 @@ class Clientpage extends Component {
     orderArray: []
   };
 
-
+  toggle = () => {
+    this.setState({
+        modal: !this.state.modal
+    });
+}
 //   clickHandler = (event) => {
 
 //     event.preventDefault();
