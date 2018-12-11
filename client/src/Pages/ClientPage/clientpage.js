@@ -17,8 +17,14 @@ class Clientpage extends Component {
       imagesrc: ''
     },
     user: null,
+<<<<<<< HEAD
     flag: true,
     token: '',
+=======
+
+    flag: true,
+    token: ''
+>>>>>>> c398d48645cb948cbc11c194d91efc09344198e7
     name: 'Lily',
     modal: false,
     phone: "",
