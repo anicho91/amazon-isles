@@ -5,6 +5,7 @@ import { Container, Jumbotron, Row, Col, Fa, NavLink, Footer } from "mdbreact"
 import { Card, CardBody, CardImage, CardTitle, CardText, MDBCol, MDBRow } from 'mdbreact';
 import MultiCarouselPage from './MultiCarouselPage';
 import TestimonialsPage from './TestimonialsPage'
+import FabWidget from '../../components/Fashion/FashionWidget';
 import StyleHeader from '../../components/Style/styleheader'
 import StyleFooter from '../../components/Style/stylefooter'
 import OtherServices from './OtherServices'
@@ -12,18 +13,18 @@ import cardsreveal from '..x'
 
 
 class Homepage extends Component {
-    click= () => {
+    click = () => {
         console.log("clicked")
     }
     render() {
         return (
             <div className="mainBody">
 
-                <StyleHeader/>
+                <StyleHeader />
 
                 <img className="background" src="https://princefan046.com/wp-content/uploads/2018/12/mirroredbackground.jpg"></img>
 
-
+                <FabWidget/>
                 <Row>
                     <Col className="shadow-box-example z-depth-5">
                         <Card className="card animate fadeInDown one ">
@@ -73,7 +74,7 @@ class Homepage extends Component {
 
                 <div >
                     <MDBRow className='midpagebanner shadow-box-example z-depth-5'>
-                                           </MDBRow>
+                    </MDBRow>
                 </div>
                 <div className="homeplaceholder"></div>
                 <div className="homeplaceholder"></div> 
