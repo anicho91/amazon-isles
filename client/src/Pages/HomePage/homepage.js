@@ -7,6 +7,9 @@ import MultiCarouselPage from './MultiCarouselPage';
 import TestimonialsPage from './TestimonialsPage'
 import StyleHeader from '../../components/Style/styleheader'
 import StyleFooter from '../../components/Style/stylefooter'
+import OtherServices from './OtherServices'
+import cardsreveal from '..x'
+
 
 class Homepage extends Component {
     click= () => {
@@ -73,7 +76,9 @@ class Homepage extends Component {
                                            </MDBRow>
                 </div>
                 <div className="homeplaceholder"></div>
-                <div className="homeplaceholder"></div> <div className="homeplaceholder"></div> <div className="homeplaceholder"></div> <div className="homeplaceholder"></div>
+                <div className="homeplaceholder"></div> 
+                <div className="homeplaceholder"></div> 
+                <div className="homeplaceholder"></div> <div className="homeplaceholder"></div>
                 <MultiCarouselPage />
 
                 <div className="homeplaceholder"></div>

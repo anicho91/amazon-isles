@@ -43,7 +43,9 @@ render() {
               <NavItem className="navtext">
                   <NavLink to={`/search`}>Search</NavLink>
               </NavItem>
-
+              <NavItem className="navtext">
+                  <NavLink to={`/OtherServices`}>Other Services</NavLink>
+              </NavItem>
               <Button className="navbutton" onClick={login0}>Log in/Register</Button>  
               
             </NavbarNav>
