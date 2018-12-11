@@ -17,7 +17,7 @@ import {
 class UserModal extends React.Component {
 
     state = {
-        providerID: "5c0c7b49a5a9a90d139293ee",
+        providerID: "5c0ace5fcada870b794956e6",
         modal: false,
         userId: "",
         password: "",
@@ -51,6 +51,17 @@ class UserModal extends React.Component {
         demoList[demoIdx] = event.target.value;
 
         this.setState({ demoList: demoList });
+    }
+
+    //Add deno input
+    addDemo = (event) => {
+
+        event.preventDefault();
+
+        const demoList = this.state.demoList;
+        demoList.push("");
+
+        this.setState({demoList: demoList});
     }
 
 
@@ -200,11 +211,12 @@ class UserModal extends React.Component {
                                         <br />
                                         <Label for="demoList">Demo List</Label><br />
                                         {!this.state.demoList
-                                            ? <Input type="text" onChange={this.changeDemoList} name="demoInput" id={0} value="" placeholder="Please enter the URL for demo" />
+                                            ?<Input type="text" onChange={this.changeDemoList} name="demoInput0" id={0} value="" placeholder="Please enter the URL for demo" />
                                             : this.state.demoList.map((demo, i) => {
                                                 const inputName = `demoInput${i}`
                                                 return <Input type="text" onChange={this.changeDemoList} name={inputName} id={i} key={i} value={demo} />
                                             })}
+                                            <Button onClick={this.addDemo}>Add</Button>
                                         <br />
                                     </Form>
                                 </Col>
