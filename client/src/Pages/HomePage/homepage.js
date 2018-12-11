@@ -9,10 +9,6 @@ import FabWidget from '../../components/Fashion/FashionWidget';
 import StyleHeader from '../../components/Style/styleheader'
 import StyleFooter from '../../components/Style/stylefooter'
 import OtherServices from './OtherServices'
-<<<<<<< HEAD
-=======
-
->>>>>>> c398d48645cb948cbc11c194d91efc09344198e7
 
 
 class Homepage extends Component {
