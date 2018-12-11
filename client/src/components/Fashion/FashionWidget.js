@@ -8,6 +8,7 @@ import '../../Pages/FashionPage/fashionpage.css'
 
 
 
+
 class FabWidget extends Component {
 
   state = {
@@ -175,7 +176,7 @@ console.log("getGarments")
 
                   <img ref="image" src={this.state.fabricPic} className="hideCanvasSource" />  
                 </div>
-
+                  
               </div>
             </div>              
          
