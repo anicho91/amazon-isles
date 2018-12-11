@@ -124,9 +124,9 @@ console.log("getGarments")
 
   render() {
     return (
-       <div>
+       <div className="fashionwidge">
 
-            <div className="col2 details">
+            <div className="col2 details box1">
               <Composite
                 key={this.state.newFabric}
                 idF={this.state.newFabric}
@@ -145,7 +145,7 @@ console.log("getGarments")
 
               <div className="row">
 
-                <div className="col2 fabBox">
+                <div className="col2 fabBox box2">
                   {this.state.fabricsList.map(fabric => (
                     <Fabric
                       key={fabric._id}
@@ -157,7 +157,7 @@ console.log("getGarments")
                   ))}
                 </div>
 
-                <div className="col2 garBox">
+                <div className="col2 garBox box3">
                   {this.state.garmentsList.map(garment => (
                     <Garment
                       key={garment._id}
