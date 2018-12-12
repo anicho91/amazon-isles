@@ -25,25 +25,27 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-
-          <StyleHeader />
-
-        <div className="fashionrow">
-        
-          <FabWidget />
+      <div className="content">
+        <StyleHeader />
 
 
-          {/* <div className="col4"> */}
+        <div className="row spacer">
+          <div className="col8">
+            <FabWidget />
+          </div>
+
+
+
+          <div className="col4">
             <BodMeas />
-          {/* </div> */}
+          </div>
 
 
         </div>
 
-        {/* <div className="row"> */}
+        <div className="row">
           <StyleFooter />
-        {/* </div> */}
+        </div>
       </div>
     );
   };

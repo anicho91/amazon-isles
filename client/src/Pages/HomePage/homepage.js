@@ -19,32 +19,16 @@ class Homepage extends Component {
     render() {
         return (
             <div className="mainBody">
-            <div>
-
-                <StyleHeader />
-
-                <img className="background" src="https://princefan046.com/wp-content/uploads/2018/12/mirroredbackground.jpg"></img>
-
- 
- <section></section>
-              
-
-              
-
-<h2 className='animated fadeInLeftBig'><i className='fadeInUp' >HELLO</i></h2>
-              <Slider />         
-                
-                <div className="FabWidgetplaceholder">
-                <FabWidget/>
+                <div>
+                    <StyleHeader />
+                    <img className="background" src="https://princefan046.com/wp-content/uploads/2018/12/mirroredbackground.jpg"></img>
+                    <Slider />
+                    <FabWidget />                   
+                   <OtherServices />
                 </div>
-            </div>
-            <div className="cardboxs">
-
-                <OtherServices />
-            </div>
-            <div>
-                <StyleFooter />
-            </div >
+                <div>
+                    <StyleFooter />
+                </div >
             </div>
         )
     }
