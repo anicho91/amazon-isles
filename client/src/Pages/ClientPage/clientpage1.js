@@ -77,8 +77,12 @@ class Clientpage1 extends Component {
     render() {
         return (
             <div>
-                <StyleHeader />
                 <Container>
+                    <Row>
+                        <Col xs='12'>
+                            <StyleHeader />
+                        </Col>
+                    </Row>
                     <Row className="mt-5">
                         <Col xs="12" md="6">
                             <Row className="mt-5">

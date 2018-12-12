@@ -17,7 +17,7 @@ import {
 class UserModal extends React.Component {
 
     state = {
-        providerID: "5c107ede307461050dfed0dc",
+        token: localStorage.getItem('token'),
         modal: false,
         userId: "",
         token: "",
@@ -112,9 +112,9 @@ class UserModal extends React.Component {
             demo: this.state.demoList
         };
 
-        $.put(`/api/users/${this.state.providerID}`, newUser)
+        $.put(`/api/users/${this.state.token}`, newUser)
             .then((updatedData) => {
-                $.put(`/api/providers/${this.state.providerID}`, newProvider)
+                $.put(`/api/providers/${this.state.token}`, newProvider)
                     .then((updatedProvider) => {
                         this.toggle();
                         this.props.getProvider();
@@ -132,7 +132,7 @@ class UserModal extends React.Component {
     }
 
     getProvider = () => {
-        $.get(`/api/users/${this.state.providerID}`)
+        $.get(`/api/users/${this.state.token}`)
             .then((result) => {
                 this.setState({
                     orderArray: result.data.orders,
