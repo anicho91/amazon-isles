@@ -19,6 +19,7 @@ const App = () => (
         <Route exact path='/client' component={Clientpage} />
         <Route exact path='/provider' component={Providerpage} />
         <Route exact path='/fashion' component={Fashionpage} /> 
+        
         <Route exact path='/search' component={Searchpage} />
       </Switch>
   </BrowserRouter>

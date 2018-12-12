@@ -5,6 +5,7 @@
   border-color: #55637F;
   border-width: 5px; 
   height: 600px;
+  min-width: 150px;
   background-color: white;
 }
 
@@ -41,7 +42,12 @@
 
 .measInput {
   margin-bottom: 8px;
+ }
+
+.addFab {
+  width: 130px;
 }
+
 
 .measTitle{
  
@@ -54,41 +60,48 @@
   height: 600px;
 }
 
-
+/*Fabric Canvas*/
 .fabric {
     position: relative;
     left: 0px;
-    top: -600px;
+    top: -600px;    
     z-index: -1;   
 }
 
+/*Garment Mask*/
 .garment {
     margin-left:auto;
     margin-right:auto;
     border-style: solid;
     border-color: #55637F;
     border-width: 5px;
-    /* display: none;*/    
+    /* display: none;     */
 }
 
 .garmThumb {
  
 }
 
+/*Fabric Selector Scroll*/
 .fabBox {  
   background-color: White;  
   height: 600px;
+  min-width: 125px;
+  max-width: 125px;  
   border-style: solid;
   border-color: #55637F;
   border-width: 5px; 
   overflow: scroll;
 }
 
+/*Garment Selector Scroll*/
 .garBox {
   background-color: #55637F;  
   height: 600px;  
+  min-width: 127px;
+  max-width: 127px;
   border-style: solid;
-  border-color: #55637F;
+  border-color: gray;
   border-width: 5px; 
   overflow: scroll;
 }
@@ -99,9 +112,35 @@
 }
 
 .detList {
-
   list-style-type:none;
+  padding: 0;
 }
+
+.fashion {
+  /* max-width: 800px; */
+}
+
+.heightLimit {
+  height: 600px;
+}
+
+.widget {
+  
+}
+
+.combo {
+  /* position: relative;
+  top: -600px;
+  left:  250px; */
+  width: 400px;
+
+  /* float: left; */
+}
+
+.spacer {
+  height: 100px;
+}
+
 
 /* div {
   display: inline;
@@ -109,6 +148,12 @@
 
 .hideCanvasSource {
   display: none;
+  position: relative;
+    left: 0px;
+    top: -1200px;
+    width: 400px;
+    height: 580px;
+    z-index: -2;
 }
 
 
@@ -123,27 +168,45 @@
   border-width: 1px; */
 
 }
-
-.content{
-  margin-top: 50px;
-  margin-left:auto;
-  margin-right:auto;
-  max-width:1600px;
-}
-
-/* .sticky {
-  float: left;
+.testBdrGrn {
+  
   border-style: solid;
   border-color: green;
   border-width: 10px;
-} */
+}
 
-/* .testbdrY {
-  float: left;
+.testBdrYel {
+ 
   border-style: solid;
   border-color: yellow;
   border-width: 10px;
-} */
+}
+
+.testBdrpnk {
+  
+  border-style: solid;
+  border-color: hotpink;
+  border-width: 10px;
+}
+
+
+.testBdrBlu {
+  
+  border-style: solid;
+  border-color: blue;
+  border-width: 10px;
+}
+
+.content{
+  /* margin-top: 50px; */
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-left:auto;
+  margin-right:auto;
+  /* max-width:1600px; */
+}
+
+
 
 .center{
   text-align:center!important
@@ -167,10 +230,7 @@
 .col5{width:41.66666%}
 .col6{width:49.99999%}
 .col7{width:58.33333%}
-.col8{
-  width:66.66666%;
-  /* height: 600px; */
-}
+.col8{width:66.66666%}
 .col9{width:74.99999%}
 .col10{width:83.33333%}
 .col11{width:91.66666%}
