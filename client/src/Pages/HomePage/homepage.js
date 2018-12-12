@@ -3,7 +3,7 @@ import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } fr
 import { login0, login1 } from '../../components/Auth/Auth';
 import { Container, Jumbotron, Row, Col, Fa, NavLink, Footer } from "mdbreact"
 import { Card, CardBody, CardImage, CardTitle, CardText, MDBCol, MDBRow } from 'mdbreact';
-import MultiCarouselPage from './MultiCarouselPage';
+import CarouselPage from './CarouselPage';
 
 import FabWidget from '../../components/Fashion/FashionWidget';
 import StyleHeader from '../../components/Style/styleheader'
@@ -24,7 +24,7 @@ class Homepage extends Component {
 
                 <img className="background" src="https://princefan046.com/wp-content/uploads/2018/12/mirroredbackground.jpg"></img>
 
-                <MultiCarouselPage />                
+                <CarouselPage />                
                 
                 <div className="homeplaceholder">
                 <FabWidget/>
