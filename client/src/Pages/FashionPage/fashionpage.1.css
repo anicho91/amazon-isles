@@ -220,7 +220,7 @@
 
 
 [class*="col"] {
-  /* float: left; */
+  float: left;
 }
 
 .col1{width:8.33333%;}
@@ -258,10 +258,10 @@
       background-color: palevioletred;
   } */
 
-  /* [class*="col"] {
+  [class*="col"] {
     margin-left:auto;
     margin-right:auto;
     width: 100%;
-  } */
+  }
 
 }
