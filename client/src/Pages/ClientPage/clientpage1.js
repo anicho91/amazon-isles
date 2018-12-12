@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as $ from 'axios';
-import Demo from '../demo.js';
+import Demo from './demo';
 import Order from './order.js';
 import UserModal from './userModal.js';
 import StyleHeader from '../../components/Style/styleheader';
@@ -25,9 +25,10 @@ class Clientpage1 extends Component {
 
     state = {
 
-        clientID: "",
-        providerInfo: {},
+        clientID: "5c1089b2307461050dfed0dd",
+        clientInfo: {},
         demoList: [],
+        measurement:{},
         orderArray: [],
         orderList: [],
 
@@ -52,12 +53,13 @@ class Clientpage1 extends Component {
     }
 
     //Get the particular provider information
-    getProvider = () => {
-        $.get(`/api/users/${this.state.providerID}`)
+    getClient = () => {
+        $.get(`/api/users/${this.state.clientID}`)
             .then((result) => {
+                console.log(result);
                 this.setState({ orderArray: result.data.orders });
-                this.setState({ providerInfo: result.data });
-                this.setState({ demoList: result.data.demo });
+                this.setState({ clientInfo: result.data });
+                this.setState({ measurement: result.data.measurement });
                 this.getOrder(this.state.orderArray);
                 this.setState({ isUserUpdate: false });
 
@@ -69,7 +71,7 @@ class Clientpage1 extends Component {
 
 
     componentDidMount() {
-        this.getProvider();
+        this.getClient();
     }
 
     render() {
@@ -82,19 +84,18 @@ class Clientpage1 extends Component {
                             <Row className="mt-5">
                                 <Col xs="12">
                                     <Card>
-                                        <CardImg top width="100%" src={this.state.providerInfo.profile_picture} alt="Card image-fluid cap" />
+                                        <CardImg top width="100%" src={this.state.clientInfo.profile_picture} alt="Card image-fluid cap" />
                                         <CardBody>
-                                            <CardTitle>Provider: {this.state.providerInfo.userId}</CardTitle>
-                                            <CardSubtitle>Category: {this.state.providerInfo.job_category}</CardSubtitle> <br />
+                                            <CardTitle>Client ID: {this.state.clientInfo.userId}</CardTitle>
+                                            <CardSubtitle></CardSubtitle> <br />
                                             <CardText>
-                                                Password: XXXXXXXXXX <br />
-                                                Phone: {this.state.providerInfo.phone} <br />
-                                                Street Address: {this.state.providerInfo.street} <br />
-                                                City: {this.state.providerInfo.city} <br />
-                                                State: {this.state.providerInfo.state} <br />
-                                                Country: {this.state.providerInfo.country} <br /><br />
+                                                Phone: {this.state.clientInfo.phone} <br />
+                                                Street Address: {this.state.clientInfo.street} <br />
+                                                City: {this.state.clientInfo.city} <br />
+                                                State: {this.state.clientInfo.state} <br />
+                                                Country: {this.state.clientInfo.country} <br /><br />
                                             </CardText>
-                                            <UserModal getProvider={this.getProvider} />
+                                            <UserModal getClient={this.getClient} />
                                         </CardBody>
                                     </Card>
 
@@ -107,10 +108,17 @@ class Clientpage1 extends Component {
                                     <Card>
                                         <CardBody>
                                             <CardText>
-                                                Availability: {this.state.providerInfo.availability ? "Yes" : "No"} <br />
-                                                Will Work for: $ {this.state.providerInfo.budget} <br />
+                                                Measurement <br />
+                                                Bust: {this.state.measurement.bust} <br />
+                                                Weist: {this.state.measurement.waist} <br />
+                                                Hips: {this.state.measurement.hips} <br />
+                                                Knee Length: {this.state.measurement.knee_length} <br />
+                                                Leg Length: {this.state.measurement.leg_length} <br />
+                                                BP Length: {this.state.measurement.bp_length} <br />
+                                                Back Length: {this.state.measurement.back_length} <br />
+                                                Arm Length: {this.state.measurement.arm_length} <br />
                                             </CardText>
-                                            <UserModal getProvider={this.getProvider} />
+                                            <UserModal getClient={this.getClient} />
                                         </CardBody>
                                     </Card>
 

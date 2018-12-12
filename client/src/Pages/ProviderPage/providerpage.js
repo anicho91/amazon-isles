@@ -25,7 +25,7 @@ class Providerpage extends Component {
 
     state = {
 
-        providerID: "5c0ace5fcada870b794956e6",
+        providerID: "5c107ede307461050dfed0dc",
         providerInfo: {},
         demoList: [],
         orderArray: [],
@@ -87,7 +87,6 @@ class Providerpage extends Component {
                                             <CardTitle>Provider: {this.state.providerInfo.userId}</CardTitle>
                                             <CardSubtitle>Category: {this.state.providerInfo.job_category}</CardSubtitle> <br />
                                             <CardText>
-                                                Password: XXXXXXXXXX <br />
                                                 Phone: {this.state.providerInfo.phone} <br />
                                                 Street Address: {this.state.providerInfo.street} <br />
                                                 City: {this.state.providerInfo.city} <br />

@@ -8,7 +8,7 @@ import {
 import "./demoList.css";
 
 
-class frontpagecarousel extends Component {
+class Demo extends Component {
   constructor(props) {
     super(props);
     this.state = { activeIndex: 0 };
@@ -76,4 +76,4 @@ class frontpagecarousel extends Component {
 }
 
 
-export default frontpagecarousel;
+export default Demo;
