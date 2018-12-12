@@ -263,11 +263,11 @@ console.log("getGarments")
               </div>
             
          
-        
+              </div>
              
             </div>
     )
-  };
-};
+  }
+}
 
 export default FabWidget;
