@@ -13,11 +13,14 @@ import {
     Label,
     Input,
 } from 'reactstrap';
+import ClientForm from '../../components/ClientUser/clientF'
 
 class ClientModal extends React.Component {
 
     state = {
-        clientID: "5c0e89c9f571a32c2022fddb",
+        clientAuthID: "auth0|5c0c172ee978c52e154f10b7",
+        clientID: '5c1137c75d5b933d0cf3c538',
+        user: null,
         modal: false,
         phone: "",
         street: "",
@@ -25,14 +28,14 @@ class ClientModal extends React.Component {
         state: "",
         country: "",
         profile_picture: "",
-        bust: '',
-        waist: '',
-        hips: '',
-        knee_length: '',
-        leg_length: '',
-        bp_length: '',
-        back_length: '',
-        arm_length: '',
+        bust: 0,
+        waist: 0,
+        hips: 0,
+        knee_length: 0,
+        leg_length: 0,
+        bp_length: 0,
+        back_length: 0,
+        arm_length: 0
     }
 
     //Close&Open Modal
@@ -41,6 +44,15 @@ class ClientModal extends React.Component {
             modal: !this.state.modal
         });
     }
+
+    getUser = (event) => {
+        $.get(`/api/users/${this.state.clientAuthID}`).then(results => {
+          
+          this.setState({ user: results.data });
+          console.log(this.state.user)
+          
+        });
+      }
 
     changeHandler = (event) => {
         this.setState({
@@ -63,6 +75,7 @@ class ClientModal extends React.Component {
         };
 
         const newClient = {
+            measurement: {
             bust: this.state.bust,
             waist: this.state.waist,
             hips: this.state.hips,
@@ -71,9 +84,10 @@ class ClientModal extends React.Component {
             bp_length: this.state.bp_length,
             back_length: this.state.back_length,
             arm_length: this.state.arm_length
+            }
         };
 
-        $.put(`/api/users/${this.state.clientID}`, newUser)
+        $.put(`/api/users/${this.state.clientAuthID}`, newUser)
             .then((updatedData) => {
                 $.put(`/api/clients/${this.state.clientID}`, newClient)
                     .then((updatedClient) => {
@@ -93,7 +107,7 @@ class ClientModal extends React.Component {
     }
 
     // getClient = () => {
-    //     $.get(`/api/users/${this.state.clientID}`)
+    //     $.get(`/api/users/${this.state.clientAuthID}`)
     //         .then((result) => {
     //             console.log(result)
     //             this.setState({
@@ -121,10 +135,12 @@ class ClientModal extends React.Component {
     //         });
     // }
 
-    //Execute this when the mount is done.
-    // componentDidMount() {
-    //     this.getClient();
-    // }
+    // Execute this when the mount is done.
+    componentDidMount() {
+        // this.getClient();
+        this.getUser()
+        
+    }
 
     render() {
         return (
@@ -136,65 +152,27 @@ class ClientModal extends React.Component {
                         <Container>
                             <Row>
                                 <Col cs="12">
-                                    <Form>
-                                        <Label for="profile_picture">Profile Picture</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="profile_picture" id="profile_picture" 
-                                        value={this.state.profile_picture} placeholder="Please enter your profile URL" />
-                                        <br />
-                                        
-                                        <Label for="phone">Phone Number</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="phone" id="phone" 
-                                        value={this.state.phone} placeholder="Please type your new Phone number." />
-                                        <br />
-                                        <Label for="street">Street Address</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="street" id="street" 
-                                        value={this.state.street} placeholder="Please type your new Street Address" />
-                                        <br />
-                                        <Label for="city">City</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="city" id="city" 
-                                        value={this.state.city} placeholder="Please type your new City" />
-                                        <br />
-                                        <Label for="state">State</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="state" id="state" 
-                                        value={this.state.state} placeholder="Please type your new State" />
-                                        <br />
-                                        <Label for="country">Country</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="country" id="country" 
-                                        value={this.state.country} placeholder="Please type your new country" />
-                                        <br />
-                                        <Label for="bust">Bust Measument</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="bust" id="bust" 
-                                        value={this.state.bust} placeholder="Please type your new bust measurement" />
-                                        <br />
-                                        <Label for="waist">Waist Measument</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="waist" id="waist" 
-                                        value={this.state.waist} placeholder="Please type your new waist measurement" />
-                                        <br />
-                                        <Label for="hip">Hip Measument</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="hip" id="hip" 
-                                        value={this.state.hip} placeholder="Please type your new hip measurement" />
-                                        <br />
-                                        <Label for="knee_length">Knee Length Measument</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="knee_length" id="knee_length" 
-                                        value={this.state.knee_length} placeholder="Please type your new knee_length measurement" />
-                                        <br />
-                                        <Label for="leg_length">Leg Length Measument</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="leg_length" id="leg_length" 
-                                        value={this.state.leg_length} placeholder="Please type your new leg_length measurement" />
-                                        <br />
-                                        <Label for="bp_length">Bust to Shoulder Measument</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="bp_length" id="bp_length" 
-                                        value={this.state.bp_length} placeholder="Please type your new bp_length measurement" />
-                                        <br />
-                                        <Label for="back_length">Back Length Measument</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="back_length" id="back_length" 
-                                        value={this.state.back_length} placeholder="Please type your new back_length measurement" />
-                                        <br />
-                                        <Label for="arm_length">Arm Length Measument</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="arm_length" id="arm_length" 
-                                        value={this.state.arm_length} placeholder="Please type your new arm_length measurement" />
-                                        <br />
-                                    </Form>
+                                   {this.state.user && (
+                                    <ClientForm 
+                                    handleChange={this.changeHandler}
+                                    key={this.state.user._id}
+                                    id={this.state.user._id}
+                                    pic={this.state.user.profile_picture}
+                                    phone={this.state.user.phone}
+                                    street={this.state.user.street}
+                                    city={this.state.user.city}
+                                    state={this.state.user.state}
+                                    country={this.state.user.country}
+                                    bust={this.state.user.measurement.bust}
+                                    waist={this.state.user.measurement.waist}
+                                    hips={this.state.user.measurement.hips}
+                                    klength={this.state.user.measurement.knee_length}
+                                    llength={this.state.user.measurement.leg_length}
+                                    bplength={this.state.user.measurement.bp_length}
+                                    blength={this.state.user.measurement.back_length}
+                                    alength={this.state.user.measurement.arm_length}
+                                    />
+                                   )}
                                 </Col>
                             </Row>
                         </Container>

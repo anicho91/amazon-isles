@@ -11,6 +11,7 @@ import StyleFooter from '../../components/Style/stylefooter'
 import OtherServices from './OtherServices'
 import Slider from '../HomePage/Slider'
 
+
 class Homepage extends Component {
     click = () => {
         console.log("clicked")

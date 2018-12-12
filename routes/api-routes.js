@@ -10,7 +10,7 @@ module.exports = function (app) {
     
     //For test
     app.post("/api/session", function(req, res) {
-        Test.findOne({token: req.body.token})
+        User.findOne({token: req.body.token})
         .then(function(data) {
             res.json(data);
         })
@@ -99,18 +99,19 @@ module.exports = function (app) {
 
     //Sending one client information by client ID.
     app.get('/api/users/:id', function (req, res) {
-        User.findOne({ _id: req.params.id })
+        User.findOne({ token: req.params.id })
             .then(function (data) {
                 res.json(data);
             })
             .catch(function (err) {
+                console.log(err);
                 res.json(err);
             });
     });
 
     //Update user
     app.put('/api/users/:id', function (req, res) {
-        User.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+        User.findOneAndUpdate({ token: req.params.id }, { $set: req.body })
             .populate("orders")
             .then(function (data) {
                 res.json(data);
@@ -122,7 +123,7 @@ module.exports = function (app) {
 
     //Update provider field.
     app.put('/api/providers/:id', function(req, res){
-        Provider.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+        Provider.findOneAndUpdate({ token: req.params.id }, { $set: req.body })
             .populate("orders")
             .then(function (data) {
                 res.json(data);

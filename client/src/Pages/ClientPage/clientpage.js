@@ -14,6 +14,7 @@ import ClientModal from "./clientModal";
 
 class Clientpage extends Component {
   state = {
+
     image: {
       type: "Profile",
       imagesrc: ''
@@ -29,14 +30,6 @@ class Clientpage extends Component {
     state: "",
     country: "",
     profile_picture: "",
-    bust: 0,
-    waist: 0,
-    hips: 0,
-    knee_length: 0,
-    leg_length: 0,
-    bp_length: 0,
-    back_length: 0,
-    arm_length: 0,
     orders: [],
     orderList: []
   };
@@ -48,7 +41,7 @@ class Clientpage extends Component {
   }
 
   getUser = event => {
-    $.get(`api/users/5c0e89c9f571a32c2022fddb`).then(results => {
+    $.get(`api/users/${this.state.token}`).then(results => {
       
       this.setState({ user: results.data });
       this.setState({ orders: results.data.orders })
@@ -56,7 +49,7 @@ class Clientpage extends Component {
   }
 
   getOrder = event => {
-    $.get(`/api/orders/5c0ec3efbb109e4a103a2009`)
+    $.get(`/api/orders/5c113d1f38fcbd45a4085582`)
       .then(results => {
         this.setState({ orderList: results.data})
       })
@@ -67,7 +60,7 @@ class Clientpage extends Component {
     let info = jwt_decode(idToken);
     console.log('I am info', info)
     localStorage.setItem("token", info.sub);
-    localStorage.setItem("name", info.given_name);
+    localStorage.setItem("name", info.nickname);
     this.setState({
       token: info.sub,
       name: info.given_name
@@ -75,8 +68,7 @@ class Clientpage extends Component {
   }
 
   componentDidMount() {
-    this.getUser();
-    this.getOrder()
+    
     //let token = "";
 
     if (getIdToken()) {
@@ -90,29 +82,36 @@ class Clientpage extends Component {
       token: localStorage.getItem('token'),
       name: localStorage.getItem('name')
     });
-  
+    
 
     console.log("auth_stuff", localStorage.getItem("token"));
     $.post('/api/session', {
       token: localStorage.getItem('token')
+      
     }).then((response) => {
       console.log('success');
       console.log('session data', response);
       console.log("local storage", localStorage.getItem('token'));
-
+      
+      console.log(this.state.token)
       const flag = false;
       const sessionData = response.data;
       console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
       if (sessionData === null) {
-        $.post('/api/test', {
-          token: localStorage.getItem('token'),
+        $.post('/api/users', {
+          token: this.state.token,
+          userId: this.state.name,
           category: "client"
         }).then((response) => {
-          console.log(response);
+          console.log("users", response);
           // this.getTest();
         })
       }
+      this.getUser();
+      this.getOrder()
     });
+
+    
   }
 
 
