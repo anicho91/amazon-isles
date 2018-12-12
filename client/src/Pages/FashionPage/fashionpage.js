@@ -17,7 +17,7 @@ import './fashionpage.css';
 class App extends Component {
 
   state = {
-    
+
     clientID: "5c0dd73242d9c31a00e69e31"
   }
 
@@ -26,27 +26,24 @@ class App extends Component {
   render() {
     return (
       <div className="content">
-        <div className="row spacer">
-        <StyleHeader />
-        </div>           
-
-        <div className="row spacer">
-          <div className="col8">
-          <FabWidget/> 
-          </div>
-
-          
-
-          <div className="col4">
-          <BodMeas/>
-          </div>
-
-
-        </div> 
+        <div className="row">
+          <StyleHeader />
+        </div>
 
         <div className="row">
-        <StyleFooter />
-        </div>              
+          <div className="col8"></div>
+          <FabWidget />
+
+          <div className="col4">
+            <BodMeas />
+          </div>
+
+
+        </div>
+
+        <div className="row">
+          <StyleFooter />
+        </div>
       </div>
     );
   };

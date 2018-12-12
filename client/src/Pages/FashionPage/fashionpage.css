@@ -1,4 +1,14 @@
 
+.itemContainer{
+  
+  margin-right: 15%;
+  margin-left: 16%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+
+
+}
+
 
 .details {
   border-style: solid;
@@ -216,10 +226,9 @@
   text-align:center!important
 }
 
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
+.fashionRow {
+  display: flex;
+  flex-wrap: wrap
 }
 
 
@@ -228,7 +237,7 @@
 }
 
 .col1{width:8.33333%;}
-.col2{width:16.66666%}
+.col2{width:25%}
 .col3{width:24.99999%}
 .col4{width:33.33333%}
 .col5{width:41.66666%}
