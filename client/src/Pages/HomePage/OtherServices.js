@@ -3,8 +3,12 @@ import { Container, Jumbotron, Row, Col, Fa, NavLink, Footer } from "mdbreact"
 import { Card, CardBody, CardImage, CardTitle, CardText, MDBCol, MDBRow } from 'mdbreact';
 
 class OtherServices extends Component {
+
+
+
   render() {
     return (
+       
         
         <Row>
             <Col className="shadow-box-example z-depth-5">
