@@ -4,7 +4,6 @@ import { login0, login1 } from '../../components/Auth/Auth';
 import { Container, Jumbotron, Row, Col, Fa, NavLink, Footer } from "mdbreact"
 import { Card, CardBody, CardImage, CardTitle, CardText, MDBCol, MDBRow } from 'mdbreact';
 import MultiCarouselPage from './MultiCarouselPage';
-//import TestimonialsPage from './TestimonialsPage1'
 import FabWidget from '../../components/Fashion/FashionWidget';
 import StyleHeader from '../../components/Style/styleheader'
 import StyleFooter from '../../components/Style/stylefooter'

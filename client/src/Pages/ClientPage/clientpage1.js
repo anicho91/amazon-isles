@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as $ from 'axios';
-import Demo from './demo.js';
+import Demo from '../demo.js';
 import Order from './order.js';
 import UserModal from './userModal.js';
 import StyleHeader from '../../components/Style/styleheader';
