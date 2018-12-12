@@ -20,7 +20,6 @@ class UserModal extends React.Component {
         token: localStorage.getItem('token'),
         modal: false,
         userId: "",
-        token: "",
         phone: "",
         street: "",
         city: "",
@@ -46,7 +45,7 @@ class UserModal extends React.Component {
 
     //Update demo list
     changeDemoList = (event) => {
-        const demoList = this.state.demoList;
+        const demoList = this.state.demoList.concat();
         const demoIdx = event.target.id;
 
         demoList[demoIdx] = event.target.value;
@@ -56,13 +55,10 @@ class UserModal extends React.Component {
 
     //Add deno input
     addDemo = (event) => {
-
         event.preventDefault();
-
-        const demoList = this.state.demoList;
-        demoList.push("");
-
-        this.setState({ demoList: demoList });
+        this.setState({
+            demoList: this.state.demoList.concat("")
+        });
     }
 
 
@@ -134,6 +130,7 @@ class UserModal extends React.Component {
     getProvider = () => {
         $.get(`/api/users/${this.state.token}`)
             .then((result) => {
+                console.log(result)
                 this.setState({
                     orderArray: result.data.orders,
                     userId: result.data.userId,
@@ -208,12 +205,14 @@ class UserModal extends React.Component {
                                         </Input>
                                         <br />
                                         <Label for="demoList">Demo List</Label><br />
-                                        {!this.state.demoList
-                                            ? <Input type="text" onChange={this.changeDemoList} name="demoInput0" id={0} value="" placeholder="Please enter the URL for demo" />
-                                            : this.state.demoList.map((demo, i) => {
+                                        {this.state.demoList.length <= 0 ? (
+                                            <Input type="text" onChange={this.changeDemoList} name="demoInput0" id={0} value={this.state.demoList[0]} placeholder="Please enter the URL for demo" />
+                                        ) : (
+                                            this.state.demoList.map((demo, i) => {
                                                 const inputName = `demoInput${i}`
                                                 return <Input type="text" onChange={this.changeDemoList} name={inputName} id={i} key={i} value={demo} placeholder="Please enter the URL for demo" />
-                                            })}
+                                            })
+                                        )}
                                         <Button onClick={this.addDemo}>Add</Button>
                                         <br />
                                     </Form>
