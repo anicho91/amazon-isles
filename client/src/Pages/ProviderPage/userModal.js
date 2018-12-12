@@ -59,7 +59,7 @@ class UserModal extends React.Component {
 
         event.preventDefault();
 
-        const demoList = this.state.demoList;
+        const demoList = [];
         demoList.push("");
 
         this.setState({ demoList: demoList });
