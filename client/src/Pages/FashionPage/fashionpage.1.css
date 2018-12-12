@@ -1,14 +1,4 @@
 
-.itemContainer{
-  
-  margin-right: 15%;
-  margin-left: 16%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-
-
-}
-
 
 .details {
   border-style: solid;
@@ -17,12 +7,12 @@
   height: 600px;
   min-width: 150px;
   background-color: white;
-  
 }
 
+
 .measTitle{
-  /* margin: auto; */
-  /* width: 80%; */
+  margin: auto;
+  width: 80%;
   margin-top: 15px;
   margin-bottom: 20px;
   text-align: center;
@@ -30,7 +20,7 @@
 
 
 .measImg {  
-  /* margin: auto; */
+  margin: auto;
   border-style: solid;
   border-color: #55637F;
   border-width: 5px;
@@ -38,7 +28,7 @@
 }
 
 .measInput {
-  /* margin: auto;   */
+  margin: auto;  
   padding: 6px 10px;  
   display: block;
   border: 1px solid #ccc;
@@ -58,6 +48,10 @@
   width: 130px;
 }
 
+
+.measTitle{
+ 
+}
 
 .meas {  
   border-style: solid;
@@ -85,11 +79,7 @@
 }
 
 .garmThumb {
-  
-}
-
-.col8 {
-  height: 600px;
+ 
 }
 
 /*Fabric Selector Scroll*/
@@ -222,21 +212,19 @@
   text-align:center!important
 }
 
-.fashionRow {
-  display: flex;
-  flex-wrap: wrap
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
-.fabpicB {
-  border: 100px 100px 100px 100px;
-}
 
 [class*="col"] {
-  /* float: left; */
+  float: left;
 }
 
 .col1{width:8.33333%;}
-.col2{width:25%}
+.col2{width:16.66666%}
 .col3{width:24.99999%}
 .col4{width:33.33333%}
 .col5{width:41.66666%}
@@ -270,10 +258,10 @@
       background-color: palevioletred;
   } */
 
-  /* [class*="col"] {
+  [class*="col"] {
     margin-left:auto;
     margin-right:auto;
     width: 100%;
-  } */
+  }
 
 }

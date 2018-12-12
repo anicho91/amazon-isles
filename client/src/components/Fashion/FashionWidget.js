@@ -68,7 +68,7 @@ class FabWidget extends Component {
     console.log("fabricLinkclick", fabricLinkclick);
 
     this.setState({
-      [fieldName]: e.target.src, 
+      [fieldName]: e.target.src,
       newFabric: newFabricId
     });
     this.setState({
@@ -172,92 +172,86 @@ class FabWidget extends Component {
   render() {
     return (
 
-      <div className="fashionwidge fashion">
+      <div className="fashionRow itemContainer" >
 
+        <div className="col2 details box1">
+          <Composite
+            key={this.state.newFabric}
+            idF={this.state.newFabric}
+            idG={this.state.newGarment}
+            clickHandler={this.handleSubmit}
+          />
+          <AddFabric
+            inputFabNum={this.state.addFabric}
+            changeHandler={this.handleChange}
+            clickHandler={this.moreFabric}
+          />
 
-        <div className="fashionwidge">
+          <ul className="detList center">
+            <li> <a href={this.state.fabricLink}><h6>Fabric Details:</h6></a></li>
+            <li>{this.state.fabricName}</li>
+            {/* <li>Designer: {this.state.fabricDesigner}</li> */}
+          </ul>
+          <br></br>
+          <ul className="detList center">
+            <li><h6>Garment Details:</h6></li>
+            <li>{this.state.garName}</li>
+            <li>Yardage: {this.state.garLength} </li>
+          </ul>
 
-
-          <div className="col2 details box1">
-            <Composite
-              key={this.state.newFabric}
-              idF={this.state.newFabric}
-              idG={this.state.newGarment}
-              clickHandler={this.handleSubmit}
-            />
-            <AddFabric
-              inputFabNum={this.state.addFabric}
-              changeHandler={this.handleChange}
-              clickHandler={this.moreFabric}
-            />
-
-            <ul className="detList center">
-              <li> <a href={this.state.fabricLink}><h6>Fabric Details:</h6></a></li>
-              <li>{this.state.fabricName}</li>
-              {/* <li>Designer: {this.state.fabricDesigner}</li> */}
-            </ul>
-            <br></br>
-            <ul className="detList center">
-              <li><h6>Garment Details:</h6></li>
-              <li>{this.state.garName}</li>
-              <li>Yardage: {this.state.garLength} </li>
-            </ul>
-
-
-
-          </div>
-
-
-
-
-          <div className="row widget heightLimit">
-
-            <div className="fabBox box2">
-
-
-
-              {this.state.fabricsList.map(fabric => (
-                <Fabric
-                  key={fabric._id}
-                  id={fabric._id}
-                  fabName={fabric.fabric_name}
-                  fabricPic={fabric.fabric_pic}
-                  fabUrl={fabric.fabric_url}
-                  fabDesigner={fabric.fabric_designer}
-                  clickHandler={this.handleFabricClick}
-                />
-              ))}
-            </div>
-
-
-            <div className="garBox box3">
-
-
-
-              {this.state.garmentsList.map(garment => (
-                <Garment
-                  key={garment._id}
-                  id={garment._id}
-                  garmentName={garment.garment_name}
-                  garmentPic={garment.garment_pic}
-                  garmentLength={garment.garment_length}
-                  clickHandler={this.handleGarmentClick}
-                />
-              ))}
-            </div>
-
-            <div className="combo heightLimit">
-              <img ref="mask" src={this.state.garmentPic} className="garment" width={400} height={600} />
-
-              <canvas ref="canvas" className="fabric" width={400} height={600} />
-
-              <img ref="image" src={this.state.fabricPic} className="hideCanvasSource" />
-            </div>
-
-          </div>
 
 
         </div>
+
+
+
+
+        <div className="row widget heightLimit">
+
+          <div className="fabBox">
+
+
+
+            {this.state.fabricsList.map(fabric => (
+              <Fabric
+                key={fabric._id}
+                id={fabric._id}
+                fabName={fabric.fabric_name}
+                fabricPic={fabric.fabric_pic}
+                fabUrl={fabric.fabric_url}
+                fabDesigner={fabric.fabric_designer}
+                clickHandler={this.handleFabricClick}
+              />
+            ))}
+          </div>
+
+
+          <div className="garBox">
+
+
+
+            {this.state.garmentsList.map(garment => (
+              <Garment
+                key={garment._id}
+                id={garment._id}
+                garmentName={garment.garment_name}
+                garmentPic={garment.garment_pic}
+                garmentLength={garment.garment_length}
+                clickHandler={this.handleGarmentClick}
+              />
+            ))}
+          </div>
+
+          <div className="combo heightLimit">
+            <img ref="mask" src={this.state.garmentPic} className="garment" width={400} height={600} />
+
+            <canvas ref="canvas" className="fabric" width={400} height={600} />
+
+            <img ref="image" src={this.state.fabricPic} className="hideCanvasSource" />
+          </div>
+
+        </div>
+
 
       </div>
 
