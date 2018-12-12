@@ -114,6 +114,7 @@ class Clientpage extends Component {
     
   }
 
+  
 
     // $.post('/api/test', {
     //   token: token,
@@ -161,7 +162,7 @@ class Clientpage extends Component {
               <span className="measTitle">Measurements</span>
               <br />
               <div className="measInfo">
-                {this.state.user && (
+                {this.state.user  && this.state.user.measurement && (
                   <Measurements
                     key={this.state.user._id}
                     id={this.state.user._id}
