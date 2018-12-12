@@ -29,6 +29,7 @@ class Providerpage extends Component {
 
         token: "",
         name:"",
+
         providerInfo: {},
         demoList: [],
         orderArray: [],
@@ -64,11 +65,12 @@ class Providerpage extends Component {
           token: info.sub,
           name: info.given_name
         })
-      }
+        console.error("I am the token in initiateSession",this.token)
+    }
 
     //Get the particular provider information
     getProvider = () => {
-        $.get(`/api/users/${this.state.token}`)
+        $.get(`/api/users/${localStorage.getItem('token')}`)
             .then((result) => {
                 this.setState({ orderArray: result.data.orders });
                 this.setState({ providerInfo: result.data });
@@ -115,16 +117,13 @@ class Providerpage extends Component {
                 category: "provider"
               }).then((response) => {
                 console.log("users", response);
-                this.getProvider();
                 
               })
             }
-            else {
-                this.getProvider();
-            }
+        
           });
       
-        
+        this.getProvider();
     }
 
     render() {
