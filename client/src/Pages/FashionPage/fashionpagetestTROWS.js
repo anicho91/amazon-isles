@@ -25,24 +25,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className="content">
+      <div>
         <div className="row spacer">
         <StyleHeader />
         </div>           
 
-        <div className="row spacer">
-          <div className="col8">
+        
+          <div className="row spacer">
           <FabWidget/> 
           </div>
 
           
 
-          <div className="col4">
-          <BodMeas/>
+          <div className="row spacer">
+          {/* <BodMeas/> */}
           </div>
 
 
-        </div> 
+       
 
         <div className="row">
         <StyleFooter />

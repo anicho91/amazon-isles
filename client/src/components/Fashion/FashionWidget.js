@@ -173,6 +173,10 @@ console.log("getGarments")
   render() {
     return (
 
+       <div className= "fashionwidge fashion" >
+
+
+
        
       
 
@@ -192,29 +196,31 @@ console.log("getGarments")
                 clickHandler={this.moreFabric}
               />
                     
-              <ul className="detList">
-              <li> <a href={this.state.fabricLink}>Fabric Details:</a></li>
-                <li>Name: {this.state.fabricName}</li>
+              <ul className="detList center">
+              <li> <a href={this.state.fabricLink}><h6>Fabric Details:</h6></a></li>
+                <li>{this.state.fabricName}</li>
                 {/* <li>Designer: {this.state.fabricDesigner}</li> */}
               </ul>
               <br></br>              
-              <ul className="detList">
-                <li>Garment Details:</li>
+              <ul className="detList center">
+                <li><h6>Garment Details:</h6></li>
                 <li>{this.state.garName}</li>
                 <li>Yardage: {this.state.garLength} </li>
-              </ul>
-              
+              </ul>        
 
 
 
             </div>
 
 
-            <div className="col6">
+            
 
-              <div className="row">
+              <div className="row widget heightLimit">
 
-                <div className="col2 fabBox box2">
+                <div className="fabBox box2">
+
+             
+
                   {this.state.fabricsList.map(fabric => (
                     <Fabric
                       key={fabric._id}
@@ -229,7 +235,11 @@ console.log("getGarments")
                   ))}
                 </div>
 
-                <div className="col2 garBox box3">
+
+                <div className="garBox box3">
+
+      
+
                   {this.state.garmentsList.map(garment => (
                     <Garment
                       key={garment._id}
@@ -242,7 +252,7 @@ console.log("getGarments")
                   ))}
                 </div>
 
-                <div className="col8">
+                <div className="combo heightLimit">
                   <img ref="mask" src={this.state.garmentPic} className="garment" width={400} height={600} />
                   
                   <canvas ref="canvas" className="fabric" width={400} height={600} />
@@ -251,7 +261,7 @@ console.log("getGarments")
                 </div>
                   
               </div>
-            </div>              
+            
          
         
              
