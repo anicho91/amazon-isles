@@ -93,14 +93,14 @@ h1 {
 
 .stickyNav {
   background: linear-gradient(#2a3240, #0c0e12, #55637f);
-  font-family: 'Cinzel';
-  height: 30%;
-margin-bottom: 20px;
-font-size: 30px; }
+  font-family: 'Cinzel', serif;
+  /* height: 65px; */
+  z-index: 999
+}
 
 .navtext {
   font-family: 'Cinzel', serif;
-  font-size:30px
+  font-size:20px
 }
 
 .navbutton {
@@ -109,7 +109,9 @@ color: #ffffff
 }
 
 .homeplaceholder {
-  /* display: flex; */}
+
+  /* display: flex; */
+}
   
   
   .FabWidgetplaceholder {
@@ -152,7 +154,7 @@ color: #ffffff
   margin-left: -20px;
   margin-right: -10px;
   margin-bottom: -60px;
-  height: 320px;
+  height: 80px;
   /* margin: 0 auto; */
   padding: 0;
   z-index: 1;

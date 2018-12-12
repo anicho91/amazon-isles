@@ -12,7 +12,7 @@ const Order = (props) => (
                 <Row key={order._id} className="mb-5">
 
                     <Col xs="12" md="4">
-                        <p>Fablic Name: {order.fabric.fabric_name}</p>
+                        <p>Fabric Name: {order.fabric.fabric_name}</p>
                         <img src={order.fabric.fabric_pic} className="img-fluid" alt="Responsive image" />
                     </Col>
                     <Col xs="12" md="4">
