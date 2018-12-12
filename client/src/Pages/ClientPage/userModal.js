@@ -17,24 +17,28 @@ import {
 class UserModal extends React.Component {
 
     state = {
-        token: localStorage.getItem('token'),
+        clientID: "5c1089b2307461050dfed0dd",
         modal: false,
         userId: "",
-        token: "",
         phone: "",
         street: "",
         city: "",
         state: "",
         country: "",
-        job_category: "",
-        availability: true,
+        measurement: {},
         budget: "",
-        category: "",
-        demoInput: "",
         profile_picture: "",
-        demoList: [],
         orderArray: [],
-        orderList: []
+        orderList: [],
+        bust:0,
+        hips: 0,
+        waist: 0,
+        hips: 0,
+        knee_length: 0,
+        leg_length: 0,
+        bp_length: 0,
+        back_length: 0,
+        arm_length: 0
     }
 
     //Close&Open Modal
@@ -44,49 +48,34 @@ class UserModal extends React.Component {
         });
     }
 
-    //Update demo list
-    changeDemoList = (event) => {
-        const demoList = this.state.demoList;
-        const demoIdx = event.target.id;
+    // //Update demo list
+    // changeDemoList = (event) => {
+    //     const demoList = this.state.demoList;
+    //     const demoIdx = event.target.id;
 
-        demoList[demoIdx] = event.target.value;
+    //     demoList[demoIdx] = event.target.value;
 
-        this.setState({ demoList: demoList });
-    }
+    //     this.setState({ demoList: demoList });
+    // }
 
-    //Add deno input
-    addDemo = (event) => {
+    // //Add deno input
+    // addDemo = (event) => {
 
-        event.preventDefault();
+    //     event.preventDefault();
 
-        const demoList = this.state.demoList;
-        demoList.push("");
+    //     const demoList = this.state.demoList;
+    //     demoList.push("");
 
-        this.setState({ demoList: demoList });
-    }
+    //     this.setState({ demoList: demoList });
+    // }
 
 
     //Get the input value
     changeHandler = (event) => {
 
-        if (event.target.name === "availability" && event.target.value === "true") {
-
-            this.setState({
-                [event.target.name]: true
-            });
-        }
-        else if (event.target.name === "availability" && event.target.value === "false") {
-            this.setState({
-                [event.target.name]: false
-            });
-        }
-        else {
-            this.setState({
-                [event.target.name]: event.target.value
-            });
-        }
-
-
+        this.setState({
+            [event.target.name]: event.target.value
+        });
     }
 
     clickHandler = (event) => {
@@ -95,29 +84,34 @@ class UserModal extends React.Component {
 
         const newUser = {
             userId: this.state.userId,
-            token: this.state.token,
             phone: this.state.phone,
             street: this.state.street,
             city: this.state.city,
             state: this.state.state,
             country: this.state.country,
-            category: this.state.category,
             profile_picture: this.state.profile_picture
         };
 
-        const newProvider = {
-            budget: this.state.budget,
-            job_category: this.state.job_category,
-            availability: this.state.availability,
-            demo: this.state.demoList
+        const newClient = {
+            measurement: {
+                bust: this.state.bust,
+                hips: this.state.hips,
+                waist: this.state.waist,
+                hips: this.state.hips,
+                knee_length: this.state.knee_length,
+                leg_length: this.state.leg_length,
+                bp_length: this.state.bp_length,
+                back_length: this.state.back_length,
+                arm_length: this.state.arm_length
+            }
         };
 
-        $.put(`/api/users/${this.state.token}`, newUser)
+        $.put(`/api/users/${this.state.clientID}`, newUser)
             .then((updatedData) => {
-                $.put(`/api/providers/${this.state.token}`, newProvider)
-                    .then((updatedProvider) => {
+                $.put(`/api/clients/${this.state.clientID}`, newClient)
+                    .then((updatedClient) => {
                         this.toggle();
-                        this.props.getProvider();
+                        this.props.getClient();
                     })
                     .catch((error) => {
                         console.log(error);
@@ -131,25 +125,27 @@ class UserModal extends React.Component {
 
     }
 
-    getProvider = () => {
-        $.get(`/api/users/${this.state.token}`)
+    getClient = () => {
+        $.get(`/api/users/${this.state.clientID}`)
             .then((result) => {
                 this.setState({
                     orderArray: result.data.orders,
                     userId: result.data.userId,
-                    token: result.data.token,
                     phone: result.data.phone,
                     street: result.data.street,
                     city: result.data.city,
                     state: result.data.state,
                     country: result.data.country,
-                    job_category: result.data.job_category,
-                    budget: result.data.budget,
-                    availability: result.data.availability,
-                    category: result.data.category,
                     profile_picture: result.data.profile_picture,
-                    demoList: result.data.demo,
-                    isUserUpdate: false
+                    bust: result.data.measurement.bust,
+                    hips: result.data.measurement.hips,
+                    waist: result.data.measurement.waist,
+                    hips: result.data.measurement.hips,
+                    knee_length: result.data.measurement.knee_length,
+                    leg_length: result.data.measurement.leg_length,
+                    bp_length: result.data.measurement.bp_length,
+                    back_length: result.data.measurement.back_length,
+                    arm_length: result.data.measurement.arm_length
                 });
             })
             .catch(function (error) {
@@ -159,7 +155,7 @@ class UserModal extends React.Component {
 
     //Execute this when the mount is done.
     componentDidMount() {
-        this.getProvider();
+        this.getClient();
     }
 
     render() {
@@ -194,27 +190,30 @@ class UserModal extends React.Component {
                                         <Label for="country">Country</Label><br />
                                         <Input type="text" onChange={this.changeHandler} name="country" id="country" value={this.state.country} placeholder="Please type your new country" />
                                         <br />
-                                        <Label for="job_category">Job Category</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="job_category" id="job_category" value={this.state.job_category} placeholder="Please type your new category" />
+                                        <Label>Measurement</Label><br />
+                                        <Label for="bust">Bust</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="bust" id="bust" value={this.state.bust} placeholder="Please type your bust size" />
                                         <br />
-                                        <Label for="budget">Will Work For($)</Label><br />
-                                        <Input type="text" onChange={this.changeHandler} name="budget" id="budget" value={this.state.budget} placeholder="Please type your new will work money." />
+                                        <Label for="waist">Weist</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="waist" id="waist" value={this.state.waist} placeholder="Please type your weist" />
                                         <br />
-                                        <Label for="availability">Availability</Label><br />
-                                        <Input type="select" onChange={this.changeHandler} name="availability" id="availability" placeholder="Please change your availability">
-                                            <option value={this.state.availability}>Please select the availability</option>
-                                            <option value="true">Yes</option>
-                                            <option value="false">No</option>
-                                        </Input>
+                                        <Label for="hips">Hips</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="hips" id="hips" value={this.state.hips} placeholder="Please type your hips measurment." />
                                         <br />
-                                        <Label for="demoList">Demo List</Label><br />
-                                        {!this.state.demoList
-                                            ? <Input type="text" onChange={this.changeDemoList} name="demoInput0" id={0} value="" placeholder="Please enter the URL for demo" />
-                                            : this.state.demoList.map((demo, i) => {
-                                                const inputName = `demoInput${i}`
-                                                return <Input type="text" onChange={this.changeDemoList} name={inputName} id={i} key={i} value={demo} placeholder="Please enter the URL for demo" />
-                                            })}
-                                        <Button onClick={this.addDemo}>Add</Button>
+                                        <Label for="knee_length">Knee Length</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="knee_length" id="knee_length" value={this.state.knee_length} placeholder="Please type your Knee Length." />
+                                        <br />
+                                        <Label for="leg_length">Leg Length</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="leg_length" id="leg_length" value={this.state.leg_length} placeholder="Please type your leg length." />
+                                        <br />
+                                        <Label for="bp_length">BP Length</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="bp_length" id="bp_length" value={this.state.bp_length} placeholder="Please type your BP Length." />
+                                        <br />
+                                        <Label for="back_length">Back Length</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="back_length" id="back_length" value={this.state.back_length} placeholder="Please type your Back Length." />
+                                        <br />
+                                        <Label for="arm_length">Arm Length</Label><br />
+                                        <Input type="text" onChange={this.changeHandler} name="arm_length" id="arm_length" value={this.state.arm_length} placeholder="Please type your Arm Length." />
                                         <br />
                                     </Form>
                                 </Col>
