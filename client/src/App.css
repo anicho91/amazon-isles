@@ -4,13 +4,18 @@ HEX AAC6FF RGB 170 198 255  LINKS lightest color blue
 HEX 99B2E5 RGB 153 178 229        2nd lightest color blue
 HEX 55637F RGB 85 99 127          Medium blue
 HEX 2A3240 RGB 42 50 64     HEADER/FOOTER
-HEX OCOE12 RGB 12 14 18     Darkest blue /looks black */
+HEX 0C0E12 RGB 12 14 18     Darkest blue /looks black */
 
 @import url("https://fonts.googleapis.com/css?family=Viga");
 
 .mainBody{
   margin-top: 75px;
-  overflow-x: hidden
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.cardboxs {
+  margin-bottom: 50px;
 }
 
 .card {
@@ -19,7 +24,7 @@ HEX OCOE12 RGB 12 14 18     Darkest blue /looks black */
 
   height: 100%;
   width: 95%;
-  float: left;
+  
   margin-bottom: 40px;
 }
 
@@ -77,7 +82,7 @@ h1 {
 
 .subtitle {
   float: left;
-  font-size: 20px;
+  font-size: 40px;
   font-family: "Viga", sans-serif;
   font-style: italic;
   font-weight: -20;
@@ -88,13 +93,14 @@ h1 {
 
 .stickyNav {
   background: linear-gradient(#2a3240, #0c0e12, #55637f);
-  font-family: 'Cinzel', serif;
-  height: 65px
-}
+  font-family: 'Cinzel';
+  height: 30%;
+margin-bottom: 20px;
+font-size: 30px; }
 
 .navtext {
   font-family: 'Cinzel', serif;
-  font-size:17px
+  font-size:30px
 }
 
 .navbutton {
@@ -103,11 +109,16 @@ color: #ffffff
 }
 
 .homeplaceholder {
-  height: 80px;
-  max-width: 100%;
-  margin: 0px;
-  padding: 20px;
-}
+  /* display: flex; */}
+  
+  
+  .FabWidgetplaceholder {
+    display: flex;
+    flex-wrap: wrap;
+    align-content:stretch;
+    max-width: 100%;
+    max-height: 100%; 
+  }
 
 .midpagebanner {
   text-align: center;
@@ -141,7 +152,7 @@ color: #ffffff
   margin-left: -20px;
   margin-right: -10px;
   margin-bottom: -60px;
-  height: 80px;
+  height: 320px;
   /* margin: 0 auto; */
   padding: 0;
   z-index: 1;
@@ -150,6 +161,7 @@ color: #ffffff
 }
 .Carousel {
   margin-top: 30%;
+  
 }
 /*=== Basic box styling  ===*/
 .box {
@@ -370,7 +382,7 @@ color: #ffffff
   float: left;
 }
 
-.Carousel {
+/* .Carousel {
   margin-left: 0;
   margin-top: 40%;
   margin-bottom: 40%;
@@ -379,7 +391,7 @@ color: #ffffff
   height: 265px;
   float: left;
   background-color: red;
-}
+} */
 
 .slide {
   margin: 20px;

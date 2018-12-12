@@ -4,8 +4,53 @@ const Garment = require('../models/Garment');
 const Fabric = require('../models/Fabric');
 const User = require('../models/User');
 const Order = require('../models/Order');
+const Test = require('../models/Test');
 
 module.exports = function (app) {
+    
+    //For test
+    app.post("/api/session", function(req, res) {
+        Test.findOne({token: req.body.token})
+        .then(function(data) {
+            res.json(data);
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
+    });
+
+    
+    app.post("/api/test", function (req, res) {
+        Test.create(req.body)
+            .then(function (dbTest) {
+                res.json({ Created: dbTest });
+            })
+            .catch(function (error) {
+                console.log(error);
+                res.json({ Error: error });
+            });
+
+    });
+
+    app.get('/api/test', function (req, res) {
+        Test.find({})
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
+    app.delete('/api/test/:token', function (req, res) {
+        Test.findOneAndDelete({ token: req.params.token })
+            .then(function (userData) {
+                res.json(userData);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
 
     //For creating a new user
     app.post("/api/users", function (req, res) {
