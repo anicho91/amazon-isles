@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import BodMeas from '../../components/Fashion/BodyMeasurements';
 import FabWidget from '../../components/Fashion/FashionWidget';
-import StyleHeader from "../../components/Style/styleheader";
+import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
 
 // import * as $ from 'axios';
@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div>
 
-          <StyleHeader />
+          <StyleHeader2 />
 
         <div className="fashionrow">
         
