@@ -9,13 +9,13 @@
 
   .placeholder {
     padding: 130px; 
-    margin-top: 120px; 
+    margin-top: 220px; 
     margin-right: 30px; 
     margin-left: 30px; 
 text-align: center; 
 border: solid; 
 border-radius: 45px;
-background: grey;  
+  
   }
   
   .video-background {
