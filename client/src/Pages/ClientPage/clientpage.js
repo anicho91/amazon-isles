@@ -20,11 +20,7 @@ class Clientpage extends Component {
     user: null,
     flag: true,
     token: '',
-<<<<<<< HEAD
-    name: 'Lily',
-=======
     name: '',
->>>>>>> 53c6d92e6d438f5e03ac04825ef1cd04e7b6554a
     modal: false,
     phone: "",
     street: "",
