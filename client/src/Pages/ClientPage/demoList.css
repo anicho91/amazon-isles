@@ -1,0 +1,16 @@
+.demoList-slides {
+    z-index: 1;
+    margin: 0;
+    opacity: 1;
+    width:510px;
+    height:300px;
+    margin: auto;
+      
+}
+
+@media (max-width: 510px) {
+    .demoList-slides {
+      width:auto;
+      height:auto;
+    }
+}

@@ -3,7 +3,9 @@ import * as $ from 'axios';
 import Demo from './demo.js';
 import Order from './order.js';
 import UserModal from './userModal.js';
-import StyleHeader from '../../components/Style/styleheader';
+import { setSession, getIdToken, handleAuthentication, isAuthenticated } from '../../components/Auth/Auth';
+import jwt_decode from 'jwt-decode';
+import StyleHeader2 from '../../components/Style/styleheader2';
 import StyleFooter from '../../components/Style/stylefooter';
 import {
     Container,
@@ -25,7 +27,8 @@ class Providerpage extends Component {
 
     state = {
 
-        providerID: "5c0ace5fcada870b794956e6",
+        token: "",
+        name:"",
         providerInfo: {},
         demoList: [],
         orderArray: [],
@@ -51,9 +54,21 @@ class Providerpage extends Component {
 
     }
 
+    initiateSession = () => {
+        let idToken = getIdToken();
+        let info = jwt_decode(idToken);
+        console.log('I am info', info)
+        localStorage.setItem("token", info.sub);
+        localStorage.setItem("name", info.given_name);
+        this.setState({
+          token: info.sub,
+          name: info.given_name
+        })
+      }
+
     //Get the particular provider information
     getProvider = () => {
-        $.get(`/api/users/${this.state.providerID}`)
+        $.get(`/api/users/${this.state.token}`)
             .then((result) => {
                 this.setState({ orderArray: result.data.orders });
                 this.setState({ providerInfo: result.data });
@@ -69,13 +84,53 @@ class Providerpage extends Component {
 
 
     componentDidMount() {
-        this.getProvider();
+        if (getIdToken()) {
+            this.initiateSession();
+          } else {
+            setSession();
+            this.initiateSession();
+          }
+      
+          this.setState({
+            token: localStorage.getItem('token'),
+            name: localStorage.getItem('name')
+          });
+      
+      
+          console.log("auth_stuff", localStorage.getItem("token"));
+          $.post('/api/session', {
+            token: localStorage.getItem('token')
+          }).then((response) => {
+            console.log('sucess');
+            console.log('session data', response);
+            console.log("local storage", localStorage.getItem('token'));
+      
+            const flag = false;
+            const sessionData = response.data;
+            console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
+            if (sessionData === null) {
+              $.post('/api/users', {
+                token: this.state.token,
+                userId: this.state.name,
+                category: "provider"
+              }).then((response) => {
+                console.log("users", response);
+                this.getProvider();
+                
+              })
+            }
+            else {
+                this.getProvider();
+            }
+          });
+      
+        
     }
 
     render() {
         return (
             <div>
-                <StyleHeader />
+                <StyleHeader2 />
                 <Container>
                     <Row className="mt-5">
                         <Col xs="12" md="6">
@@ -87,7 +142,6 @@ class Providerpage extends Component {
                                             <CardTitle>Provider: {this.state.providerInfo.userId}</CardTitle>
                                             <CardSubtitle>Category: {this.state.providerInfo.job_category}</CardSubtitle> <br />
                                             <CardText>
-                                                Password: XXXXXXXXXX <br />
                                                 Phone: {this.state.providerInfo.phone} <br />
                                                 Street Address: {this.state.providerInfo.street} <br />
                                                 City: {this.state.providerInfo.city} <br />
@@ -118,7 +172,9 @@ class Providerpage extends Component {
                             </Row>
                             <Row className="mt-5 mb-5">
                                 <Col xs="12">
-                                    <Demo demoList={this.state.demoList} />
+                                    { this.state.demoList ?
+                                    <Demo demoList={this.state.demoList} /> : <p>No Demo Information</p>
+                                    }
                                 </Col>
                             </Row>
                         </Col>
