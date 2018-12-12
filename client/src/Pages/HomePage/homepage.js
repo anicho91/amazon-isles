@@ -9,7 +9,7 @@ import FabWidget from '../../components/Fashion/FashionWidget';
 import StyleHeader from '../../components/Style/styleheader'
 import StyleFooter from '../../components/Style/stylefooter'
 import OtherServices from './OtherServices'
-import Slider1 from './Slider1'
+import Slider from '../HomePage/Slider'
 
 class Homepage extends Component {
     click = () => {
@@ -31,7 +31,7 @@ class Homepage extends Component {
               
 
 <h2 className='animated fadeInLeftBig'><i className='fadeInUp' >HELLO</i></h2>
-              <Slider1></Slider1>         
+              <Slider />         
                 
                 <div className="FabWidgetplaceholder">
                 <FabWidget/>

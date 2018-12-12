@@ -68,9 +68,7 @@ class FabWidget extends Component {
     console.log("fabricLinkclick", fabricLinkclick);
 
     this.setState({
-      [fieldName]: e.target.src
-    });
-    this.setState({
+      [fieldName]: e.target.src, 
       newFabric: newFabricId
     });
     this.setState({
@@ -265,7 +263,7 @@ class FabWidget extends Component {
 
 
     )
-  }
-}
+  };
+};
 
 export default FabWidget;

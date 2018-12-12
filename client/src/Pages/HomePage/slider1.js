@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './slider1.css'
 import { Container, Jumbotron, Row, Col, Fa, NavLink, Nav, Footer } from "mdbreact"
 
-class Slider1 extends Component {
+class Slider extends Component {
 
 
     render() {
@@ -24,4 +24,4 @@ class Slider1 extends Component {
 }
 
 
-export default Slider1;
+export default Slider;
