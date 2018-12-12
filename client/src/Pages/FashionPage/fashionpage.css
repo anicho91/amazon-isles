@@ -6,8 +6,8 @@
   border-width: 5px; 
   height: 600px;
   background-color: white;
+  
 }
-
 
 .measTitle{
   margin: auto;
@@ -72,7 +72,11 @@
 }
 
 .garmThumb {
- 
+  
+}
+
+.col8 {
+  height: 600px;
 }
 
 .fabBox {  

@@ -8,7 +8,7 @@ import './App.css';
 import Canvas from './components/Canvas'
 import Providerpage from './Pages/ProviderPage/providerpage'
 import Searchpage from './Pages/SearchPage/searchpage'
-
+import OtherServices from './Pages/HomePage/OtherServices'
 
 
 const App = () => (
@@ -20,6 +20,8 @@ const App = () => (
         <Route exact path='/provider' component={Providerpage} />
         <Route exact path='/fashion' component={Fashionpage} /> 
         <Route exact path='/search' component={Searchpage} />
+        <Route exact path='/OtherServices' component={OtherServices} />
+         <Route exact path='/provider' component={Providerpage} />
       </Switch>
   </BrowserRouter>
 
