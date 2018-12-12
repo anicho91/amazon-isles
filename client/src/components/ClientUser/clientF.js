@@ -88,7 +88,7 @@ const ClientForm = props => (
       <Input
         type="text"
         onChange={props.handleChange}
-        name="bust"
+        name="measurement.bust"
         id="bust"
         value={props.bust}
         placeholder="Please type your new bust measurement"
@@ -99,7 +99,7 @@ const ClientForm = props => (
       <Input
         type="text"
         onChange={props.handleChange}
-        name="waist"
+        name="measurement.waist"
         id="waist"
         value={props.waist}
         placeholder="Please type your new waist measurement"
@@ -110,7 +110,7 @@ const ClientForm = props => (
       <Input
         type="text"
         onChange={props.handleChange}
-        name="hips"
+        name="measurement.hips"
         id="hips"
         value={props.hips}
         placeholder="Please type your new hip measurement"
@@ -121,7 +121,7 @@ const ClientForm = props => (
       <Input
         type="text"
         onChange={props.handleChange}
-        name="knee_length"
+        name="measurement.knee_length"
         id="knee_length"
         value={props.klength}
         placeholder="Please type your new knee_length measurement"
@@ -132,7 +132,7 @@ const ClientForm = props => (
       <Input
         type="text"
         onChange={props.handleChange}
-        name="leg_length"
+        name="measurement.leg_length"
         id="leg_length"
         value={props.llength}
         placeholder="Please type your new leg_length measurement"
@@ -143,7 +143,7 @@ const ClientForm = props => (
       <Input
         type="text"
         onChange={props.handleChange}
-        name="bp_length"
+        name="measurement.bp_length"
         id="bp_length"
         value={props.bplength}
         placeholder="Please type your new bp_length measurement"
@@ -154,7 +154,7 @@ const ClientForm = props => (
       <Input
         type="text"
         onChange={props.handleChange}
-        name="back_length"
+        name="measurement.back_length"
         id="back_length"
         value={props.blength}
         placeholder="Please type your new back_length measurement"
@@ -165,7 +165,7 @@ const ClientForm = props => (
       <Input
         type="text"
         onChange={props.handleChange}
-        name="arm_length"
+        name="measurement.arm_length"
         id="arm_length"
         value={props.alength}
         placeholder="Please type your new arm_length measurement"
