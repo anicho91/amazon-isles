@@ -33,14 +33,7 @@ render() {
             <NavbarNav right>
               <NavItem className="navtext">
                   <NavLink to={`/`}>Home</NavLink>
-              </NavItem>
-              <NavItem className="navtext">
-                  <NavLink to={`/client`}>Profile</NavLink>
-              </NavItem>
-              <NavItem className="navtext">
-                  <NavLink to={`/fashion`}>Design</NavLink>
-              </NavItem>
-              
+              </NavItem>              
 
               <Button className="navbutton" onClick={login0}>Client Login</Button>
               <Button className="navbutton" onClick={login1}>Provider Login</Button>  
