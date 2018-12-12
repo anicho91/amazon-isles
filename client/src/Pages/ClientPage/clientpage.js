@@ -104,11 +104,12 @@ class Clientpage extends Component {
       const sessionData = response.data;
       console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
       if (sessionData === null) {
-        $.post('/api/test', {
-          token: localStorage.getItem('token'),
+        $.post('/api/users', {
+          token: this.state.token,
+          userId: this.state.name,
           category: "client"
         }).then((response) => {
-          console.log(response);
+          console.log("users", response);
           // this.getTest();
         })
       }
