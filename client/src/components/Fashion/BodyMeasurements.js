@@ -77,7 +77,7 @@ console.log("this.state.measureList", this.state.measureList);
     return (
                         
 
-            <div className="col4">
+            <div className="col4 sticky">
               <div className="row">
 
                 <div className="col6">
