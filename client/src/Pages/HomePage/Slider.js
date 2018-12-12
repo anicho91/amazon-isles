@@ -9,8 +9,10 @@ class Slider extends Component {
     render() {
         return (
             <div>
-                <Jumbotron className='placeholder'>
-                    <h2 className='animated fadeInUp delay-5s  z-depth-5'><i> MADE TO MEASURE: BECAUSE YOU ARE UNIQUE AND YOUR CLOTHES SHOULD BE TOO.</i></h2><br></br>
+                <Jumbotron className='slider z-depth-5'>
+                    <h2 className='fadeInUp delay-5s '><i> 
+                        MADE TO MEASURE: BECAUSE YOU ARE UNIQUE AND YOUR CLOTHES SHOULD BE TOO.</i></h2>
+                        <br></br>
                     <h3><b>  "NOT A LOOSE FIT, NOT A TIGHT FIT, IT'S YOUR FIT" </b></h3>
                 </Jumbotron>
 

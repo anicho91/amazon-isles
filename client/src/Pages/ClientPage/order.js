@@ -5,14 +5,14 @@ import { Row, Col, Container } from 'reactstrap';
 
 const Order = (props) => (
         <Container>
-            <h1>My Accepted Order</h1>
+            <h1>My Order</h1>
             <h3>Please contact us for cancelling the order to complete</h3>
             {props.orderList.map(order => (
 
                 <Row key={order._id} className="mb-5">
 
                     <Col xs="12" md="4">
-                        <p>Fabric Name: {order.fabric.fabric_name}</p>
+                        <p>Fablic Name: {order.fabric.fabric_name}</p>
                         <img src={order.fabric.fabric_pic} className="img-fluid" alt="Responsive image" />
                     </Col>
                     <Col xs="12" md="4">

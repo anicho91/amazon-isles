@@ -173,9 +173,9 @@
   box-sizing: border-box;
 
   /* For Testing*/
-  border-style: solid;
+  /* border-style: solid;
   border-color: red;
-  border-width: 1px;
+  border-width: 1px; */
 
 }
 .testBdrGrn {
@@ -227,6 +227,9 @@
   flex-wrap: wrap
 }
 
+.fabpicB {
+  border: 100px 100px 100px 100px;
+}
 
 [class*="col"] {
   /* float: left; */
