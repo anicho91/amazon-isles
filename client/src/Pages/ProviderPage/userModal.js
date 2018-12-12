@@ -145,7 +145,7 @@ class UserModal extends React.Component {
                     availability: result.data.availability,
                     category: result.data.category,
                     profile_picture: result.data.profile_picture,
-                    demoList: result.data.demo,
+                    demoList: result.data.demo || [],
                     isUserUpdate: false
                 });
             })
