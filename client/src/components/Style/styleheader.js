@@ -40,9 +40,6 @@ render() {
               <NavItem className="navtext">
                   <NavLink to={`/fashion`}>Design</NavLink>
               </NavItem>
-              <NavItem className="navtext">
-                  <NavLink to={`/search`}>Search</NavLink>
-              </NavItem>
 
               <Button className="navbutton" onClick={login0}>Client Login</Button>
               <Button className="navbutton" onClick={login1}>Provider Login</Button>  
