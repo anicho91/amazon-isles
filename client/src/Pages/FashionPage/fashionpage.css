@@ -219,9 +219,12 @@
 .row::after {
   content: "";
   clear: both;
-  display: table;
+  display: inline;
 }
 
+.fabpicB {
+  border: 100px 100px 100px 100px;
+}
 
 [class*="col"] {
   float: left;

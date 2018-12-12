@@ -10,6 +10,7 @@ import StyleFooter from "../../components/Style/stylefooter";
 import { setSession, getIdToken, handleAuthentication, isAuthenticated } from '../../components/Auth/Auth';
 import jwt_decode from 'jwt-decode';
 import { isNull } from "util";
+import ClientModal from "./clientModal";
 
 class Clientpage extends Component {
   state = {
@@ -28,15 +29,16 @@ class Clientpage extends Component {
     state: "",
     country: "",
     profile_picture: "",
-    bust: '',
-    waist: '',
-    hips: '',
-    knee_length: '',
-    leg_length: '',
-    bp_length: '',
-    back_length: '',
-    arm_length: '',
-    orderArray: []
+    bust: 0,
+    waist: 0,
+    hips: 0,
+    knee_length: 0,
+    leg_length: 0,
+    bp_length: 0,
+    back_length: 0,
+    arm_length: 0,
+    orders: [],
+    orderList: []
   };
 
   toggle = () => {
@@ -44,59 +46,19 @@ class Clientpage extends Component {
       modal: !this.state.modal
     });
   }
-  //   clickHandler = (event) => {
-
-  //     event.preventDefault();
-
-  //     const newUser = {
-  //         phone: this.state.phone,
-  //         street: this.state.street,
-  //         city: this.state.city,
-  //         state: this.state.state,
-  //         country: this.state.country,
-  //         profile_picture: this.state.profile_picture
-  //     };
-
-  //     const newClient = {
-  //         budget: this.state.budget,
-  //         job_category: this.state.job_category,
-  //         availability: this.state.availability,
-  //         demo: this.state.demoList
-  //     };
-
-  //     $.put(`/api/users/${this.state.providerID}`, newUser)
-  //         .then((updatedData) => {
-  //             $.put(`/api/providers/${this.state.providerID}`, newProvider)
-  //                 .then((updatedProvider) => {
-  //                     this.toggle();
-  //                     this.props.getProvider();
-  //                 })
-  //                 .catch((error) => {
-  //                     console.log(error);
-  //                 })
-
-  //         })
-  //         .catch((error) => {
-  //             console.log(error);
-  //         });
-
-
-  // }
 
   getUser = event => {
     $.get(`api/users/5c0e89c9f571a32c2022fddb`).then(results => {
-      // console.log(results);
+      
       this.setState({ user: results.data });
+      this.setState({ orders: results.data.orders })
     });
-  };
+  }
 
-  getTest = event => {
-    $.get(`/api/test/${this.state.token}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
+  getOrder = event => {
+    $.get(`/api/orders/5c0ec3efbb109e4a103a2009`)
+      .then(results => {
+        this.setState({ orderList: results.data})
       })
   }
 
@@ -113,7 +75,8 @@ class Clientpage extends Component {
   }
 
   componentDidMount() {
-    // this.getUser();
+    this.getUser();
+    this.getOrder()
     //let token = "";
 
     if (getIdToken()) {
@@ -127,13 +90,13 @@ class Clientpage extends Component {
       token: localStorage.getItem('token'),
       name: localStorage.getItem('name')
     });
-
+  
 
     console.log("auth_stuff", localStorage.getItem("token"));
     $.post('/api/session', {
       token: localStorage.getItem('token')
     }).then((response) => {
-      console.log('sucess');
+      console.log('success');
       console.log('session data', response);
       console.log("local storage", localStorage.getItem('token'));
 
@@ -151,7 +114,7 @@ class Clientpage extends Component {
         })
       }
     });
-
+  }
 
 
     // $.post('/api/test', {
@@ -162,7 +125,7 @@ class Clientpage extends Component {
 
     //   } )
 
-  }
+  // }
 
 
   render() {
@@ -176,8 +139,10 @@ class Clientpage extends Component {
             {this.state.user && (
               <Pic image={this.state.user.profile_picture} />
             )}
+            
           </div>
           <div className="userInfo">
+          <div className="addressinfo">
             <div className="infoTitle">Address</div>
             <div className="userDBinfo">
               {this.state.user && (
@@ -190,8 +155,10 @@ class Clientpage extends Component {
                   country={this.state.user.country}
                 />
               )}
+              
             </div>
-            <br />
+            </div>
+            
             <div className="measurements">
               <span className="measTitle">Measurements</span>
               <br />
@@ -209,14 +176,27 @@ class Clientpage extends Component {
                     alength={this.state.user.measurement.arm_length}
                   />
                 )}
+                
+                <ClientModal 
+                  getClient={this.getUser}
+                />
               </div>
             </div>
             <div className='orders'>
-              {this.state.user && (
-                <Orders
+              <br/><h4 className='orderTitle'>My Orders</h4>
+              {this.state.orderList.map((data => (
+                
 
+                <Orders 
+                  key={data._id}
+                  id={data._id}
+                  fname={data.fabric.fabric_name}
+                  fpic={data.fabric.fabric_pic}
+                  gname={data.garment.garment_name}
+                  gpic={data.garment.garment_pic}
                 />
-              )}
+              )))}
+            
             </div>
           </div>
         </div>
