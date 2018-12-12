@@ -94,7 +94,8 @@ h1 {
 .stickyNav {
   background: linear-gradient(#2a3240, #0c0e12, #55637f);
   font-family: 'Cinzel', serif;
-  height: 65px
+  /* height: 65px; */
+  z-index: 999
 }
 
 .navtext {

@@ -9,7 +9,6 @@ const Measurements = (props) => (
         <strong>Bust to Shoulder:</strong> {props.bplength} inches<br/>
         <strong>Back Length:</strong> {props.blength} inches<br/>
         <strong>Arm Length:</strong> {props.alength} inches<br/>
-        <button value={props.id} onClick={props.onUpdate2} className='updatebtn'>Update</button>
     </div>
 )
 

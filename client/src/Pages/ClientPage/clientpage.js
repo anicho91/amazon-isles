@@ -17,9 +17,8 @@ class Clientpage extends Component {
       imagesrc: ''
     },
     user: null,
-
     flag: true,
-    token: ''
+    token: '',
     name: 'Lily',
     modal: false,
     phone: "",
@@ -36,14 +35,15 @@ class Clientpage extends Component {
     bp_length: '',
     back_length: '',
     arm_length: '',
-    orderArray: []
+    orders: [],
+    orderList: []
   };
 
   toggle = () => {
     this.setState({
         modal: !this.state.modal
     });
-}
+    }
 //   clickHandler = (event) => {
 
 //     event.preventDefault();
@@ -87,55 +87,68 @@ class Clientpage extends Component {
     $.get(`api/users/5c0e89c9f571a32c2022fddb`).then(results => {
       // console.log(results);
       this.setState({ user: results.data });
+      this.setState({ orders: results.data.orders })
     });
-  };
+  }
 
-  getTest = event => {
-    $.get(`/api/test/${this.state.token}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
+  getOrder = event => {
+    $.get(`/api/orders/5c0ec3efbb109e4a103a2009`)
+      .then(results => {
+        this.setState({ orderList: results.data})
       })
   }
 
-  async componentDidMount() {
-    // this.getUser();
-    //let token = "";
-    if (getIdToken()) {
-      let idToken = await getIdToken();
-      let info = await jwt_decode(idToken);
-      this.setState({
-        token: info.sub,
-        name: info.given_name
-      })
-    } else {
-      handleAuthentication();
-    }
-    $.post('/api/session', {
-      token: this.state.token
-    }).then((response) => {
-      console.log('sucess');
-      console.log('session data', response);
-      const flag = false;
-      const sessionData = response.data;
-      sessionData.map((sData) => {
-        if (sData.token == this.state.token) {
-          this.setState({ flag: false });
-        }
-      })
-      console.log('verify', localStorage.getItem('token'))
-      if (this.state.flag) {
-        $.post('/api/test', {
-          token: this.state.token,
-          category: "client"
-        }).then((response) => {
-          console.log(response);
-          this.getTest();
-        })
-      }
-    })
+  componentDidMount(){
+    this.getUser()
+    this.getOrder()
+  }
+
+  // getTest = event => {
+  //   $.get(`/api/test/${this.state.token}`)
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  // }
+
+  // async componentDidMount() {
+  //   // this.getUser();
+  //   //let token = "";
+  //   if (getIdToken()) {
+  //     let idToken = await getIdToken();
+  //     let info = await jwt_decode(idToken);
+  //     this.setState({
+  //       token: info.sub,
+  //       name: info.given_name
+  //     })
+  //   } else {
+  //     handleAuthentication();
+  //   }
+  //   $.post('/api/session', {
+  //     token: this.state.token
+  //   }).then((response) => {
+  //     console.log('sucess');
+  //     console.log('session data', response);
+  //     const flag = false;
+  //     const sessionData = response.data;
+  //     sessionData.map((sData) => {
+  //       if (sData.token == this.state.token) {
+  //         this.setState({ flag: false });
+  //       }
+  //     })
+  //     console.log('verify', localStorage.getItem('token'))
+  //     if (this.state.flag) {
+  //       $.post('/api/test', {
+  //         token: this.state.token,
+  //         category: "client"
+  //       }).then((response) => {
+  //         console.log(response);
+  //         this.getTest();
+  //       })
+  //     }
+  //   })
 
     // $.post('/api/test', {
     //   token: token,
@@ -145,7 +158,7 @@ class Clientpage extends Component {
 
     //   } )
 
-  }
+  // }
 
 
   render() {
@@ -159,8 +172,10 @@ class Clientpage extends Component {
             {this.state.user && (
               <Pic image={this.state.user.profile_picture} />
             )}
+            <button value={this.state.id} onClick={this.state.onUpdate3} className='updatebtn2'>Upload</button>
           </div>
           <div className="userInfo">
+          <div className="addressinfo">
             <div className="infoTitle">Address</div>
             <div className="userDBinfo">
               {this.state.user && (
@@ -173,6 +188,8 @@ class Clientpage extends Component {
                   country={this.state.user.country}
                 />
               )}
+              <button value={this.state.id} onClick={this.state.onUpdate} className='updatebtn'>Update</button>
+            </div>
             </div>
             <br />
             <div className="measurements">
@@ -192,14 +209,24 @@ class Clientpage extends Component {
                     alength={this.state.user.measurement.arm_length}
                   />
                 )}
+                <button value={this.state.id} onClick={this.state.onUpdate2} className='updatebtn'>Update</button>
               </div>
             </div>
             <div className='orders'>
-              {this.state.user && (
-                <Orders
+            
+              {this.state.orderList.map((data => (
+                console.log(data),
 
+                <Orders 
+                  key={data._id}
+                  id={data._id}
+                  fname={data.fabric.fabric_name}
+                  fpic={data.fabric.fabric_pic}
+                  gname={data.garment.garment_name}
+                  gpic={data.garment.garment_pic}
                 />
-              )}
+              )))}
+            
             </div>
           </div>
         </div>

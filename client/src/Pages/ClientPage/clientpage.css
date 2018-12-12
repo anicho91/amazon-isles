@@ -11,17 +11,22 @@
 
 .userDiv {
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 .userImage {
     float: left;
     margin-right: 20%;
     margin-left: 5%;
-    margin-bottom: 150px;
+    
 }
 
 .image {
     max-width: 350px;
+}
+
+.updatebtn2 {
+    margin-left: 5%;
 }
 
 .infoTitle {
@@ -33,6 +38,7 @@
     line-height: 2;
     font-weight: 400;
     color: #535353;
+    
 }
 
 .userInfo{
@@ -55,7 +61,7 @@
     color: #535353;
 }
 
-.updatebtn {
+.updatebtn, .updatebtn2 {
     font-size: 12px;
     color: #ffffff;
     border-color: transparent;
