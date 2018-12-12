@@ -66,7 +66,8 @@ export function handleAuthentication() {
         setSession();
         auth.client.userInfo(authResult, function(err,user){
             console.log(user)
-            localStorage.setItem('token', user.sub)
+            localStorage.setItem('token', user.sub);
+            localStorage.setItem('name', user.name);
         });
     });
 }

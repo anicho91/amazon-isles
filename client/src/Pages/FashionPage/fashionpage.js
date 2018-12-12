@@ -179,12 +179,15 @@ class App extends Component {
   render() {
     return (
       <div>
+        <div className="row">
         <StyleHeader />
+        </div>
         <div className="content">
           <div className="row">
-
+          
             <FabWidget/> 
-            <BodMeas/>                  
+            <BodMeas/>
+                             
 
           </div>
         </div>        
