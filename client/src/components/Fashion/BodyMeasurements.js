@@ -78,7 +78,7 @@ console.log("this.state.measureList", this.state.measureList);
                         
 
             
-              <div className="row">
+              <div>
 
                
                   <div className="measImg" >
