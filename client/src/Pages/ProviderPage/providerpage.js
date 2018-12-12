@@ -63,7 +63,7 @@ class Providerpage extends Component {
         localStorage.setItem("name", info.given_name);
         this.setState({
           token: info.sub,
-          name: info.given_name
+          name: info.nickname
         })
         console.error("I am the token in initiateSession",this.token)
     }
