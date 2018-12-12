@@ -77,36 +77,32 @@ console.log("this.state.measureList", this.state.measureList);
     return (
                         
 
-            <div className="col4 sticky">
+            
               <div className="row">
 
-                <div className="col6">
+               
                   <div className="measImg" >
                     <img src={'/assets/images/garments/bodyMeasurements1.gif'} height="600"></img>
-                  </div>
-                </div>
-
-                <div className="col6">
+                  </div>      
+               
                   <div className="meas">
                     <Measurements
-                      inputBust={this.state.newBust}
-                      inputWaist={this.state.newWaist}
-                      inputHip={this.state.newHip}
-                      inputKnee={this.state.newKnee}
-                      inputLeg={this.state.newLeg}
-                      inputBP={this.state.newBP}
-                      inputBack={this.state.newBack}
-                      inputArm={this.state.newArm}
+                      inputBust={this.state.measureList.bust}
+                      inputWaist={this.state.measureList.waist}
+                      inputHip={this.state.measureList.hips}
+                      inputKnee={this.state.measureList.knee_length}
+                      inputLeg={this.state.measureList.leg_length}
+                      inputBP={this.state.measureList.bp_length}
+                      inputBack={this.state.measureList.back_length}
+                      inputArm={this.state.measureList.arm_length}
 
                       changeHandler={this.handleChange}
                       clickUpdate={this.updateMeas}
                       heading='Body Measurements'
                     />
-                  </div>
-                </div>
-
+                  </div>     
+        
               </div>
-            </div>       
       
 
     );
