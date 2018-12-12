@@ -6,13 +6,12 @@ var UserSchema = new Schema({
     userId: {
         type: String,
         trim: true,
-        validate:[validator.isEmail, "invalid email"],
-        required: "Please type your user ID(email address)."
+        required: "Please check your userId"
     },
-    password: {
+    token: {
         type: String,
         trim: true,
-        required: "Please type your password."
+        required: "Please check token"
     },
     phone: {
         type: String,
