@@ -30,6 +30,7 @@ class Clientpage extends Component {
     state: "",
     country: "",
     profile_picture: "",
+    orderid: '',
     orders: [],
     orderList: []
   };
@@ -45,15 +46,28 @@ class Clientpage extends Component {
       
       this.setState({ user: results.data });
       this.setState({ orders: results.data.orders })
+      this.getOrder(this.state.orders);
     });
   }
 
-  getOrder = event => {
-    $.get(`/api/orders/5c113d1f38fcbd45a4085582`)
-      .then(results => {
-        this.setState({ orderList: results.data})
-      })
-  }
+   getOrder = (orders) => {
+
+        const orderItems = [];
+
+        orders.map((order) => {
+            $.get(`/api/orders/${order}`)
+                .then((orderData) => {
+                    orderItems.push(orderData.data[0]);
+                    this.setState({ orderList: orderItems });
+                    console.log(this.state.orderList)
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+        });
+
+    }
 
   initiateSession = () => {
     let idToken = getIdToken();
@@ -108,7 +122,7 @@ class Clientpage extends Component {
         })
       }
       this.getUser();
-      this.getOrder()
+      // this.getOrder()
     });
 
     
@@ -131,7 +145,7 @@ class Clientpage extends Component {
     return (
       <div>
         <StyleHeader2 />
-        <div className='welcome'>Welcome {this.state.name}!</div>
+        <div className='welcome'>Welcome Lily!</div>
         <div className="userDiv">
 
           <div className="userImage">
@@ -183,18 +197,13 @@ class Clientpage extends Component {
             </div>
             <div className='orders'>
               <br/><h4 className='orderTitle'>My Orders</h4>
-              {this.state.orderList.map((data => (
+              {/* {this.state.orderList.map((data => ( */}
                 
-
+        
                 <Orders 
-                  key={data._id}
-                  id={data._id}
-                  fname={data.fabric.fabric_name}
-                  fpic={data.fabric.fabric_pic}
-                  gname={data.garment.garment_name}
-                  gpic={data.garment.garment_pic}
+                  orderList={this.state.orderList}
                 />
-              )))}
+              {/* )))} */}
             
             </div>
           </div>

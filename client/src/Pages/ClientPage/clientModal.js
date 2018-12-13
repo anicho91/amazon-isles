@@ -20,21 +20,7 @@ class ClientModal extends React.Component {
     clientAuthID: localStorage.getItem('token'),
     clientID: '',
     user: null,
-    modal: false,
-    phone: "",
-    street: "",
-    city: "",
-    state: "",
-    country: "",
-    profile_picture: "",
-    bust: 0,
-    waist: 0,
-    hips: 0,
-    knee_length: 0,
-    leg_length: 0,
-    bp_length: 0,
-    back_length: 0,
-    arm_length: 0
+    modal: false
   };
 
   //Close&Open Modal
