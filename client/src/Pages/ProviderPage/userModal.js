@@ -128,7 +128,7 @@ class UserModal extends React.Component {
     }
 
     getProvider = () => {
-        $.get(`/api/users/${this.state.token}`)
+        $.get(`/api/users/${localStorage.getItem('token')}`)
             .then((result) => {
                 console.log(result)
                 this.setState({
