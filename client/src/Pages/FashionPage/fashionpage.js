@@ -21,6 +21,7 @@ class App extends Component {
   state = {
 
     clientID: "5c0dd73242d9c31a00e69e31",
+    providers: [],
     providerList:[]
   }
 
