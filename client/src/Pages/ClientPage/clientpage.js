@@ -145,7 +145,7 @@ class Clientpage extends Component {
     return (
       <div>
         <StyleHeader2 />
-        <div className='welcome'>Welcome Lily!</div>
+        <div className='welcome'>Welcome {this.state.name}</div>
         <div className="userDiv">
 
           <div className="userImage">
