@@ -59,7 +59,7 @@ class Clientpage extends Component {
                 .then((orderData) => {
                     orderItems.push(orderData.data[0]);
                     this.setState({ orderList: orderItems });
-                    console.log(this.state.orderList)
+                    
                 })
                 .catch((error) => {
                     console.log(error);
@@ -72,7 +72,7 @@ class Clientpage extends Component {
   initiateSession = () => {
     let idToken = getIdToken();
     let info = jwt_decode(idToken);
-    console.log('I am info', info)
+    
     localStorage.setItem("token", info.sub);
     localStorage.setItem("name", info.nickname);
     this.setState({
@@ -98,27 +98,22 @@ class Clientpage extends Component {
     });
     
 
-    console.log("auth_stuff", localStorage.getItem("token"));
+    
     $.post('/api/session', {
       token: localStorage.getItem('token')
       
     }).then((response) => {
-      console.log('success');
-      console.log('session data', response);
-      console.log("local storage", localStorage.getItem('token'));
       
-      console.log(this.state.token)
       const flag = false;
       const sessionData = response.data;
-      console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
+
       if (sessionData === null) {
         $.post('/api/users', {
           token: this.state.token,
           userId: this.state.name,
           category: "client"
         }).then((response) => {
-          console.log("users", response);
-          // this.getTest();
+          
         })
       }
       this.getUser();
@@ -128,17 +123,6 @@ class Clientpage extends Component {
     
   }
 
-  
-
-    // $.post('/api/test', {
-    //   token: token,
-    //   category:'client'
-    //   }).then((data) => {
-    //   console.log('user posted',data)
-
-    //   } )
-
-  // }
 
 
   render() {
