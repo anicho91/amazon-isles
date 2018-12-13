@@ -130,7 +130,6 @@ class UserModal extends React.Component {
     getProvider = () => {
         $.get(`/api/users/${localStorage.getItem('token')}`)
             .then((result) => {
-                console.log(result)
                 this.setState({
                     orderArray: result.data.orders,
                     userId: result.data.userId,
