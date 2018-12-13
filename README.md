@@ -42,6 +42,9 @@ was soon bombarded with requests. Gustav only signs up for the requests he can f
 
 ![](https://thumbs.gfycat.com/IllFondIndianpangolin-size_restricted.gif)
 
+**Artwork By Ann Tuck 
+
+
 ## TECHNOLOGIES USED: 
 HTML, CSS, BOOTSTRAP, REACT, MONGO, HEROKU, REST API'S, JAVASCRIPT, NODE.JS, EXPRESS 
 
