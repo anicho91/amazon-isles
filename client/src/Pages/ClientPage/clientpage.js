@@ -30,6 +30,7 @@ class Clientpage extends Component {
     state: "",
     country: "",
     profile_picture: "",
+    orderid: '',
     orders: [],
     orderList: []
   };
@@ -45,20 +46,33 @@ class Clientpage extends Component {
       
       this.setState({ user: results.data });
       this.setState({ orders: results.data.orders })
+      this.getOrder(this.state.orders);
     });
   }
 
-  getOrder = event => {
-    $.get(`/api/orders/5c113d1f38fcbd45a4085582`)
-      .then(results => {
-        this.setState({ orderList: results.data})
-      })
-  }
+   getOrder = (orders) => {
+
+        const orderItems = [];
+
+        orders.map((order) => {
+            $.get(`/api/orders/${order}`)
+                .then((orderData) => {
+                    orderItems.push(orderData.data[0]);
+                    this.setState({ orderList: orderItems });
+                    
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+        });
+
+    }
 
   initiateSession = () => {
     let idToken = getIdToken();
     let info = jwt_decode(idToken);
-    console.log('I am info', info)
+    
     localStorage.setItem("token", info.sub);
     localStorage.setItem("name", info.nickname);
     this.setState({
@@ -84,53 +98,38 @@ class Clientpage extends Component {
     });
     
 
-    console.log("auth_stuff", localStorage.getItem("token"));
+    
     $.post('/api/session', {
       token: localStorage.getItem('token')
       
     }).then((response) => {
-      console.log('success');
-      console.log('session data', response);
-      console.log("local storage", localStorage.getItem('token'));
       
-      console.log(this.state.token)
       const flag = false;
       const sessionData = response.data;
-      console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
+
       if (sessionData === null) {
         $.post('/api/users', {
           token: this.state.token,
           userId: this.state.name,
           category: "client"
         }).then((response) => {
-          console.log("users", response);
-          // this.getTest();
+          
         })
       }
       this.getUser();
-      this.getOrder()
+      // this.getOrder()
     });
 
     
   }
 
 
-    // $.post('/api/test', {
-    //   token: token,
-    //   category:'client'
-    //   }).then((data) => {
-    //   console.log('user posted',data)
-
-    //   } )
-
-  // }
-
 
   render() {
     return (
       <div>
         <StyleHeader2 />
-        <div className='welcome'>Welcome {this.state.name}!</div>
+        <div className='welcome'>Welcome {this.state.name}</div>
         <div className="userDiv">
 
           <div className="userImage">
@@ -161,7 +160,7 @@ class Clientpage extends Component {
               <span className="measTitle">Measurements</span>
               <br />
               <div className="measInfo">
-                {this.state.user && (
+                {this.state.user  && this.state.user.measurement && (
                   <Measurements
                     key={this.state.user._id}
                     id={this.state.user._id}
@@ -182,18 +181,13 @@ class Clientpage extends Component {
             </div>
             <div className='orders'>
               <br/><h4 className='orderTitle'>My Orders</h4>
-              {this.state.orderList.map((data => (
+              {/* {this.state.orderList.map((data => ( */}
                 
-
+        
                 <Orders 
-                  key={data._id}
-                  id={data._id}
-                  fname={data.fabric.fabric_name}
-                  fpic={data.fabric.fabric_pic}
-                  gname={data.garment.garment_name}
-                  gpic={data.garment.garment_pic}
+                  orderList={this.state.orderList}
                 />
-              )))}
+              {/* )))} */}
             
             </div>
           </div>

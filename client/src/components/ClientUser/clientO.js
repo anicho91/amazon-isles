@@ -8,25 +8,26 @@ const Orders = (props) => (
     
 
         <Container className='orderPart'><br/>
-            
+            {props.orderList.map(order => (
             
 
-                <Row key={props.id} className="myOrder">
+                <Row key={order._id} className="myOrder">
 
                     <Col>
-                        <p><strong>Fabric Name:</strong> {props.fname}</p>
-                        <img src={props.fpic} className="img-fluid fabricCard" alt="Responsive image" />
+                        <p><strong>Fabric Name:</strong> {order.fabric.fabric_name}</p>
+                        <img src={order.fabric.fabric_pic} className="img-fluid fabricCard" alt="Responsive image" />
                     </Col>
                     <Col>
-                        <p><strong>Garment Name:</strong> {props.gname}</p>
+                        <p><strong>Garment Name:</strong> {order.garment.garment_name}</p>
                         
-                        <img src={props.gpic} className="img-fluid" alt="Responsive image" />
+                        <img src={order.garment.garment_pic} className="img-fluid" alt="Responsive image" />
                     </Col>
                     
 
                 </Row>
                 
-                
+            ))
+            }
 
             
         </Container>

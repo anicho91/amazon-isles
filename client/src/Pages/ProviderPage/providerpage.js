@@ -3,7 +3,7 @@ import * as $ from 'axios';
 import Demo from './demo.js';
 import Order from './order.js';
 import UserModal from './userModal.js';
-import { setSession, getIdToken, handleAuthentication, isAuthenticated } from '../../components/Auth/Auth';
+import { setSession, getIdToken} from '../../components/Auth/Auth';
 import jwt_decode from 'jwt-decode';
 import StyleHeader2 from '../../components/Style/styleheader2';
 import StyleFooter from '../../components/Style/stylefooter';
@@ -51,7 +51,7 @@ class Providerpage extends Component {
                     console.log(error);
                 });
 
-        });
+            });
 
     }
 
@@ -99,17 +99,12 @@ class Providerpage extends Component {
           });
       
       
-          console.log("auth_stuff", localStorage.getItem("token"));
           $.post('/api/session', {
             token: localStorage.getItem('token')
           }).then((response) => {
-            console.log('sucess');
-            console.log('session data', response);
-            console.log("local storage", localStorage.getItem('token'));
       
-            const flag = false;
             const sessionData = response.data;
-            console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
+            
             if (sessionData === null) {
               $.post('/api/users', {
                 token: this.state.token,

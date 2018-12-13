@@ -257,13 +257,13 @@ module.exports = function (app) {
             budget: req.body.budget,
             fabric: req.body.fabricId,
             garment: req.body.garmentId,
-            client: req.body.clientId,
+            token: req.body.token,
             measurement: req.body.measurement
         }
 
         Order.create(newEntry)
             .then((dbOrder) => {
-                Client.findOneAndUpdate({ _id: clientId }, { $push: { orders: dbOrder._id } }, { new: true })
+                Client.findOneAndUpdate({ _id: token}, { $push: { orders: dbOrder._id } }, { new: true })
                     .then((clientData) => {
                         res.json(clientData);
                     })
@@ -281,11 +281,11 @@ module.exports = function (app) {
     //Use this route when provider is decided for order
     app.put('/api/orders/:id', function (req, res) {
 
-        const providerId = req.body.providerId;
+        const token = req.body.token;
 
         Order.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
             .then(function (orderData) {
-                return User.findOneAndUpdate({ _id: providerId }, { $push: { orders: orderData._id } }, { new: true });
+                return User.findOneAndUpdate({ token: token }, { $push: { orders: orderData._id } }, { new: true });
             })
             .then(function (providerData) {
                 res.json(providerData);

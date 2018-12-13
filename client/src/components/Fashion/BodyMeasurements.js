@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Measurements from './Measurements';
 import * as $ from 'axios';
+
 // import './fashionpage.css';
 import '../../Pages/FashionPage/fashionpage.css'
 import { setSession, getIdToken, handleAuthentication, isAuthenticated } from '../../components/Auth/Auth';
@@ -9,10 +10,13 @@ import jwt_decode from 'jwt-decode';
 
 
 
+
+
+
 class BodMeas extends Component {
 
   state = {
-    measureList: [],    
+    measureList: [],
     addFabric: '',
     newBust: '',
     newWaist: '',
@@ -22,10 +26,12 @@ class BodMeas extends Component {
     newBP: '',
     newBack: '',
     newArm: '',
+
     token: '',
     name: '',
     isUpdating: false,    
     clientID: "5c0dd73242d9c31a00e69e31"
+    providerList: []
   }
 
 
@@ -42,13 +48,13 @@ class BodMeas extends Component {
       back_length: this.state.newBack,
       arm_length: this.state.newArm
     };
-console.log("measure", measure);
+    console.log("measure", measure);
     $.put(`/api/clients/${this.state.clientID}`, {
       measurement: measure
     })
       .then((result) => {
-console.log("PUT measurements");
-console.log(result.data);
+        console.log("PUT measurements");
+        console.log(result.data);
         this.getMeasurements();
       });
   };
@@ -57,14 +63,17 @@ console.log(result.data);
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   };
-           
+
   getMeasurements = () => {
+
 console.log("getMeasurements")
     $.get(`/api/users/${this.state.token}`)
       .then((result) => {
         console.log("result",result);
         this.setState({ measureList: result.data.measurement })
 console.log("this.state.measureList", this.state.measureList);
+
+  
       });
   };
 
@@ -79,6 +88,7 @@ console.log("this.state.measureList", this.state.measureList);
       name: info.given_name
     })
   }
+
 
   componentDidMount() {
     
@@ -124,14 +134,16 @@ console.log("this.state.measureList", this.state.measureList);
       this.getMeasurements();  
     });
 
+
     
   }
 
-  
+
 
 
   render() {
     return (
+
                         
 
             
@@ -161,6 +173,12 @@ console.log("this.state.measureList", this.state.measureList);
         
               </div>
       
+
+
+
+
+ 
+
 
     );
   };
