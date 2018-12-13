@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
 import Measurements from './Measurements';
 import * as $ from 'axios';
-// import './fashionpage.css';
 import '../../Pages/FashionPage/fashionpage.css';
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardTitle,
-  CardSubtitle,
-  CardBody,
-  CardText,
-  Button
-} from 'reactstrap';
 
 
 
@@ -77,21 +64,6 @@ class BodMeas extends Component {
       });
   };
 
-  clickHandler = (event) => {
-    $.get('/api/users')
-      .then((userData) => {
-        console.log(userData);
-        const providers = userData.data.filter((elem) => elem.category.includes("provider"))
-        this.setState({ providerList: providers })
-        console.log('I am result', providers)
-
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-  }
-
 
 
 
@@ -130,18 +102,6 @@ class BodMeas extends Component {
             clickUpdate={this.updateMeas}
             heading='Body Measurements'
           />
-          <button onClick={this.clickHandler} className="float-right">Display Available Provider</button>
-          <div>
-            <Card>
-              <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-              <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
-                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                <Button>Button</Button>
-              </CardBody>
-            </Card>
-          </div>
         </div>
 
 
