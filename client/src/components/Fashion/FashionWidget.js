@@ -5,6 +5,8 @@ import Composite from './Composite';
 import AddFabric from './AddFabric';
 import * as $ from 'axios';
 import '../../Pages/FashionPage/fashionpage.css'
+import { setSession, getIdToken, handleAuthentication, isAuthenticated } from '../../components/Auth/Auth';
+import jwt_decode from 'jwt-decode';
 
 
 
@@ -26,6 +28,8 @@ class FabWidget extends Component {
     garName: 'Shirt Buttondown',
     garLength: '2.5',
     isUpdating: false,
+    token: '',
+    name: '',
     clientID: "5c0dd73242d9c31a00e69e31"
   }
 
@@ -88,7 +92,7 @@ class FabWidget extends Component {
     console.log("this.state.newGarment", this.state.newGarment);
     console.log("this.state.newFabric", this.state.newFabric)
 
-    $.post('/api/orders', { budget: 50.15, fabricId: this.state.newFabric, garmentId: this.state.newGarment, clientId: this.state.clientID })
+    $.post('/api/orders', { budget: 50.15, fabricId: this.state.newFabric, garmentId: this.state.newGarment, token: this.state.token })
       .then((result) => {
         console.log(result.data);
       });
@@ -145,14 +149,78 @@ class FabWidget extends Component {
       });
   };
 
+  initiateSession = () => {
+    let idToken = getIdToken();
+    let info = jwt_decode(idToken);
+    console.log('I am info', info)
+    localStorage.setItem("token", info.sub);
+    localStorage.setItem("name", info.nickname);
+    this.setState({
+      token: info.sub,
+      name: info.given_name
+    })
+  }
+
+  
+  getUser = event => {
+    $.get(`api/users/${this.state.token}`).then(results => {
+      
+      this.setState({ user: results.data });
+      this.setState({ orders: results.data.orders })
+    });
+  }
 
   componentDidMount() {
-    this.getGarments();
-    this.getFabrics();
-    this.patternFill();
-  };
+    
+    //let token = "";
 
+    if (getIdToken()) {
+      this.initiateSession();
+    } else {
+      setSession();
+      this.initiateSession();
+    }
 
+    this.setState({
+      token: localStorage.getItem('token'),
+      name: localStorage.getItem('name')
+    });
+    
+
+    console.log("auth_stuff", localStorage.getItem("token"));
+    $.post('/api/session', {
+      token: localStorage.getItem('token')
+      
+    }).then((response) => {
+      console.log('success');
+      console.log('session data', response);
+      console.log("local storage", localStorage.getItem('token'));
+      
+      console.log(this.state.token)
+      const flag = false;
+      const sessionData = response.data;
+      console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
+      if (sessionData === null) {
+        $.post('/api/users', {
+          token: this.state.token,
+          userId: this.state.name,
+          category: "client"
+        }).then((response) => {
+          console.log("users", response);
+          // this.getTest();
+        })
+      }
+      // this.getUser();
+      // this.getOrder();
+      this.getGarments();
+      this.getFabrics();
+      this.patternFill();
+    });
+
+    
+  }
+
+  
   patternFill() {
     const canvas = this.refs.canvas;
     const ctx = canvas.getContext("2d");

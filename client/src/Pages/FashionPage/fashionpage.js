@@ -4,8 +4,12 @@ import BodMeas from '../../components/Fashion/BodyMeasurements';
 import FabWidget from '../../components/Fashion/FashionWidget';
 import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
+
+import Slider from '../HomePage/Slider'
+
 import ProviderInfo from '../../components/Fashion/ProviderDisplay';
 import { Row, Col} from 'reactstrap';
+
 
 // import * as $ from 'axios';
 import './fashionpage.css';
@@ -51,12 +55,20 @@ class App extends Component {
 
         <div className="fashionrow">
         
-          <FabWidget />
+          
 
 
           {/* <div className="col4"> */}
-            <BodMeas />
+           
           {/* </div> */}
+
+
+          <video class="video-fashion" preload="true" muted="true" autoplay="true" loop="true">
+                    <source src="https://videos.files.wordpress.com/EMNRGwmJ/1080_30_29.77_Dec122018_05_hd.mp4" type="video/mp4" />
+                </video>
+                <FabWidget />
+                <BodMeas />
+
 
         </div>
 
