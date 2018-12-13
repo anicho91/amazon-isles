@@ -1,8 +1,7 @@
  # AMAZON-ISLES
  https://afternoon-harbor-43363.herokuapp.com/
  
- 
-                                       ![](https://thumbs.gfycat.com/PotableFlippantArachnid-size_restricted.gif)
+ ![](https://thumbs.gfycat.com/PotableFlippantArachnid-size_restricted.gif)
  
 ## SUMMARY 
 Upon secure login: 
@@ -41,7 +40,7 @@ was soon bombarded with requests. Gustav only signs up for the requests he can f
 * Creating a secure space for clients and providers to connect. 
 * Reaching $1 million in monthly transactions via the app.
 
-                                 ![](https://thumbs.gfycat.com/IllFondIndianpangolin-size_restricted.gif)
+![](https://thumbs.gfycat.com/IllFondIndianpangolin-size_restricted.gif)
 
 ## TECHNOLOGIES USED: 
 HTML, CSS, BOOTSTRAP, REACT, MONGO, HEROKU, REST API'S, JAVASCRIPT, NODE.JS, EXPRESS 
@@ -70,9 +69,7 @@ https://github.com/cindy046
 
 
 
-
-
-                                    ![](https://thumbs.gfycat.com/FriendlySarcasticAkitainu-size_restricted.gif)
+![](https://thumbs.gfycat.com/FriendlySarcasticAkitainu-size_restricted.gif)
 
 
 
