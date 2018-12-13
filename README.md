@@ -1,4 +1,4 @@
- # AMAZON-ISLES
+ # AMAZONISLES
  https://afternoon-harbor-43363.herokuapp.com/
  
  ![](https://thumbs.gfycat.com/PotableFlippantArachnid-size_restricted.gif)
