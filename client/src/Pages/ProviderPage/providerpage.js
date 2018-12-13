@@ -99,16 +99,12 @@ class Providerpage extends Component {
           });
       
       
-          console.log("auth_stuff", localStorage.getItem("token"));
           $.post('/api/session', {
             token: localStorage.getItem('token')
           }).then((response) => {
-            console.log('sucess');
-            console.log('session data', response);
-            console.log("local storage", localStorage.getItem('token'));
       
             const sessionData = response.data;
-            console.log("auth_stuff", sessionData, 'verify', localStorage.getItem('token'))
+            
             if (sessionData === null) {
               $.post('/api/users', {
                 token: this.state.token,
