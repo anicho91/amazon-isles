@@ -55,9 +55,7 @@ https://github.com/makikovaughan
 *Rachida Kone   
 https://github.com/RachidaSK
 
-![Ann](Readme/ann.jpg "Ann Tuck") 
-*Ann Tuck       
-https://github.com/AnnTuck	
+
 
 ![Anna](Readme/anna.jpg "Anna Nichols") 
 *Anna Nichols   
@@ -67,10 +65,12 @@ https://github.com/anicho91
 *Cynthia Knox   
 https://github.com/cindy046
 
-
+![Ann](Readme/ann.jpg "Ann Tuck") 
+*Ann Tuck       
+https://github.com/AnnTuck	
 
 ![](https://thumbs.gfycat.com/FriendlySarcasticAkitainu-size_restricted.gif)
-
+**Artwork By Ann Tuck 
 
 
 
