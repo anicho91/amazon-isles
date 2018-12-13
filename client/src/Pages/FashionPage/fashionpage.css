@@ -66,6 +66,13 @@
   height: 600px;
 }
 
+.providerrow {
+  margin-bottom: 100px;
+  border-style: solid;
+  border-color: #55637F;
+  border-width: 5px;  
+}
+
 /*Fabric Canvas*/
 .fabric {
     position: relative;
