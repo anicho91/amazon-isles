@@ -161,6 +161,15 @@ class FabWidget extends Component {
     })
   }
 
+  
+  getUser = event => {
+    $.get(`api/users/${this.state.token}`).then(results => {
+      
+      this.setState({ user: results.data });
+      this.setState({ orders: results.data.orders })
+    });
+  }
+
   componentDidMount() {
     
     //let token = "";
@@ -201,8 +210,8 @@ class FabWidget extends Component {
           // this.getTest();
         })
       }
-      this.getUser();
-      this.getOrder();
+      // this.getUser();
+      // this.getOrder();
       this.getGarments();
       this.getFabrics();
       this.patternFill();

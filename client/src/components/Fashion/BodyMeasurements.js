@@ -82,7 +82,7 @@ console.log("this.state.measureList", this.state.measureList);
 
   componentDidMount() {
     
-    //let token = "";
+    let token = "";
 
     if (getIdToken()) {
       this.initiateSession();
@@ -117,11 +117,10 @@ console.log("this.state.measureList", this.state.measureList);
           category: "client"
         }).then((response) => {
           console.log("users", response);
-          // this.getTest();
+          
         })
       }
-      this.getUser();
-      this.getOrder();
+      
       this.getMeasurements();  
     });
 
@@ -136,7 +135,7 @@ console.log("this.state.measureList", this.state.measureList);
                         
 
             
-              <div>
+              <div className="fashionRow itemContainer">
 
                
                   <div className="measImg" >
