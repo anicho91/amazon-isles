@@ -25,6 +25,8 @@ class App extends Component {
     providerList:[]
   }
 
+
+//For providers information  
   clickHandler = (event) => {
     event.preventDefault();
 
@@ -52,11 +54,9 @@ class App extends Component {
         <div className="fashionrow">
         
           <FabWidget />
-
-
-          {/* <div className="col4"> */}
-            <BodMeas />
-          {/* </div> */}
+        
+          <BodMeas />
+          
 
         </div>
 
@@ -65,13 +65,14 @@ class App extends Component {
           <div className="text-right">
             <button onClick={this.clickHandler} >Display Available Provider</button>
           </div>
+
           <ProviderInfo providerList={this.state.providerList}/>
           </Col>
         </Row>
 
-        {/* <div className="row"> */}
+        
           <StyleFooter />
-        {/* </div> */}
+        
       </div>
     );
   };

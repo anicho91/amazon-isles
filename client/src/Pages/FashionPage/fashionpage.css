@@ -5,8 +5,6 @@
   margin-left: 16%;
   margin-top: 2%;
   margin-bottom: 2%;
-
-
 }
 
 
@@ -26,6 +24,7 @@
   margin-top: 15px;
   margin-bottom: 20px;
   text-align: center;
+
 }
 
 
@@ -34,6 +33,7 @@
   border-style: solid;
   border-color: #55637F;
   border-width: 5px;
+  max-width: 200px;
   height: 600px;
 }
 
@@ -44,10 +44,13 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+ 
 }
 
 .measInput .measTitle{
   width: 20px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .measInput {
@@ -64,13 +67,7 @@
   border-color: #55637F;
   border-width: 5px;  
   height: 600px;
-}
-
-.providerrow {
-  margin-bottom: 100px;
-  border-style: solid;
-  border-color: #55637F;
-  border-width: 5px;  
+  max-width: 250px;
 }
 
 /*Fabric Canvas*/
@@ -91,9 +88,6 @@
     /* display: none;     */
 }
 
-.garmThumb {
-  
-}
 
 .col8 {
   height: 600px;
@@ -133,16 +127,9 @@
   padding: 0;
 }
 
-.fashion {
-  /* max-width: 800px; */
-}
 
 .heightLimit {
   height: 600px;
-}
-
-.widget {
-  
 }
 
 .combo {
@@ -159,10 +146,6 @@
 }
 
 
-/* div {
-  display: inline;
-} */
-
 .hideCanvasSource {
   display: none;
   position: relative;
@@ -172,7 +155,12 @@
     height: 580px;
     z-index: -2;
 }
-
+.video-fashion {
+  
+  z-index: -1;
+  width: 100%;
+  height: 10%; 
+}
 
 /* RESPONSIVE GRID */
 
@@ -185,6 +173,7 @@
   border-width: 1px; */
 
 }
+
 .testBdrGrn {
   
   border-style: solid;
@@ -233,6 +222,8 @@
   display: flex;
   flex-wrap: wrap
 }
+
+.designRow
 
 .fabpicB {
   border: 100px 100px 100px 100px;

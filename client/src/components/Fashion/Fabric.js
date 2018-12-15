@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Displays fabric image scroll menu, and grabs image url, link url, _id, and name of the fabric clicked.        //Used by handleFabricClick() in fashionWidget.js
 const Fabric = props => (
   <div key={props.id}>     
 
