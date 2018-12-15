@@ -8,7 +8,7 @@ import '../../Pages/FashionPage/fashionpage.css'
 
 
 
-
+//Ann Tuck's Fashion Widget//
 class FabWidget extends Component {
 
   state = {
@@ -34,82 +34,61 @@ class FabWidget extends Component {
     this.setState({ [event.target.name]: event.target.value })
   };
 
-
+//When garment images are clicked in the scroll menu, image name, _id, name, and yardage of the clicked item are collected.  Comes from Garment.js component.
+  //dataset.garmentId is equivalent to data-garment-id in Garment.js component.  The hyphen is replaced with camelCase.
   handleGarmentClick = (e) => {
     const fieldName = e.target.dataset.fieldName;
-    const newGarmentId = e.target.dataset.garmentId; const garmentLengthClick = e.target.dataset.garmentLen;
-    const garmentNameClick = e.target.dataset.garmentName;
-    console.log("newGarmentId", newGarmentId)
 
-    this.setState({
-      [fieldName]: e.target.src
+      this.setState({
+      [fieldName]: e.target.src,
+      newGarment: e.target.dataset.garmentId,
+      garName: e.target.dataset.garmentName,
+      garLength: e.target.dataset.garmentLen
     });
-    this.setState({
-      newGarment: newGarmentId
-    });
-    this.setState({
-      garName: garmentNameClick
-    });
-    this.setState({
-      garLength: garmentLengthClick
-    });
-  };
+    }; 
+    
 
-  //dataset automatically takes names like fabric_id and converts to fabricId since _ name not allowed in objects//
+//When fabric images are clicked in the scroll menu, image name, _id, name, and yardage of the clicked item are collected.  Comes from Fabric.js component.
+  //dataset.fabricId is equivalent to data-fabric-id in Fabric.js component.  The hyphen is replaced with camelCase.
   handleFabricClick = (e) => {
     const fieldName = e.target.dataset.fieldName;
-    const newFabricId = e.target.dataset.fabricId;
-    const fabricLinkclick = e.target.dataset.fabricUrl;
-    const fabricNameclick = e.target.dataset.fabricName;
-    const fabricDesignerclick = e.target.dataset.fabricDesigner;
 
-    // console.log("fieldName", fieldName);
-    console.log("newFabricId", newFabricId);
-    console.log("fabricLinkclick", fabricLinkclick);
-
-    this.setState({
+      this.setState({
       [fieldName]: e.target.src,
-      newFabric: newFabricId
-    });
-    this.setState({
-      fabricLink: fabricLinkclick
-    });
-    this.setState({
-      fabricName: fabricNameclick
-    });
-    this.setState({
-      fabricDesigner: fabricDesignerclick
-    });
+      newFabric: e.target.dataset.fabricId,
+      fabricLink: e.target.dataset.fabricUrl,
+      fabricName: e.target.dataset.fabricName
+    });    
   };
 
 
+//When order is submitted, _id of fabric and garment are POSTed to database.  From Composite.js component
   handleSubmit = (event, target) => {
     event.preventDefault();
-    console.log("this.state.newGarment", this.state.newGarment);
-    console.log("this.state.newFabric", this.state.newFabric)
+console.log("this.state.newGarment", this.state.newGarment);
+console.log("this.state.newFabric", this.state.newFabric)
 
     $.post('/api/orders', { budget: 50.15, fabricId: this.state.newFabric, garmentId: this.state.newGarment, clientId: this.state.clientID })
       .then((result) => {
-        console.log(result.data);
+console.log(result.data);
       });
   };
 
 
+//Users can add more fabric selections.
+  //From AddFabric.js component
   moreFabric = (event, target) => {
     event.preventDefault();
-    console.log("this.state.addFabric", this.state.addFabric)
+console.log("this.state.addFabric",this.state.addFabric)
 
 
-    // const fabFabric = "https://www.spoonflower.com/fabric/4525-maidenhair-yellow-by-anntuck"
-    const fabNumOb = /([0-9])\w+/.exec(this.state.addFabric);
-    const fabDesignerOb = /(?<=\-by-)(.*)(?=iref)/g.exec(this.state.addFabric);
-    // const fabNameOb = /(?<=\-)(.*)/g.exec(this.state.addFabric);
+    //Regular expressions grab name and number of fabric from url.  Image url is created from the fabric number.
+
+    //For Spoonflower url's
+    const fabNumOb = /([0-9])\w+/.exec(this.state.addFabric);    
     const fabNameOb = /(?<=\-)(.*)(?=-by)/g.exec(this.state.addFabric);
-    console.log("fabNumOb[0]", fabNumOb[0]);
-    console.log("fabDesignerOb", fabDesignerOb);
-    console.log("fabNameOb[0]", fabNameOb[0]);
-    const fabNum = fabNumOb[0];
-    // const fabDesigner = fabDesignerOb[0];
+    
+    const fabNum = fabNumOb[0];   
     const fabName = fabNameOb[0];
 
     $.post('/api/fabrics', {
@@ -117,19 +96,14 @@ class FabWidget extends Component {
       fabric_name: fabName
     })
       .then((result) => {
-        console.log(result.data);
         this.getFabrics();
       });
   };
 
-  // (`https://s3.amazonaws.com/roostery-composites/compost/${fabNum}/fabric-preview-fq_0_m.jpg`), 
-  // fabric_name: fabName, fabric_designer: fabDesigner
-  //  })
-
-
-
+  
+//Get fabrics from the database to render to the scroll menu.
   getFabrics = () => {
-    console.log("getFabrics")
+    
     $.get('/api/fabrics')
       .then((result) => {
         this.setState({ fabricsList: result.data })
@@ -137,8 +111,9 @@ class FabWidget extends Component {
   };
 
 
+//Get garments from the database to render to the scroll menu.
   getGarments = () => {
-    console.log("getGarments")
+   
     $.get('/api/garments')
       .then((result) => {
         this.setState({ garmentsList: result.data })
@@ -153,6 +128,7 @@ class FabWidget extends Component {
   };
 
 
+//For rendering the fabric on the canvas in a pattern fill.  
   patternFill() {
     const canvas = this.refs.canvas;
     const ctx = canvas.getContext("2d");
@@ -174,6 +150,7 @@ class FabWidget extends Component {
 
       <div className="fashionRow itemContainer" >
 
+
         <div className="col2 details box1">
           <Composite
             key={this.state.newFabric}
@@ -189,8 +166,7 @@ class FabWidget extends Component {
 
           <ul className="detList center">
             <li> <a href={this.state.fabricLink}><h6>Fabric Details:</h6></a></li>
-            <li>{this.state.fabricName}</li>
-            {/* <li>Designer: {this.state.fabricDesigner}</li> */}
+            <li>{this.state.fabricName}</li>            
           </ul>
           <br></br>
           <ul className="detList center">
@@ -199,19 +175,13 @@ class FabWidget extends Component {
             <li>Yardage: {this.state.garLength} </li>
           </ul>
 
-
-
         </div>
-
-
 
 
         <div className="row widget heightLimit">
 
+          {/* Fabric scroll selector */}
           <div className="fabBox">
-
-
-
             {this.state.fabricsList.map(fabric => (
               <Fabric
                 key={fabric._id}
@@ -225,11 +195,8 @@ class FabWidget extends Component {
             ))}
           </div>
 
-
+          {/* Garment scroll selector */}
           <div className="garBox">
-
-
-
             {this.state.garmentsList.map(garment => (
               <Garment
                 key={garment._id}
@@ -242,11 +209,13 @@ class FabWidget extends Component {
             ))}
           </div>
 
+          {/* Fabric displayed on garment */}
           <div className="combo heightLimit">
             <img ref="mask" src={this.state.garmentPic} className="garment" width={400} height={600} />
 
             <canvas ref="canvas" className="fabric" width={400} height={600} />
 
+            {/* Hidden fabric image source for canvas */}
             <img ref="image" src={this.state.fabricPic} className="hideCanvasSource" />
           </div>
 

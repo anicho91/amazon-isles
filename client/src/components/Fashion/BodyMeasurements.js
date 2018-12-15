@@ -25,7 +25,7 @@ class BodMeas extends Component {
     providerList: []
   }
 
-
+//For updating user's measurements
   updateMeas = (event) => {
     event.preventDefault();
     this.setState({ isUpdating: false })
@@ -39,13 +39,13 @@ class BodMeas extends Component {
       back_length: this.state.newBack,
       arm_length: this.state.newArm
     };
-    console.log("measure", measure);
+console.log("measure", measure);
     $.put(`/api/clients/${this.state.clientID}`, {
       measurement: measure
     })
       .then((result) => {
-        console.log("PUT measurements");
-        console.log(result.data);
+console.log("PUT measurements");
+console.log(result.data);
         this.getMeasurements();
       });
   };
@@ -55,34 +55,26 @@ class BodMeas extends Component {
     this.setState({ [event.target.name]: event.target.value })
   };
 
+
+//Get user's measurements from the database  
   getMeasurements = () => {
     console.log("getMeasurements")
     $.get(`/api/users/${this.state.clientID}`)
-      .then((result) => {
-        //this.setState({ measureList: result.data.measurement })
-        console.log("this.state.measureList", this.state.measureList);
+      .then((result) => {        
+console.log("this.state.measureList", this.state.measureList);
       });
   };
 
-
-
-
+  
   componentDidMount() {
     this.getMeasurements();
   };
-
-
-
-
+ 
 
   render() {
     return (
 
-
-
       <div>
-
-
         <div className="measImg" >
           <img src={'/assets/images/garments/bodyMeasurements1.gif'} height="600"></img>
         </div>

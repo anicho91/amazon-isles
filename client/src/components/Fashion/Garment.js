@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Displays garment image scroll menu, and grabs image name, _id, name, and yardage of the garment clicked.        //Used by handleGarmentClick() in fashionWidget.js
 const Garment = props => (
   <div key={props.id}>      
 
