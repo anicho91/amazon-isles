@@ -111,6 +111,15 @@ class Clientpage extends Component {
         $.post('/api/users', {
           token: this.state.token,
           userId: this.state.name,
+          measurement: {
+            waist: 0,
+            hips: 0,
+            knee_length: 0,
+            leg_length: 0,
+            bp_length: 0,
+            back_length: 0,
+            arm_length: 0
+          },
           category: "client"
         }).then((response) => {
           

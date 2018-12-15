@@ -58,7 +58,6 @@ class Providerpage extends Component {
     initiateSession = () => {
         let idToken = getIdToken();
         let info = jwt_decode(idToken);
-        console.log('I am info', info)
         localStorage.setItem("token", info.sub);
         localStorage.setItem("name", info.given_name);
         this.setState({
@@ -104,14 +103,14 @@ class Providerpage extends Component {
           }).then((response) => {
       
             const sessionData = response.data;
-            
+
             if (sessionData === null) {
               $.post('/api/users', {
                 token: this.state.token,
                 userId: this.state.name,
                 category: "provider"
               }).then((response) => {
-                console.log("users", response);
+                
                 
               })
             }
