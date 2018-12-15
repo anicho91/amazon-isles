@@ -1,7 +1,7 @@
 .demoList-slides {
     z-index: 1;
     margin: 0;
-    opacity: 1;
+    opacity: 1!important;
     width:510px;
     height:300px;
     margin: auto;

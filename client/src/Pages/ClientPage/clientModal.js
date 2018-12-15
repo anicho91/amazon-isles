@@ -31,7 +31,7 @@ class ClientModal extends React.Component {
   };
 
   getUser = event => {
-    $.get(`/api/users/${this.state.clientAuthID}`).then(results => {
+    $.get(`/api/users/${localStorage.getItem('token')}`).then(results => {
       this.setState({ user: results.data, clientID: results.data._id });
       console.log(results);
       console.log(this.state.clientID)
