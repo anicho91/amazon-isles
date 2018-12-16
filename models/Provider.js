@@ -11,7 +11,7 @@ var ProviderSchema = new Schema({
     },
     availability: {
         type: Boolean,
-        default: true,
+        default: false,
         trim: true,
     },
     demo: [{
