@@ -24,12 +24,6 @@ class Clientpage extends Component {
     token: '',
     name: '',
     modal: false,
-    phone: "",
-    street: "",
-    city: "",
-    state: "",
-    country: "",
-    profile_picture: "",
     orderid: '',
     orders: [],
     orderList: []
@@ -112,6 +106,7 @@ class Clientpage extends Component {
           token: this.state.token,
           userId: this.state.name,
           measurement: {
+            bust: 0,
             waist: 0,
             hips: 0,
             knee_length: 0,
@@ -173,6 +168,7 @@ class Clientpage extends Component {
                   <Measurements
                     key={this.state.user._id}
                     id={this.state.user._id}
+                    bust={this.state.user.measurement.bust}
                     waist={this.state.user.measurement.waist}
                     hips={this.state.user.measurement.hips}
                     klength={this.state.user.measurement.knee_length}
@@ -182,21 +178,20 @@ class Clientpage extends Component {
                     alength={this.state.user.measurement.arm_length}
                   />
                 )}
-                
+                {this.state.user  && this.state.user.measurement && (
                 <ClientModal 
                   getClient={this.getUser}
                 />
+                )}
               </div>
             </div>
             <div className='orders'>
               <br/><h4 className='orderTitle'>My Orders</h4>
-              {/* {this.state.orderList.map((data => ( */}
-                
-        
+                  
                 <Orders 
                   orderList={this.state.orderList}
                 />
-              {/* )))} */}
+              
             
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from 'react'
 
 const Measurements = (props) => (
     <div key={props.id} className="measurements">
+        <strong>Bust:</strong> {props.bust} inches<br/>
         <strong>Waist:</strong> {props.waist} inches<br/>
         <strong>Hips:</strong> {props.hips} inches<br/>
         <strong>Knee Length:</strong> {props.klength} inches<br/>
