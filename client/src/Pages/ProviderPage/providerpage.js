@@ -76,7 +76,7 @@ class Providerpage extends Component {
                 this.setState({ demoList: result.data.demo });
                 this.getOrder(this.state.orderArray);
                 this.setState({ isUserUpdate: false });
-
+                console.log(this.state.providerInfo);
             })
             .catch(function (error) {
                 console.log(error);
@@ -107,17 +107,16 @@ class Providerpage extends Component {
             if (sessionData === null) {
               $.post('/api/users', {
                 token: this.state.token,
-                userId: this.state.name,
+                userId: localStorage.getItem('name'),
                 category: "provider"
               }).then((response) => {
                 
-                
               })
             }
-        
+            this.getProvider();
           });
       
-        this.getProvider();
+       
     }
 
     render() {
