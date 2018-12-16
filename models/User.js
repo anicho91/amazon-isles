@@ -41,7 +41,7 @@ var UserSchema = new Schema({
     },
     profile_picture: {
         type: String,
-        default: "https://res.cloudinary.com/dyais46lc/image/upload/v1544931623/sandra-seitamaa-1218858-unsplash.jpg",
+        default: "https://via.placeholder.com/350",
         trim: true,
         validate:[validator.isURL, "invalid URL"]
     },
