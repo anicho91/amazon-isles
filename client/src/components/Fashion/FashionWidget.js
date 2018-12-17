@@ -167,12 +167,12 @@ console.log(result.data);
 
           {/* Side Controls */}
           <div className="details">
-            <Composite
+            {/* <Composite
               key={this.state.newFabric}
               idF={this.state.newFabric}
               idG={this.state.newGarment}
               clickHandler={this.handleSubmit}
-            />
+            /> */}
             <AddFabric
               inputFabNum={this.state.addFabric}
               changeHandler={this.handleChange}
@@ -180,8 +180,7 @@ console.log(result.data);
             />
 
             <br></br>
-            <h4 className="center morePad">Selected Fabric and Garment</h4>
-            <br></br>
+            <h4 className="center morePad">Selected Fabric and Garment</h4>      
             <ul className="detList center">
               <li> <a href={this.state.fabricLink} target="_blank"><h6>Fabric Details:</h6></a></li>
               <li>{this.state.fabricName}</li>            

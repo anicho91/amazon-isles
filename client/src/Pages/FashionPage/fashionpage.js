@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as $ from 'axios';
 import BodMeas from '../../components/Fashion/BodyMeasurements';
 import FabWidget from '../../components/Fashion/FashionWidget';
+import Composite from '../../components/Fashion/Composite';
 import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
 import ProviderInfo from '../../components/Fashion/ProviderDisplay';
@@ -102,6 +103,14 @@ class FashionPage extends Component {
           </Col>
         </Row>
 
+        <Row>
+        <Composite
+              key={this.state.newFabric}
+              idF={this.state.newFabric}
+              idG={this.state.newGarment}
+              clickHandler={this.handleSubmit}
+            />
+        </Row>
 
         <StyleFooter />
 
