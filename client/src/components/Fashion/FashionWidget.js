@@ -180,22 +180,22 @@ console.log(result.data);
             />
 
             <br></br>
-            <h4 className="center morePad">Selected Fabric and Garment</h4>      
-            <ul className="detList center">
+            <h4 className="center morePad disp">Selected Fabric and Garment</h4>      
+            <ul className="detList center disp">
               <li> <a href={this.state.fabricLink} target="_blank"><h6>Fabric Details:</h6></a></li>
               <li>{this.state.fabricName}</li>            
             </ul>
             <br></br>
-            <ul className="detList center">
+            <ul className="detList center disp">
               <li><h6>Garment Details:</h6></li>
               <li>{this.state.garName}</li>
               <li>Yardage: {this.state.garLength} </li>              
             </ul>
            
             <br></br>
-            <h4 className="center">New Arrival!</h4>  
-            <img src={this.state.fabricsLatestPic} className="fabThumb morePad" alt="fabric"/>
-            <a href={this.state.fabricsLatestUrl} target="_blank" ><p className="center">{this.state.fabricsLatestName}</p></a>       
+            <h4 className="center disp">New Arrival!</h4>  
+            <img src={this.state.fabricsLatestPic} className="fabThumb morePad disp" alt="fabric"/>
+            <a href={this.state.fabricsLatestUrl} target="_blank" ><p className="center disp">{this.state.fabricsLatestName}</p></a>       
           </div>
 
             
