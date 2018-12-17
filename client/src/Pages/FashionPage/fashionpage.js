@@ -21,6 +21,8 @@ class FashionPage extends Component {
   state = {
 
     clientID: "5c0dd73242d9c31a00e69e31",
+    token:localStorage.getItem('token'),
+    measurement: {},
     providerId: "",
     providers: [],
     providerList: []
@@ -55,6 +57,19 @@ class FashionPage extends Component {
 
   }
 
+  componentDidMount() {
+
+    $.get(`/api/users/${this.state.token}`)
+    .then((clientData) => {
+      this.setState({measurement: clientData.data.measurement});
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
+  }
+
+
 
   render() {
     return (
@@ -62,30 +77,20 @@ class FashionPage extends Component {
 
         <StyleHeader2 />
 
-        <Row className="fashionrow mt-5">
+        <Row>
 
-<<<<<<< HEAD
-        <div>        
-          <FabWidget />
-        </div>
-
-        <div>
-          <BodMeas />        
-        </div>
-=======
           <Col xs='12'>
             <FabWidget />
 
           </Col>
         </Row>
-        <Row>
+        <Row className="justify-content-center">
           <Col xs='12'>
 
-            <BodMeas />
+            <BodMeas measureList={this.state.measurement}/>
           </Col>
 
         </Row>
->>>>>>> e330778cfe3af579b46c166695415754460237f0
 
         <Row className="providerrow mt-5">
           <Col xs="12">
@@ -93,7 +98,7 @@ class FashionPage extends Component {
               <button onClick={this.clickHandler} >Display Available Provider</button>
             </div>
 
-            <ProviderInfo providerList={this.state.providerList} clickProvider={this.clickProvider} />
+            <ProviderInfo providerList={this.state.providerList} clickProvider={this.clickProvider} />np
           </Col>
         </Row>
 
