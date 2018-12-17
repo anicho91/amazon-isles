@@ -16,7 +16,7 @@ import './fashionpage.css';
 
 
 
-class App extends Component {
+class FashionPage extends Component {
 
   state = {
 
@@ -51,13 +51,12 @@ class App extends Component {
 
           <StyleHeader2 />
 
-        <div className="fashionrow">
-        
+        <div>        
           <FabWidget />
-        
-          <BodMeas />
-          
+        </div>
 
+        <div>
+          <BodMeas />        
         </div>
 
         <Row className="providerrow mt-5">
@@ -78,4 +77,4 @@ class App extends Component {
   };
 };
 
-export default App;
+export default FashionPage;

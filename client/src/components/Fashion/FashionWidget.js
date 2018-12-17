@@ -22,6 +22,11 @@ class FabWidget extends Component {
     fabNum: '',
     fabricName: 'Nasturtiums Fresh',
     fabricDesigner: '',
+    fabricsLength: '',
+    fabricsLatestPic: '',
+    fabricsLatestName: '',
+    fabricsLatestUrl: '',
+    
     fabricLink: 'https://www.spoonflower.com/fabric/922441-nasturtiums-fresh-by-anntuck',
     garName: 'Shirt Buttondown',
     garLength: '2.5',
@@ -68,7 +73,7 @@ class FabWidget extends Component {
 console.log("this.state.newGarment", this.state.newGarment);
 console.log("this.state.newFabric", this.state.newFabric)
 
-    $.post('/api/orders', { budget: 50.15, fabricId: this.state.newFabric, garmentId: this.state.newGarment, clientId: this.state.clientID })
+    $.post('/api/orders', { budget: 25, fabricId: this.state.newFabric, garmentId: this.state.newGarment, clientId: this.state.clientID })
       .then((result) => {
 console.log(result.data);
       });
@@ -86,8 +91,9 @@ console.log("this.state.addFabric",this.state.addFabric)
 
     //For Spoonflower url's
     const fabNumOb = /([0-9])\w+/.exec(this.state.addFabric);    
-    const fabNameOb = /(?<=\-)(.*)(?=-by)/g.exec(this.state.addFabric);
-    
+       
+    const fabNameOb = /[0-9](.*?)$/g.exec(this.state.addFabric);
+
     const fabNum = fabNumOb[0];   
     const fabName = fabNameOb[0];
 
@@ -97,6 +103,7 @@ console.log("this.state.addFabric",this.state.addFabric)
     })
       .then((result) => {
         this.getFabrics();
+        document.getElementById("addF").reset();      
       });
   };
 
@@ -106,7 +113,14 @@ console.log("this.state.addFabric",this.state.addFabric)
     
     $.get('/api/fabrics')
       .then((result) => {
-        this.setState({ fabricsList: result.data })
+        this.setState({ 
+          fabricsList: result.data,
+          fabricsLength: result.data.length,
+          fabricsLatestPic: result.data[result.data.length-1].fabric_pic,
+          fabricsLatestName: result.data[result.data.length-1].fabric_name,
+          fabricsLatestUrl: result.data[result.data.length-1].fabric_url
+         });
+               
       });
   };
 
@@ -147,38 +161,45 @@ console.log("this.state.addFabric",this.state.addFabric)
 
   render() {
     return (
+      
+      <div className="fashionRow heightLimit itemContainer">     
+      
 
-      <div className="fashionRow itemContainer" >
+          {/* Side Controls */}
+          <div className="details">
+            <Composite
+              key={this.state.newFabric}
+              idF={this.state.newFabric}
+              idG={this.state.newGarment}
+              clickHandler={this.handleSubmit}
+            />
+            <AddFabric
+              inputFabNum={this.state.addFabric}
+              changeHandler={this.handleChange}
+              clickHandler={this.moreFabric}
+            />
 
+            <br></br>
+            <h4 className="center morePad">Selected Fabric and Garment</h4>
+            <br></br>
+            <ul className="detList center">
+              <li> <a href={this.state.fabricLink} target="_blank"><h6>Fabric Details:</h6></a></li>
+              <li>{this.state.fabricName}</li>            
+            </ul>
+            <br></br>
+            <ul className="detList center">
+              <li><h6>Garment Details:</h6></li>
+              <li>{this.state.garName}</li>
+              <li>Yardage: {this.state.garLength} </li>              
+            </ul>
+           
+            <br></br>
+            <h4 className="center">New Arrival!</h4>  
+            <img src={this.state.fabricsLatestPic} className="fabThumb morePad" alt="fabric"/>
+            <a href={this.state.fabricsLatestUrl} target="_blank" ><p className="center">{this.state.fabricsLatestName}</p></a>       
+          </div>
 
-        <div className="col2 details box1">
-          <Composite
-            key={this.state.newFabric}
-            idF={this.state.newFabric}
-            idG={this.state.newGarment}
-            clickHandler={this.handleSubmit}
-          />
-          <AddFabric
-            inputFabNum={this.state.addFabric}
-            changeHandler={this.handleChange}
-            clickHandler={this.moreFabric}
-          />
-
-          <ul className="detList center">
-            <li> <a href={this.state.fabricLink}><h6>Fabric Details:</h6></a></li>
-            <li>{this.state.fabricName}</li>            
-          </ul>
-          <br></br>
-          <ul className="detList center">
-            <li><h6>Garment Details:</h6></li>
-            <li>{this.state.garName}</li>
-            <li>Yardage: {this.state.garLength} </li>
-          </ul>
-
-        </div>
-
-
-        <div className="row widget heightLimit">
+            
 
           {/* Fabric scroll selector */}
           <div className="fabBox">
@@ -210,21 +231,19 @@ console.log("this.state.addFabric",this.state.addFabric)
           </div>
 
           {/* Fabric displayed on garment */}
-          <div className="combo heightLimit">
-            <img ref="mask" src={this.state.garmentPic} className="garment" width={400} height={600} />
+          <div className="combo">
+          
+            <img ref="mask" src={this.state.garmentPic} className="garment comboDim"  />
 
-            <canvas ref="canvas" className="fabric" width={400} height={600} />
+            <canvas ref="canvas" className="fabric comboDim" width={400} height={600} />
 
             {/* Hidden fabric image source for canvas */}
-            <img ref="image" src={this.state.fabricPic} className="hideCanvasSource" />
-          </div>
-
-        </div>
-
-
+            <img ref="image" src={this.state.fabricPic} className="hideCanvasSource comboDim " />
+         
+          </div>     
+      
+       
       </div>
-
-
     )
   };
 };
