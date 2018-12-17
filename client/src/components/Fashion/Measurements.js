@@ -15,7 +15,7 @@ const Measurements = props => (
       <input name="newArm" className="measInput" placeholder={`8. Arm Length= ${props.inputArm}`} onChange={props.changeHandler} />
 
       
-      <button className="measInput"  onClick={props.clickUpdate}>Save Measurements</button>
+      {/* <button className="measInput"  onClick={props.clickUpdate}>Save Measurements</button> */}
     </form>
   </div>
 )

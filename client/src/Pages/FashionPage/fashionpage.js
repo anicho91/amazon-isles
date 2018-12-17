@@ -16,11 +16,13 @@ import './fashionpage.css';
 
 
 
-class App extends Component {
+class FashionPage extends Component {
 
   state = {
 
     clientID: "5c0dd73242d9c31a00e69e31",
+    token:localStorage.getItem('token'),
+    measurement: {},
     providerId: "",
     providers: [],
     providerList: []
@@ -55,6 +57,19 @@ class App extends Component {
 
   }
 
+  componentDidMount() {
+
+    $.get(`/api/users/${this.state.token}`)
+    .then((clientData) => {
+      this.setState({measurement: clientData.data.measurement});
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
+  }
+
+
 
   render() {
     return (
@@ -62,17 +77,17 @@ class App extends Component {
 
         <StyleHeader2 />
 
-        <Row className="fashionrow mt-5">
+        <Row>
 
           <Col xs='12'>
             <FabWidget />
 
           </Col>
         </Row>
-        <Row>
+        <Row className="justify-content-center">
           <Col xs='12'>
 
-            <BodMeas />
+            <BodMeas measureList={this.state.measurement}/>
           </Col>
 
         </Row>
@@ -83,7 +98,7 @@ class App extends Component {
               <button onClick={this.clickHandler} >Display Available Provider</button>
             </div>
 
-            <ProviderInfo providerList={this.state.providerList} clickProvider={this.clickProvider} />
+            <ProviderInfo providerList={this.state.providerList} clickProvider={this.clickProvider} />np
           </Col>
         </Row>
 
@@ -95,4 +110,4 @@ class App extends Component {
   };
 };
 
-export default App;
+export default FashionPage;

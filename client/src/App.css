@@ -62,10 +62,6 @@ HEX 0C0E12 RGB 12 14 18     Darkest blue /looks black */
   height: 80%;
 }
 
-div {
-  display: block;
-}
-
 h1 {
   color: white;
 
@@ -448,3 +444,5 @@ img:focus {
   z-index: 1;
   mask: url(https://princefan046.com/wp-content/uploads/2018/12/20181207_040929.png) 50% 10% / 80% no-repeat;
 } */
+
+
