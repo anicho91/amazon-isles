@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Fa } from "mdbreact";
+import { Button, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from "mdbreact";
 
 import { logout } from "../Auth/Auth";
 
@@ -26,6 +26,7 @@ class StyleHeader2 extends React.Component {
             <img
               className="logo"
               src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"
+              alt="amazonisles-logo"
             />
             <strong>AmazonIsles</strong>
           </NavbarBrand>

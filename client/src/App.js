@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Homepage from './Pages/HomePage/homepage';
 import Clientpage from './Pages/ClientPage/clientpage';
 import Fashionpage from './Pages/FashionPage/fashionpage';

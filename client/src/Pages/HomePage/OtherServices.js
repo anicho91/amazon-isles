@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Container, Jumbotron, Row, Col, Fa, NavLink, Footer } from "mdbreact"
-import { Card, CardBody, CardImage, CardTitle, CardText, MDBCol, MDBRow } from 'mdbreact';
+import { Row, Col } from "mdbreact"
+import { Card, CardBody, CardImage } from 'mdbreact';
 
 class OtherServices extends Component {
 
@@ -17,7 +17,7 @@ class OtherServices extends Component {
                     <CardBody>
                         <h4 className="card-title"><a>Custom Clothing</a></h4>
                         <p className="card-text"></p>
-                        <a href="#" className="btn btn-secondary">See More</a>
+                        <a href="#seemore" className="btn btn-secondary">See More</a>
                     </CardBody>
                 </Card>
             </Col>
@@ -29,7 +29,7 @@ class OtherServices extends Component {
                     <CardBody>
                         <h4 className="card-title"><a>Custom Shoes </a></h4>
                         <p className="card-text"></p>
-                        <a href="#" className="btn btn-secondary">See More</a>
+                        <a href="#seemore" className="btn btn-secondary">See More</a>
                     </CardBody>
                 </Card>
             </Col>
@@ -39,7 +39,7 @@ class OtherServices extends Component {
                     <CardBody>
                         <h4 className="card-title"><a>Custom Jewelry</a></h4>
                         <p className="card-text"></p>
-                        <a href="#" className="btn btn-secondary">See More</a>
+                        <a href="#seemore" className="btn btn-secondary">See More</a>
                     </CardBody>
                 </Card>
             </Col>
@@ -49,7 +49,7 @@ class OtherServices extends Component {
                     <CardBody>
                         <h4 className="card-title"><a>Custom Knits</a></h4>
                         <p className="card-text"></p>
-                        <a href="#" className="btn btn-secondary">See More</a>
+                        <a href="#seemore" className="btn btn-secondary">See More</a>
                     </CardBody>
                 </Card>
             </Col>

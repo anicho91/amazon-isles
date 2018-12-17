@@ -123,7 +123,7 @@ module.exports = function (app) {
 
     //Update provider field.
     app.put('/api/providers/:id', function(req, res){
-        Provider.findOneAndUpdate({ token: req.params.id }, { $set: req.body })
+        Provider.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
             .populate("orders")
             .then(function (data) {
                 res.json(data);
