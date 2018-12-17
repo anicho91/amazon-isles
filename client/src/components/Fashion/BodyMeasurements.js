@@ -78,7 +78,7 @@ class BodMeas extends Component {
     return (
 
       <div>
-        <Row>
+        <Row className="justify-content-center">
           <Col xs='12' md='6' className="measImg" >
             <img src={'/assets/images/garments/bodyMeasurements1.gif'} height="600"></img>
           </Col>
