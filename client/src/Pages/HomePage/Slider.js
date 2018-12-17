@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import './slider1.css'
-import { Container, Jumbotron, Row, Col, Fa, NavLink, Nav, Footer } from "mdbreact"
+import {  Jumbotron } from "mdbreact"
 
 class Slider extends Component {
 

@@ -7,9 +7,8 @@ import Pic from "../../components/ClientUser/clientP";
 import Orders from '../../components/ClientUser/clientO';
 import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
-import { setSession, getIdToken, handleAuthentication, isAuthenticated } from '../../components/Auth/Auth';
+import { setSession, getIdToken } from '../../components/Auth/Auth';
 import jwt_decode from 'jwt-decode';
-import { isNull } from "util";
 import ClientModal from "./clientModal";
 
 class Clientpage extends Component {
@@ -20,7 +19,6 @@ class Clientpage extends Component {
       imagesrc: ''
     },
     user: null,
-    flag: true,
     token: '',
     name: '',
     modal: false,

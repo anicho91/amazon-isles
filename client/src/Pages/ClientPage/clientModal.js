@@ -8,10 +8,7 @@ import {
   ModalFooter,
   Container,
   Row,
-  Col,
-  Form,
-  Label,
-  Input
+  Col
 } from "reactstrap";
 import ClientForm from "../../components/ClientUser/clientF";
 
@@ -31,8 +28,12 @@ class ClientModal extends React.Component {
   };
 
   getUser = event => {
-    $.get(`/api/users/${this.state.clientAuthID}`).then(results => {
-      this.setState({ user: results.data, clientID: results.data._id });      
+    $.get(`/api/users/${this.state.clientAuthID}`)
+    .then(results => {
+      console.log(results)
+      this.setState({ 
+        user: results.data, clientID: results.data._id 
+      });      
       
     });
   };

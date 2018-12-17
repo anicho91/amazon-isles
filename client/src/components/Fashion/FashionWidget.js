@@ -79,7 +79,7 @@ console.log(result.data);
   //From AddFabric.js component
   moreFabric = (event, target) => {
     event.preventDefault();
-console.log("this.state.addFabric",this.state.addFabric)
+    console.log("this.state.addFabric",this.state.addFabric)
 
 
     //Regular expressions grab name and number of fabric from url.  Image url is created from the fabric number.

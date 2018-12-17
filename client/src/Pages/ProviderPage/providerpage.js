@@ -30,7 +30,7 @@ class Providerpage extends Component {
         token: "",
         name:"",
 
-        providerInfo: {},
+        providerInfo: '',
         demoList: [],
         orderArray: [],
         orderList: [],
@@ -64,18 +64,17 @@ class Providerpage extends Component {
           token: info.sub,
           name: info.nickname
         })
-        console.error("I am the token in initiateSession",this.token)
+        console.error("I am the token in initiateSession",this.state.token)
     }
 
     //Get the particular provider information
     getProvider = () => {
-        $.get(`/api/users/${localStorage.getItem('token')}`)
+        $.get(`/api/users/${this.state.token}`)
             .then((result) => {
                 this.setState({ orderArray: result.data.orders });
                 this.setState({ providerInfo: result.data });
-                this.setState({ demoList: result.data.demo });
+                // this.setState({ demoList: result.data.user.demo });
                 this.getOrder(this.state.orderArray);
-                this.setState({ isUserUpdate: false });
                 console.log(this.state.providerInfo);
             })
             .catch(function (error) {
@@ -140,7 +139,9 @@ class Providerpage extends Component {
                                                 State: {this.state.providerInfo.state} <br />
                                                 Country: {this.state.providerInfo.country} <br /><br />
                                             </CardText>
+                                            {this.state.providerInfo && (
                                             <UserModal getProvider={this.getProvider} />
+                                            )}
                                         </CardBody>
                                     </Card>
 
@@ -156,7 +157,7 @@ class Providerpage extends Component {
                                                 Availability: {this.state.providerInfo.availability ? "Yes" : "No"} <br />
                                                 Will Work for: $ {this.state.providerInfo.budget} <br />
                                             </CardText>
-                                            <UserModal getProvider={this.getProvider} />
+                                            
                                         </CardBody>
                                     </Card>
 
@@ -164,8 +165,8 @@ class Providerpage extends Component {
                             </Row>
                             <Row className="mt-5 mb-5">
                                 <Col xs="12">
-                                    { this.state.demoList ?
-                                    <Demo demoList={this.state.demoList} /> : <p>No Demo Information</p>
+                                    { this.state.providerInfo.demo ?
+                                    <Demo demoList={this.state.providerInfo.demo} /> : <p>No Demo Information</p>
                                     }
                                 </Col>
                             </Row>

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Jumbotron, Footer } from "mdbreact"
+import React from 'react';
+import { Footer } from "mdbreact"
 
 
 class StyleFooter extends React.Component {

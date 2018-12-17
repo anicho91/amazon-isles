@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Container, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Fa } from 'mdbreact';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Button, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from 'mdbreact';
 import { login0, login1 } from '../Auth/Auth'
 
 class StyleHeader extends React.Component {
@@ -26,7 +25,10 @@ render() {
         
         <Navbar className="stickyNav" dark expand="md" scrolling fixed="top">
           <NavbarBrand href="/">
-          <img className="logo" src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"/><strong>AmazonIsles</strong>
+          <img className="logo" 
+          src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"
+          alt="amazonisles-logo"
+          /><strong>AmazonIsles</strong>
           </NavbarBrand>
           <NavbarToggler onClick={ this.onClick } />
           <Collapse isOpen = { this.state.collapse } navbar>
