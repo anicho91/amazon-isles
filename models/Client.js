@@ -7,34 +7,42 @@ var ClientSchema = new Schema({
 
         bust: {
             type: Number,
+            default: 0,
             trim: true
         },
         waist: {
             type: Number,
+            default: 0,
             trim: true
         },
         hips: {
             type: Number,
+            default: 0,
             trim: true
         },
         knee_length: {
             type: Number,
+            default: 0,
             trim: true
         },        
         leg_length: {
             type: Number,
+            default: 0,
             trim: true
         },
         bp_length: {
             type: Number,
+            default: 0,
             trim: true
         },
         back_length: {
             type: Number,
+            default: 0,
             trim: true
         },
         arm_length: {
             type: Number,
+            default: 0,
             trim: true
         }
     }

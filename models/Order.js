@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 var OrderSchema = new Schema({
     budget: {
         type: Number,
+        default: 0,
         trim: true,
         required: "Please enter your budget."
     },

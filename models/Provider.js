@@ -6,10 +6,12 @@ var validator = require('validator');
 var ProviderSchema = new Schema({
     budget: {
         type: Number,
+        default: 0,
         trim: true,
     },
     availability: {
         type: Boolean,
+        default: false,
         trim: true,
     },
     demo: [{
@@ -19,6 +21,7 @@ var ProviderSchema = new Schema({
     }],
     job_category: {
         type: String,
+        default: "Please update the information.",
         trim: true,
     }
   });

@@ -5,6 +5,7 @@ var validator = require('validator');
 var UserSchema = new Schema({
     userId: {
         type: String,
+        default: "Please update your user name",
         trim: true,
         required: "Please check your userId"
     },
@@ -15,26 +16,32 @@ var UserSchema = new Schema({
     },
     phone: {
         type: String,
+        default:"XXX-XXX-XXXX",
         trim: true,
     },
     street: {
         type: String,
+        default:"Update your street address",
         trim: true,
     },
     city: {
         type: String,
+        default:"Update your city",
         trim: true,
     },
     state: {
         type: String,
+        default:"Update your state",
         trim: true,
     },
     country: {
         type: String,
+        default: "Update your country",
         trim: true,
     },
     profile_picture: {
         type: String,
+        default: "https://via.placeholder.com/350",
         trim: true,
         validate:[validator.isURL, "invalid URL"]
     },
