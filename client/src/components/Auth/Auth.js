@@ -16,15 +16,15 @@ var auth1 = new Auth0.WebAuth({
     
 });
 
-const authLog = auth.logout({
-    returnTo: 'https://amazonisle.herokuapp.com/',
-    client_id: AUTH_CONFIG.clientId
-});
+// const authLog = auth.logout({
+//     returnTo: 'https://amazonisle.herokuapp.com/',
+//     client_id: AUTH_CONFIG.clientId
+// });
 
-const authLog1 = auth1.logout({
-    returnTo: 'https://amazonisle.herokuapp.com/',
-    client_id: AUTH_CONFIG.clientId
-});
+// const authLog1 = auth1.logout({
+//     returnTo: 'https://amazonisle.herokuapp.com/',
+//     client_id: AUTH_CONFIG.clientId
+// });
 
 let clientUrl;
 let providerUrl;
@@ -105,9 +105,7 @@ export function logout() {
     localStorage.removeItem('name');
     localStorage.removeItem('expires_in');
     localStorage.setItem('expires_at', 0);
-    // window.location.replace("https:/amazonisle.auth0.com/v2/logout?returnTo=https%3A%2F%2Famazonisle.herokuapp.com/");
-    authLog()
-    authLog1()
+    window.location.replace("https:/amazonisle.auth0.com/v2/logout?returnTo=https%3A%2F%2Famazonisle.herokuapp.com/");
 }
 
 export function getAccessToken() {
