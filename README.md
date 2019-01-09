@@ -10,7 +10,6 @@ This react app allows customers to:
 * Request a unique or one-of-a kind custom service
 * Have their request sent to vendors 
 * Have their request fulfilled in a timely manner 
-* Pay vendors digitally   
 ![user](Readme/readme-customer.jpg "Customer Actions")
 This App also allows vendors to: 
 * Promote a unique or one-of-a kind custom service
