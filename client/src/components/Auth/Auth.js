@@ -17,21 +17,21 @@ var auth1 = new Auth0.WebAuth({
     
 });
 
-let clientUrl ;
+let clientUrl;
 let providerUrl;
 
 if(process.env.NODE_ENV === "production") {
-    clientUrl = "https://afternoon-harbor-43363.herokuapp.com/client"
+    clientUrl = "https://amazonisle.herokuapp.com/client"
 } else {
     clientUrl = "http://localhost:3000/client";
 }
 
 if(process.env.NODE_ENV === "production") {
-    providerUrl = "https://afternoon-harbor-43363.herokuapp.com/provider"
+    providerUrl = "https://amazonisle.herokuapp.com/provider"
 } else {
     providerUrl = "http://localhost:3000/provider";
 }
-//https://afternoon-harbor-43363.herokuapp.com/google621798b7609ae146.html 
+
 
 export function login0() {
     auth.authorize({
@@ -91,9 +91,11 @@ export function logout() {
     localStorage.removeItem('Loggedin')
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
     localStorage.removeItem('expires_in');
     localStorage.setItem('expires_at', 0);
-    window.location.replace("https:/mypass.auth0.com/v2/logout");
+    window.location.replace("https:/amazonisle.auth0.com/v2/logout?returnTo=https%3A%2F%2Famazonisle.herokuapp.com/");
 
 }
 

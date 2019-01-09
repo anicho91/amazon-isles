@@ -1,7 +1,6 @@
 const AUTH_CONFIG = {
-    clientId: '9qLtY79OJ2L4ImgJXGQYREVej47uvoWb',
-    domain: 'mypass.auth0.com',
-    callbackUrl: 'http://localhost:3000/client'
+    clientId: 'EOda7k1OB5tRGwIvO06Rlu4ZqBPJQZWZ',
+    domain: 'amazonisle.auth0.com'
 }
 
 export default AUTH_CONFIG;
