@@ -58,6 +58,7 @@ export function login1() {
     });
 }
 
+
 function getParameterByName(name) {
     let match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
     console.log(name, match);
