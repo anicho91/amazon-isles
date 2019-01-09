@@ -105,7 +105,7 @@ export function logout() {
     localStorage.removeItem('name');
     localStorage.removeItem('expires_in');
     localStorage.setItem('expires_at', 0);
-    window.location.replace("https:/amazonisle.auth0.com/v2/logout?returnTo=https://amazonisle.herokuapp.com/");
+    window.location.replace(`https:/amazonisle.auth0.com/v2/logout?returnTo=https://amazonisle.herokuapp.com/&${AUTH_CONFIG.clientId}`);
 }
 
 export function getAccessToken() {
