@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from "mdbreact";
-
 import { logout } from "../Auth/Auth";
 
 class StyleHeader2 extends React.Component {

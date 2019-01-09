@@ -13,7 +13,6 @@ import ClientModal from "./clientModal";
 
 class Clientpage extends Component {
   state = {
-
     image: {
       type: "Profile",
       imagesrc: ''
