@@ -1,5 +1,4 @@
 import React from 'react';
-import Auth0Lock from 'auth0-lock';
 import Auth0 from 'auth0-js';
 import AUTH_CONFIG from './Auth0-variables';
 import history from '../history';
@@ -15,6 +14,16 @@ var auth1 = new Auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId
     
+});
+
+auth.logout({
+    returnTo: 'https://amazonisle.herokuapp.com/',
+    client_id: AUTH_CONFIG.clientId
+});
+
+auth1.logout({
+    returnTo: 'https://amazonisle.herokuapp.com/',
+    client_id: AUTH_CONFIG.clientId
 });
 
 let clientUrl;
@@ -95,8 +104,8 @@ export function logout() {
     localStorage.removeItem('name');
     localStorage.removeItem('expires_in');
     localStorage.setItem('expires_at', 0);
+    history.replace('/')
     window.location.replace("https:/amazonisle.auth0.com/v2/logout?returnTo=https%3A%2F%2Famazonisle.herokuapp.com/");
-
 }
 
 export function getAccessToken() {
@@ -119,11 +128,6 @@ export function setSession() {
     localStorage.setItem('expires_at', expiresAt);
 
 }
-
-// export function isLoggedin() {
-//     const status = localStorage.getItem('Loggedin')
-//     return status;
-// }
 
 export function isAuthenticated() {
     return new Date < expiresAt;
