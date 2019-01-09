@@ -16,15 +16,15 @@ var auth1 = new Auth0.WebAuth({
     
 });
 
-auth.logout({
-    returnTo: 'https://amazonisle.herokuapp.com/',
-    client_id: AUTH_CONFIG.clientId
-});
+// auth.logout({
+//     returnTo: 'https://amazonisle.herokuapp.com/',
+//     client_id: AUTH_CONFIG.clientId
+// });
 
-auth1.logout({
-    returnTo: 'https://amazonisle.herokuapp.com/',
-    client_id: AUTH_CONFIG.clientId
-});
+// auth1.logout({
+//     returnTo: 'https://amazonisle.herokuapp.com/',
+//     client_id: AUTH_CONFIG.clientId
+// });
 
 let clientUrl;
 let providerUrl;
