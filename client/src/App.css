@@ -146,16 +146,16 @@ color: #ffffff
   /* position: relative; */
   /* display: block; */
   max-width: 60%;
-  margin-top: -47px;
-  margin-left: -20px;
-  margin-right: -10px;
+  margin-top: -57px;
+  margin-left: -10px;
+  margin-right: 10px;
   margin-bottom: -60px;
-  height: 80px;
+  height: 50px;
   /* margin: 0 auto; */
   padding: 0;
   z-index: 1;
-  mask: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/234228/alpha-star.png)
-    50% 10% / 80% no-repeat;
+  /* mask: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/234228/alpha-star.png)
+    50% 10% / 80% no-repeat; */
 }
 .Carousel {
   margin-top: 30%;
