@@ -97,6 +97,8 @@ function setExpiration() {
     localStorage.setItem('expires_in', expiresIn);
 }
 
+const HomePage = '/'
+
 export function logout() {
     localStorage.removeItem('Loggedin')
     localStorage.removeItem('access_token');
@@ -104,8 +106,8 @@ export function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
     localStorage.removeItem('expires_in');
-    localStorage.setItem('expires_at', 0);
-    window.location.replace(`https:/amazonisle.auth0.com/v2/logout?returnTo=https://amazonisle.herokuapp.com/&${AUTH_CONFIG.clientId}`);
+    localStorage.removeItem('expires_at');
+    window.location.replace(`https://amazonisle.auth0.com/v2/logout`);
 }
 
 export function getAccessToken() {
