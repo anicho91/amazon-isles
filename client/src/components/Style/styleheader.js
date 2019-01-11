@@ -25,7 +25,7 @@ render() {
         <Navbar className="stickyNav" dark expand="md" scrolling fixed="top">
           <NavbarBrand href="/">
           <img className="logo" 
-          src="https://media.giphy.com/media/a0zJgGLKPY4vu/giphy.gif"
+          src={require("./dressedit2.png")}
           alt="amazonisles-logo"
           /><strong>AmazonIsles</strong>
           </NavbarBrand>
