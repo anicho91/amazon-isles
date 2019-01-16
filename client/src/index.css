@@ -4,7 +4,7 @@ body {
   font-family: 'Times New Roman', Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./Images/mirroredbackground2.png);
+  background-image: url(./Images/mirroredbackground.jpg);
   background-attachment: fixed;
   background-size: cover;
 }
