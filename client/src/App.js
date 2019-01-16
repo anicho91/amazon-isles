@@ -10,7 +10,7 @@ import OtherServices from './Pages/HomePage/OtherServices'
 
 
 const App = () => (
- 
+  
   <BrowserRouter>
       <Switch>
         <Route exact path='/' component={Homepage} />

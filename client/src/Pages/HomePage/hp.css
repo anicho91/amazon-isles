@@ -1,0 +1,43 @@
+.mainBody {
+    margin-top: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: 'Times New Roman', Times, serif;
+}
+  
+.hpImages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hpImages2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.clientImg, .providerImg {
+    width: 99%;
+    align-self: center;
+}
+
+.clientText, .providerText {
+    align-self: flex-end;
+    position: absolute;
+    background-color: #ffffff;
+    color: #a51365;
+    width: 20%;
+    text-align: center;
+    font-size: 35px;
+    margin-top: 15px;
+    opacity: .8;
+    border: transparent;
+}
+
+.clientText:hover, .providerText:hover {
+    color: #ffffff;
+    background-color: #a51365;
+    text-decoration: none;
+    cursor: pointer;
+}

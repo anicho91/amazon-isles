@@ -1,0 +1,11 @@
+.loginBtns {
+    color: #a51365;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: transparent;
+    border: transparent;
+}
+
+.loginBtns:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
