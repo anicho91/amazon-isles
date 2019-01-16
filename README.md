@@ -1,5 +1,5 @@
  # AMAZONISLES
- https://afternoon-harbor-43363.herokuapp.com/
+ https://amazonisle.herokuapp.com/
  
  ![](https://thumbs.gfycat.com/PotableFlippantArachnid-size_restricted.gif)
  
