@@ -3,12 +3,10 @@ import * as $ from 'axios';
 import BodMeas from '../../components/Fashion/BodyMeasurements';
 import FabWidget from '../../components/Fashion/FashionWidget';
 import Composite from '../../components/Fashion/Composite';
-import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
 import ProviderInfo from '../../components/Fashion/ProviderDisplay';
 import { Row, Col } from 'reactstrap';
-
-// import * as $ from 'axios';
+import ButtonAppBar from '../../components/Style/newheader';
 import './fashionpage.css';
 
 
@@ -76,7 +74,7 @@ class FashionPage extends Component {
     return (
       <div>
 
-        <StyleHeader2 />
+        <ButtonAppBar />
 
         <Row>
 

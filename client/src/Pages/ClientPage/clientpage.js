@@ -5,11 +5,11 @@ import "./clientpage.css";
 import Measurements from "../../components/ClientUser/clientM";
 import Pic from "../../components/ClientUser/clientP";
 import Orders from '../../components/ClientUser/clientO';
-import StyleHeader2 from "../../components/Style/styleheader2";
 import StyleFooter from "../../components/Style/stylefooter";
 import { setSession, getIdToken } from '../../components/Auth/Auth';
 import jwt_decode from 'jwt-decode';
 import ClientModal from "./clientModal";
+import ButtonAppBar from '../../components/Style/newheader';
 
 class Clientpage extends Component {
   state = {
@@ -119,7 +119,8 @@ class Clientpage extends Component {
   render() {
     return (
       <div>
-        <StyleHeader2 />
+        {/* <StyleHeader2 /> */}
+        <ButtonAppBar />
         <div className='welcome'>Welcome {this.state.name}</div>
         <div className="userDiv">
 

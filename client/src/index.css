@@ -4,10 +4,7 @@ body {
   font-family: 'Times New Roman', Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./Images/mirroredbackground.jpg);
+  background-image: url(./Images/full-bloom2.png);
   background-attachment: fixed;
-  background-size: cover;
+  background-repeat: repeat;
 }
-
-
-

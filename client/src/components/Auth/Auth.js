@@ -100,13 +100,7 @@ function setExpiration() {
 const HomePage = '/'
 
 export function logout() {
-    localStorage.removeItem('Loggedin')
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('token');
-    localStorage.removeItem('name');
-    localStorage.removeItem('expires_in');
-    localStorage.removeItem('expires_at');
+    localStorage.clear();
     window.location.replace(`https://amazonisle.auth0.com/v2/logout`);
 }
 

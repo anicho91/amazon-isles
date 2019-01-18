@@ -4,11 +4,41 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import { login0, login1 } from '../Auth/Auth'
-import './nav.css'
+import { login0, login1 } from '../Auth/Auth';
+import { logout } from "../Auth/Auth";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import './nav.css';
+
+
+function LoginFun(props) {
+    return ( 
+    <div> 
+        <button className='loginBtns' onClick={login0}>Client Login</button>
+        <button className='loginBtns' onClick={login1}>Provider Login</button> 
+    </div>
+    );
+}
+
+function LogoutFun(props) {
+    return ( 
+    <div> 
+        <button className='loginBtns' onClick={logout}>Logout</button>
+    </div>
+    );
+}
+
+function Mobilenav() {
+    return (
+        <div>
+            <button className='dropdownmenu' onClick={ShowMenu}><FontAwesomeIcon icon={faBars} /></button>
+        </div>
+    )
+}
+
+const ShowMenu = () => {
+
+}
 
 const styles = {
   root: {
@@ -21,8 +51,8 @@ const styles = {
     fontSize: '40px'
   },
   menuButton: {
-    // marginRight: -10,
     color: '#a51365',
+    display: 'none',
   },
   navBar: {
     backgroundColor: 'white',
@@ -31,13 +61,19 @@ const styles = {
 
 class ButtonAppBar extends React.Component {
     state = {
-        auth: false
+        isLoggedIn: false
     };
     
     render() {
         const { classes } = this.props;
-        const { auth } = this.state.auth;
-  
+        let button;
+
+        if (localStorage.getItem('Loggedin') === 'true' ) {
+            button = <LogoutFun />;
+        } else {
+            button = <LoginFun />;
+        }
+
         return (
             <div className={classes.root}>
             <AppBar position="static" className={classes.navBar}>
@@ -46,12 +82,12 @@ class ButtonAppBar extends React.Component {
                     AmazonIsles
                 </Typography>
                 
-                <button className='loginBtns' onClick={login0}>Client Login</button>
-                <button className='loginBtns' onClick={login1}>Provider Login</button>
+                {button}
                 
-                {/* <IconButton className={classes.menuButton} aria-label="Menu">
-                    <MenuIcon />
-                </IconButton> */}
+                <Mobilenav />
+
+
+
                 </Toolbar>
             </AppBar>
             </div>

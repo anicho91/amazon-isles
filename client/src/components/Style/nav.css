@@ -9,3 +9,21 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+.dropdownmenu {
+    color: #a51365;
+    display: none;
+}
+
+@media only screen and (max-width: 420px) {
+    .loginBtns {
+        display: none;
+    }
+
+    .dropdownmenu {
+        display: block;
+        background-color: transparent;
+        border: transparent;
+        font-size: 20px;
+    }
+}

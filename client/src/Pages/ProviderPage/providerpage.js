@@ -5,7 +5,6 @@ import Order from './order.js';
 import UserModal from './userModal.js';
 import { setSession, getIdToken } from '../../components/Auth/Auth';
 import jwt_decode from 'jwt-decode';
-import StyleHeader2 from '../../components/Style/styleheader2';
 import StyleFooter from '../../components/Style/stylefooter';
 import {
     Container,
@@ -18,6 +17,7 @@ import {
     CardBody,
     CardText
 } from 'reactstrap';
+import ButtonAppBar from '../../components/Style/newheader';
 
 
 
@@ -121,7 +121,7 @@ class Providerpage extends Component {
     render() {
         return (
             <div>
-                <StyleHeader2 />
+                <ButtonAppBar />
                 <Container>
                     <Row className="mt-5">
                         <Col xs="12" md="6">

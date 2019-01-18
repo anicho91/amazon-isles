@@ -41,3 +41,28 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 700px) {
+    .hpImages {
+        display: block;
+    };
+
+    .hpImages2 {
+        display: block;
+    }
+
+    .providerImg {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .providerText {
+        margin-top: -15px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .clientText {
+        width: 100%;
+    }
+}

@@ -6,8 +6,6 @@ import Fashionpage from './Pages/FashionPage/fashionpage';
 import './App.css';
 import Providerpage from './Pages/ProviderPage/providerpage'
 import Searchpage from './Pages/SearchPage/searchpage'
-import OtherServices from './Pages/HomePage/OtherServices'
-
 
 const App = () => (
   
@@ -18,7 +16,6 @@ const App = () => (
         <Route exact path='/provider' component={Providerpage} />
         <Route exact path='/fashion' component={Fashionpage} />  
         <Route exact path='/search' component={Searchpage} />
-        <Route exact path='/OtherServices' component={OtherServices} />
         
       </Switch>
   </BrowserRouter>
