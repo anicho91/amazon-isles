@@ -47,12 +47,13 @@
         display: block;
     };
 
-    .hpImages2 {
-        /* display: block; */
-    }
 
     .providerImg {
         margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .clientImg {
         margin-bottom: 30px;
     }
 
