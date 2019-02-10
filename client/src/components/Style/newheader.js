@@ -8,8 +8,8 @@ import { login0, login1 } from '../Auth/Auth';
 import { logout } from "../Auth/Auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 import './nav.css';
-
 
 function LoginFun(props) {
     return ( 
@@ -23,22 +23,12 @@ function LoginFun(props) {
 function LogoutFun(props) {
     return ( 
     <div> 
-        <button className='loginBtns' onClick={logout}>Logout</button>
+        <button className='loginBtns' onClick={ logout }>Logout</button>
     </div>
     );
 }
 
-function Mobilenav() {
-    return (
-        <div>
-            <button className='dropdownmenu' onClick={ShowMenu}><FontAwesomeIcon icon={faBars} /></button>
-        </div>
-    )
-}
 
-const ShowMenu = () => {
-
-}
 
 const styles = {
   root: {
@@ -61,12 +51,18 @@ const styles = {
 
 class ButtonAppBar extends React.Component {
     state = {
-        isLoggedIn: false
+        showing: false,
     };
+
     
     render() {
         const { classes } = this.props;
         let button;
+        let mobilemenu;
+
+        // if ( this.state.showing === true ) {
+        //     mobilemenu = <ShowMenu />;
+        // }
 
         if (localStorage.getItem('Loggedin') === 'true' ) {
             button = <LogoutFun />;
@@ -84,7 +80,7 @@ class ButtonAppBar extends React.Component {
                 
                 {button}
                 
-                <Mobilenav />
+                {/* <MobileNav /> */}
 
 
 

@@ -48,7 +48,7 @@
     };
 
     .hpImages2 {
-        display: block;
+        /* display: block; */
     }
 
     .providerImg {
@@ -60,9 +60,11 @@
         /* margin-top: -15px;
         margin-bottom: 30px; */
         width: 100%;
+        
     }
     
     .clientText {
         width: 100%;
+        
     }
 }
