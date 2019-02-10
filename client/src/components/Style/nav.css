@@ -15,6 +15,10 @@
     display: none;
 }
 
+.dropdownnav {
+    display: none;
+}
+
 @media only screen and (max-width: 420px) {
     .loginBtns {
         display: none;
@@ -25,5 +29,13 @@
         background-color: transparent;
         border: transparent;
         font-size: 20px;
+    }
+
+    .hideNav {
+
+    }
+
+    .dropdownnav {
+
     }
 }
