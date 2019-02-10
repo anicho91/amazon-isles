@@ -78,7 +78,7 @@ class ButtonAppBar extends React.Component {
                     AmazonIsles
                 </Typography>
                 
-                {button}
+                { button }
                 
                 {/* <MobileNav /> */}
 
